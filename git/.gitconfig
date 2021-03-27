@@ -1,0 +1,89 @@
+# ----------------------------------------
+#   Author: Liam Howell
+#   Description: Global `git` configuration
+# ----------------------------------------
+
+[apply]
+
+  ## Detect whitespace errors when applying a patch
+  whitespace = fix
+
+[branch]
+
+  ## Show most recently changed branches first
+  sort = -committerdate
+
+[color]
+
+  ## Use colors in Git commands that are capable of colored output when outputting to the terminal
+  ui = auto
+
+[core]
+
+  ## Set the default editor to `nano`
+  editor = nano
+
+  ## Prevent showing files whose names contain non-ASCII symbols as unversioned
+  ## http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
+
+  ## Make `git rebase` safer on macOS
+  ## http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+  trustctime = false
+
+  ## Speed up commands involving untracked files such as `git status`
+  ## https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
+
+  ## Treat spaces before tabs and all kinds of trailing whitespace as an error
+  ## [default] trailing-space: looks for spaces at the end of a line
+  ## [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[diff]
+
+  ## Show blocks of moved text of at least 20 alphanumeric characters differently than adds/deletes
+  ## https://git-scm.com/docs/git-diff#git-diff-zebra
+  colorMoved = zebra
+
+	## Detect copies as well as renames
+	renames = copies
+
+[diff "bin"]
+
+  ## Use `hexdump` to diff binary files
+  textconv = hexdump --canonical --no-squeezing
+
+[help]
+
+  ## If a command is mistyped, make Git automatically run the command it thinks the user wanted
+  ## to type while also giving the user some time to prevent it from doing so
+  ## https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_help_autocorrect
+  autocorrect = 20
+
+[init]
+
+  ## Set the default branch name
+  defaultBranch = main
+
+[merge]
+
+	## Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[push]
+
+  ## Make `git push` automatically push relevant annotated tags when pushing branches out
+  followTags = true
+
+[user]
+
+  ## Do not guess the user's identity
+  ## https://github.com/git/git/blob/90f7b16b3adc78d4bbabbd426fb69aa78c714f71/Documentation/config.txt#L2847-L2855
+  useConfigOnly = true
+
+[include]
+
+  ## Load local configs
+  ## https://git-scm.com/docs/git-config#_includes
+  path = ~/.gitconfig.local

@@ -1,0 +1,34 @@
+# ----------------------------------------
+#   Author: Liam Howell
+#   Description: Brew & Cask dependency definitions
+# ----------------------------------------
+
+tap 'buo/cask-upgrade'
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/core'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+
+brew 'composer'
+brew 'gh'
+brew 'git'
+brew 'mas'
+brew 'mysql'
+brew 'nvm'
+brew 'php'
+brew 'yarn'
+
+cask 'amazon-music'
+cask 'discord'
+cask 'firefox'
+cask 'google-chrome'
+cask 'hyper'
+cask 'microsoft-teams'
+cask 'private-internet-access'
+cask 'rectangle'
+cask 'slack'
+cask 'the-unarchiver'
+cask 'transmission'
+cask 'visual-studio-code'
+cask 'vlc'

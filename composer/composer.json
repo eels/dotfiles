@@ -1,0 +1,11 @@
+{
+  "name": "liam/global",
+  "description": "Global Dependencies",
+  "require": {
+    "laravel/valet": "^2.13"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  }
+}
