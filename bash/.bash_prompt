@@ -31,10 +31,10 @@ WHITE="\[\033[0;37m\]"
 # ----------------------------------------
 
 function gitprompt() {
-	git rev-parse --is-inside-work-tree &>/dev/null || return
+  git rev-parse --is-inside-work-tree &>/dev/null || return
 
   local symbol=''
-	local branch="$(git branch --show-current)"
+  local branch="$(git branch --show-current)"
 
   ## Check for changes that are uncommitted
   ! $(git diff --quiet --ignore-submodules --cached) && symbol+='+'
@@ -46,9 +46,9 @@ function gitprompt() {
   [ -n "$(git ls-files --others --exclude-standard)" ] && symbol+='?'
 
   ## Wrap symbol in square brackets if it isn't empty
-	[ -n "${symbol}" ] && symbol=" [${symbol}]"
+  [ -n "${symbol}" ] && symbol=" [${symbol}]"
 
-	echo -e "${1}${branch}${2}${symbol}"
+  echo -e "${1}${branch}${2}${symbol}"
 }
 
 # ----------------------------------------

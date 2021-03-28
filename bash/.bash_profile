@@ -84,12 +84,12 @@ export NVM_DIR="$HOME/.nvm"
 
 ## Create a new directory and enter it
 function cdmkdir() {
-	mkdir -p "$@" && cd "$_"
+  mkdir -p "$@" && cd "$_"
 }
 
 ## Change working directory to the top-most Finder location
 function cdfinder() {
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
 }
 
 ## Change current working and change Node version if `.nvmrc` is present
@@ -122,16 +122,16 @@ function nullify() {
 
 ## Open Finder at the current or supplied location
 function openfinder() {
-	if [ $# -eq 0 ]; then
-		open "$PWD"
-	else
-		open "$@"
-	fi
+  if [ $# -eq 0 ]; then
+    open "$PWD"
+  else
+    open "$@"
+  fi
 }
 
 ## Quick start a HTTP server from the current working directory
 function serve() {
-	php -S "localhost:${1:-3000}"
+  php -S "localhost:${1:-3000}"
 }
 
 # ----------------------------------------

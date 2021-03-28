@@ -46,8 +46,8 @@
   ## https://git-scm.com/docs/git-diff#git-diff-zebra
   colorMoved = zebra
 
-	## Detect copies as well as renames
-	renames = copies
+  ## Detect copies as well as renames
+  renames = copies
 
 [diff "bin"]
 
@@ -68,8 +68,8 @@
 
 [merge]
 
-	## Include summaries of merged commits in newly created merge commit messages
-	log = true
+  ## Include summaries of merged commits in newly created merge commit messages
+  log = true
 
 [push]
 
