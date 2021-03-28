@@ -7,10 +7,12 @@
 //   See https://hyper.is#cfg for all currently supported options.
 // ----------------------------------------
 
+// append alpha transparency to hex value
 const alpha = (hex, opacity = 1) => {
   return `${hex}${Math.floor(opacity * 255).toString(16)}`;
 }
 
+// color palette - taken to match current vscode theme
 const colors = {
   black: '#292D3F',
   blue: '#83A6FC',
@@ -54,7 +56,7 @@ module.exports = {
     letterSpacing: 0.5,
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-    cursorShape: 'UNDERLINE',
+    cursorShape: 'BLOCK',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: false,
@@ -200,20 +202,11 @@ module.exports = {
     // if `false` (without backticks and without quotes), Hyper will use ligatures provided by some fonts
     disableLigatures: true,
 
-    // hyper tabs plugin configuration options
-    hyperTabs: {
-      border: false,
-      closeAlign: 'right',
-      tabIconsColored: true,
-      trafficButtons: true,
-    },
-
     // hyper unlimited power plugin configuration options
     hyperUnlimitedPower: {
       isComboEnabled: false,
       isRainbowEnabled: false,
       staticParticleColors: [
-        colors.green,
         colors.yellow
       ]
     },
@@ -221,8 +214,6 @@ module.exports = {
 
   // a list of plugins to fetch and install from npm
   plugins: [
-    'hyper-statusline',
-    'hyper-tabs-enhanced',
-    'hyperpower',
+    'hyper-unlimited-power'
   ],
 };
