@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# ----------------------------------------
+#   Author: Liam Howell
+#   Description: Bash prompt-only configurations
+#
+#   1. VARIABLES
+#   2. FUNCTIONS
+#   3. PROMPTS
+# ----------------------------------------
+
+# ----------------------------------------
+#   1. VARIABLES
+# ----------------------------------------
+
+## Name
+NAME="liam"
+
+## Colors
+BLACK="\[\033[0;30m\]"
+RED="\[\033[0;31m\]"
+GREEN="\[\033[0;32m\]"
+YELLOW="\[\033[0;33m\]"
+BLUE="\[\033[0;34m\]"
+PURPLE="\[\033[0;35m\]"
+CYAN="\[\033[0;36m\]"
+WHITE="\[\033[0;37m\]"
+
+# ----------------------------------------
+#   2. FUNCTIONS
+# ----------------------------------------
+
+function gitprompt() {
+	git rev-parse --is-inside-work-tree &>/dev/null || return
+
+  local symbol=''
+	local branch="$(git branch --show-current)"
+
+  ## Check for changes that are uncommitted
+  ! $(git diff --quiet --ignore-submodules --cached) && symbol+='+'
+
+  ## Check for changes that are unstaged
+  ! $(git diff-files --quiet --ignore-submodules --) && symbol+='!'
+
+  ## Check for changes that are untracked
+  [ -n "$(git ls-files --others --exclude-standard)" ] && symbol+='?'
+
+  ## Wrap symbol in square brackets if it isn't empty
+	[ -n "${symbol}" ] && symbol=" [${symbol}]"
+
+	echo -e "${1}${branch}${2}${symbol}"
+}
+
+# ----------------------------------------
+#   3. PROMPTS
+# ----------------------------------------
+
+## Set default prompt
+export PS1="\[\033]0;\w\007\]\n${GREEN}${NAME} ${WHITE}in ${YELLOW}\w \$(gitprompt \"${WHITE}on ${RED}\" \"${BLUE}\") \n${WHITE}$ ${BLACK}"
+
+## Set continuation prompt
+export PS2="${WHITE}➜ ${BLACK}"

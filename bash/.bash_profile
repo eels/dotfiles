@@ -4,31 +4,17 @@
 #   Author: Liam Howell
 #   Description: Bash configuration, aliases, functions etc
 #
-#   1. VARIABLES
-#   2. OPTIONS
-#   3. EXPORTS
-#   4. SOURCES
-#   5. FUNCTIONS
-#   6. ALIASES
+#   1. OPTIONS
+#   2. EXPORTS
+#   3. SOURCES
+#   4. FUNCTIONS
+#   5. ALIASES
+#   6. PROMPT
 #   7. LOCAL SECRETS
 # ----------------------------------------
 
 # ----------------------------------------
-#   1. VARIABLES
-# ----------------------------------------
-
-## Colors
-BLACK="\[\033[0;30m\]"
-RED="\[\033[0;31m\]"
-GREEN="\[\033[0;32m\]"
-YELLOW="\[\033[0;33m\]"
-BLUE="\[\033[0;34m\]"
-PURPLE="\[\033[0;35m\]"
-CYAN="\[\033[0;36m\]"
-WHITE="\[\033[0;37m\]"
-
-# ----------------------------------------
-#   2. OPTIONS
+#   1. OPTIONS
 # ----------------------------------------
 
 ## Autocorrect typos in path names when using `cd`
@@ -53,14 +39,8 @@ shopt -s nocaseglob
 trap "echo -ne '\033[0;37m'" DEBUG
 
 # ----------------------------------------
-#   3. EXPORTS
+#   2. EXPORTS
 # ----------------------------------------
-
-## Set default prompt
-export PS1="\[\033]0;\w\007\]\n${GREEN}liam ${WHITE}in ${YELLOW}\w \n${WHITE}$ ${BLACK}"
-
-## Set continuation prompt
-export PS2="${WHITE}➜ ${BLACK}"
 
 ## Silence macOS bash deprecation message
 export BASH_SILENCE_DEPRECATION_WARNING="1"
@@ -92,14 +72,14 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 export NVM_DIR="$HOME/.nvm"
 
 # ----------------------------------------
-#   4. SOURCES
+#   3. SOURCES
 # ----------------------------------------
 
 ## Include NVM
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && source "/usr/local/opt/nvm/nvm.sh"
 
 # ----------------------------------------
-#   5. FUNCTIONS
+#   4. FUNCTIONS
 # ----------------------------------------
 
 ## Create a new directory and enter it
@@ -155,7 +135,7 @@ function serve() {
 }
 
 # ----------------------------------------
-#   6. ALIASES
+#   5. ALIASES
 # ----------------------------------------
 
 ## Enable aliases to be sudo'd
@@ -223,8 +203,15 @@ alias mcosup="mas upgrade && softwareupdate -i -a"
 alias yarnup="yarn global upgrade"
 
 # ----------------------------------------
+#   6. PROMPT
+# ----------------------------------------
+
+## Include Prompt configuration
+[ -s "$HOME/.bash_prompt" ] && source "$HOME/.bash_prompt"
+
+# ----------------------------------------
 #   7. LOCAL SECRETS
 # ----------------------------------------
 
-## Include Local Secrets
+## Include Local secrets
 [ -s "$HOME/.localrc" ] && source "$HOME/.localrc"
