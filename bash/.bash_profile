@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # ----------------------------------------
 #   Author: Liam Howell
 #   Description: Bash configuration, aliases, functions etc
