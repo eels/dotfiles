@@ -7,22 +7,22 @@
 //   See https://hyper.is#cfg for all currently supported options.
 // ----------------------------------------
 
-// append alpha transparency to hex value
-const alpha = (hex, opacity = 1) => {
+// translucify a hex value
+const translucify = (hex, opacity = 1) => {
   return `${hex}${Math.floor(opacity * 255).toString(16)}`;
 }
 
 // color palette - taken to match current vscode theme
 const colors = {
   black: '#292D3F',
-  blue: '#83A6FC',
-  cyan: '#97CFE4',
-  green: '#A3E283',
+  blue: '#81AAFF',
+  cyan: '#93D8EC',
+  green: '#B5E085',
   grey: '#697098',
-  magenta: '#C98CF2',
-  red: '#F16072',
-  white: '#DBE3EB',
-  yellow: '#FFD280',
+  magenta: '#C896E9',
+  red: '#EC6575',
+  white: '#D7DEE6',
+  yellow: '#F5CF89',
 };
 
 module.exports = {
@@ -86,12 +86,12 @@ module.exports = {
       .tab_tab:not(.tab_active),
       .tab_tab:not(.tab_active):hover {
         background-color: #212433;
-        color: ${alpha(colors.white, 0.4)};
+        color: ${translucify(colors.white, 0.4)};
       }
 
       .tab_tab:not(.tab_active) .tab_process::before,
       .tab_tab:not(.tab_active):hover .tab_process::before {
-        background-color: ${alpha(colors.white, 0.4)};
+        background-color: ${translucify(colors.white, 0.4)};
         opacity: 1;
       }
 
