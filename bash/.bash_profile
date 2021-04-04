@@ -142,8 +142,8 @@ alias sudo="sudo "
 ## Run last command with sudo
 alias fuck="sudo $(fc -ln -1)"
 
-## Reload shell
-alias reload="clear && exec ${SHELL} -l"
+## Completely clear the shell
+alias clear="clear && exec ${SHELL} -l"
 
 ## Overwrite base `cd` function with `cdnvm` function
 alias cd="cdnvm"

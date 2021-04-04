@@ -107,17 +107,6 @@ module.exports = {
       .tabs_title .tab_process::before {
         visibility: hidden;
       }
-
-      .term_fit.term_active::before {
-        content: '';
-        width: calc(100% - 28px);
-        height: 25px;
-        background-color: ${colors.black};
-        display: block;
-        position: absolute;
-        top: 0;
-        z-index: 999;
-      }
     `,
 
     // custom CSS to embed in the terminal window
@@ -136,7 +125,7 @@ module.exports = {
     showWindowControls: '',
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: '0 14px 25px',
+    padding: '20px 14px',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide

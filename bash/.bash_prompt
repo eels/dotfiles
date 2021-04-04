@@ -55,8 +55,11 @@ function gitprompt() {
 #   3. PROMPTS
 # ----------------------------------------
 
+## Set prompt command
+export PROMPT_COMMAND="export PROMPT_COMMAND=echo"
+
 ## Set default prompt
-export PS1="\[\033]0;\w\007\]\n${GREEN}${NAME} ${WHITE}in ${YELLOW}\w \$(gitprompt \"${WHITE}on ${RED}\" \"${BLUE}\") \n${WHITE}$ ${BLACK}"
+export PS1="\[\033]0;\w\007\]${GREEN}${NAME} ${WHITE}in ${YELLOW}\w \$(gitprompt \"${WHITE}on ${RED}\" \"${BLUE}\") \n${WHITE}$ ${BLACK}"
 
 ## Set continuation prompt
 export PS2="${WHITE}➜ ${BLACK}"
