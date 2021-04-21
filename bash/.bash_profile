@@ -143,7 +143,7 @@ alias sudo="sudo "
 alias fuck="sudo $(fc -ln -1)"
 
 ## Completely clear the shell
-alias clear="clear && exec ${SHELL} -l"
+alias clear="printf \"\033c\""
 
 ## Overwrite base `cd` function with `cdnvm` function
 alias cd="cdnvm"
