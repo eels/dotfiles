@@ -9,8 +9,9 @@
 #   2. SYMLINKS
 #   3. NODE
 #   4. COMPOSER & YARN GLOBALS
-#   5. APPLICATION ICONS
-#   6. CLEANUP
+#   5. DIRECTORIES
+#   6. APPLICATION ICONS
+#   7. CLEANUP
 # ----------------------------------------
 
 # ----------------------------------------
@@ -75,7 +76,16 @@ composer global upgrade
 yarn global upgrade
 
 # ----------------------------------------
-#   5. APPLICATION ICONS
+#   5. DIRECTORIES
+# ----------------------------------------
+
+## Create desired directories if they don't already exist
+for directory in "Projects" "Sites"; do
+  [ ! -d $HOME/$directory ] && mkdir $HOME/$directory
+done
+
+# ----------------------------------------
+#   6. APPLICATION ICONS
 # ----------------------------------------
 
 ## Execute Application icon getter/setter
@@ -85,7 +95,7 @@ sudo node ./macos/.application_icons
 sudo killall Finder && sudo killall Dock
 
 # ----------------------------------------
-#   6. CLEANUP
+#   7. CLEANUP
 # ----------------------------------------
 
 exec ${SHELL} -l
