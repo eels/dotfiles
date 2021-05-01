@@ -1,0 +1,14 @@
+# ----------------------------------------
+#   Author: Liam Howell
+#   Description: Example Local `git` configuration
+# ----------------------------------------
+
+[user]
+
+  name = <First Name> <Last Name>
+
+  email = <Email>
+
+[credential]
+
+  helper = osxkeychain

@@ -48,7 +48,9 @@ ln -sf "$PWD/yarn/package.json" "$HOME/.config/yarn/global/package.json"
 ## Iterate through defined directories and symlink their files to `~`
 for directory in "bash" "git" "hyper"; do
   for file in ./$directory/.*[a-zA-Z+]; do
-    ln -sf "$PWD/$directory/${file##*/}" "$HOME/${file##*/}"
+    if [[ ! "${file##*/}" == *".example" ]]; then
+      ln -sf "$PWD/$directory/${file##*/}" "$HOME/${file##*/}"
+    fi
   done
 done
 
