@@ -167,7 +167,7 @@ alias .....="cd ../../../../"
 ## Quick navigation
 alias desktop="cd $HOME/Desktop"
 alias documents="cd $HOME/Documents"
-alias download="cd $HOME/Downloads"
+alias downloads="cd $HOME/Downloads"
 alias home="cd $HOME"
 alias projects="cd $HOME/Projects"
 alias sites="cd $HOME/Sites"
