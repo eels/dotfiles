@@ -2,61 +2,50 @@
 
 // ----------------------------------------
 //   Author: Liam Howell
-//   Description: Handles downloading and symlinking Application icons
+//   Description: Symlink Application icons
 // ----------------------------------------
 
 const fs = require('fs');
-const https = require('https');
 const path = require('path');
-
-const endpoint = 'https://media.macosicons.com/parse/files/macOSicons/';
-const tmp = path.join(__dirname, '.resources');
 
 const applications = [
   {
     application: 'Amazon Music',
     filename: 'amazon-music.icns',
-    path: '/Applications/Amazon Music.app/Contents/Resources/morpho.icns',
-    remote: 'e517abd39bce6e991c869cc44c7ab9f4_Amazon_Music.icns'
+    path: '/Applications/Amazon Music.app/Contents/Resources/morpho.icns'
   },
   {
     application: 'Hyper',
     filename: 'hyper.icns',
-    path: '/Applications/Hyper.app/Contents/Resources/Hyper.icns',
-    remote: '0330be97fc4980982d62c0f6035d03e1_Hyper.icns'
+    path: '/Applications/Hyper.app/Contents/Resources/Hyper.icns'
   },
   {
     application: 'Spark',
     filename: 'spark.icns',
-    path: '/Applications/Spark.app/Contents/Resources/AppIcon.icns',
-    remote: '1e9addf5ae0fee1c76b8261b73936552_1613061688527.icns'
+    path: '/Applications/Spark.app/Contents/Resources/AppIcon.icns'
   },
   {
     application: 'Visual Studio Code',
     filename: 'vsc.icns',
-    path: '/Applications/Visual Studio Code.app/Contents/Resources/Code.icns',
-    remote: 'f463c629bed71b764b77abdf1a07db43_Microsoft_Visual_Studio_Code_Alt_5.icns'
+    path: '/Applications/Visual Studio Code.app/Contents/Resources/Code.icns'
   }
 ];
 
 const callback = function(application) {
-  const resourceLocation = path.join(tmp, application.filename);
-  const remote = `${endpoint}/${application.remote}`;
-  const file = fs.createWriteStream(resourceLocation);
+  const resources = path.join(__dirname, '.resources');
+  const resourceLocation = path.join(resources, application.filename);
+  const directory = path.dirname(application.path);
 
-  const symlink = () => {
-    const directory = path.dirname(application.path);
-    const tmpFileName = `${Math.random().toString(36).substring(7)}.icns`;
-    const tmpFileLocation = path.join(directory, tmpFileName);
+  if (!fs.existsSync(directory)) {
+    return;
+  }
 
-    fs.copyFileSync(resourceLocation, tmpFileLocation);
-    fs.renameSync(tmpFileLocation, path.join(directory, path.basename(application.path)));
-    fs.utimesSync(path.join(directory, '../../'), new Date(), new Date());
-  };
+  const tmpFileName = `${Math.random().toString(36).substring(7)}.icns`;
+  const tmpFileLocation = path.join(directory, tmpFileName);
 
-  https.get(remote, (res) => res.pipe(file).on('finish', () => symlink()));
+  fs.copyFileSync(resourceLocation, tmpFileLocation);
+  fs.renameSync(tmpFileLocation, path.join(directory, path.basename(application.path)));
+  fs.utimesSync(path.join(directory, '../../'), new Date(), new Date());
 };
-
-!fs.existsSync(tmp) && fs.mkdirSync(tmp);
 
 applications.map((application) => callback(application));

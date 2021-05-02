@@ -88,7 +88,7 @@ done
 #   6. APPLICATION ICONS
 # ----------------------------------------
 
-## Execute Application icon getter/setter
+## Execute Application icon setter
 sudo node ./macos/.application_icons
 
 ## Kill/Refresh Finder and Dock
