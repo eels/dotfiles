@@ -3,6 +3,38 @@
 #   Description: Global `git` configuration
 # ----------------------------------------
 
+[alias]
+
+  ## Override existing `git branch` functionality with `__gitbranch`
+  override-branch = !bash -c 'source $HOME/.bash_git && __gitbranch \"$@\"' -
+
+  ##
+  amend = commit -a --amend
+
+	## Switch to a branch, creating it if necessary
+  co = !bash -c 'source $HOME/.bash_git && __gitcheckout \"$@\"' -
+
+  ## Delete a given branch
+  delete = branch -D
+
+  ##
+  save = !git add -A && git commit -m 'chore: commit save point'
+
+  ##
+  track = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
+
+  ##
+  wipe = !git add -A && git commit -qm 'chore: commit wipe point' && git reset HEAD~1 --hard
+
+	## Show the user email for the current repository
+	whoami = config user.email
+
+  ##
+  undo = reset HEAD~1 --mixed
+
+  ##
+  update = !git pull --rebase --prune $@ && git submodule update --init --recursive
+
 [apply]
 
   ## Detect whitespace errors when applying a patch

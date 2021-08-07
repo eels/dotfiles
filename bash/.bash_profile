@@ -8,7 +8,8 @@
 #   4. FUNCTIONS
 #   5. ALIASES
 #   6. PROMPT
-#   7. LOCAL SECRETS
+#   7. GIT INTERCEPTOR
+#   8. LOCAL SECRETS
 # ----------------------------------------
 
 # ----------------------------------------
@@ -208,8 +209,15 @@ alias yarnup="yarn global upgrade"
 [ -s "$HOME/.bash_prompt" ] && source "$HOME/.bash_prompt"
 
 # ----------------------------------------
-#   7. LOCAL SECRETS
+#   7. GIT INTERCEPTOR
 # ----------------------------------------
 
-## Include Local secrets
+## Include Git Interceptor configuration
+[ -s "$HOME/.bash_git" ] && source "$HOME/.bash_git"
+
+# ----------------------------------------
+#   8. LOCAL SECRETS
+# ----------------------------------------
+
+## Include local secrets
 [ -s "$HOME/.localrc" ] && source "$HOME/.localrc"

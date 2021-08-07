@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# ----------------------------------------
+#   Author: Liam Howell
+#   Description: Bash git configurations
+#
+#   1. INTERCEPTOR
+#   2. FUNCTIONS
+# ----------------------------------------
+
+# ----------------------------------------
+#   1. INTERCEPTOR
+# ----------------------------------------
+
+function git_interceptor() {
+  if [ $# -eq 0 ] || ! git config --list | grep -q "^alias\\.override-$1"; then
+    git "$@"
+  else
+    git "override-$1" "${@:2}"
+  fi
+}
+
+alias git="git_interceptor"
+
+# ----------------------------------------
+#   2. FUNCTIONS
+# ----------------------------------------
+
+##
+function __gitbranch() {
+  if [ $# -eq 0 ]; then
+    git branch --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]'
+  else
+    git branch "$@"
+  fi
+}
+
+##
+function __gitcheckout() {
+  if [ $# -eq 0 ]; then
+    git checkout @{-1}
+  else
+    git checkout -b $1 2> /dev/null && git track 2> /dev/null || git checkout $1
+  fi
+}
