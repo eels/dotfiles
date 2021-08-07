@@ -88,11 +88,11 @@ done
 #   6. APPLICATION ICONS
 # ----------------------------------------
 
-## Execute Application icon setter
-sudo node ./macos/.application_icons
-
-## Kill/Refresh Finder and Dock
-sudo killall Finder && sudo killall Dock
+## Execute Application icon setter then kill/refresh Finder and Dock
+if [[ ! "$*" == *"--noIconUpdates"* ]]; then
+  sudo node ./macos/.application_icons
+  sudo killall Finder && sudo killall Dock
+fi
 
 # ----------------------------------------
 #   7. CLEANUP
