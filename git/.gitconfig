@@ -8,31 +8,31 @@
   ## Override existing `git branch` functionality with `__gitbranch`
   override-branch = !bash -c 'source $HOME/.bash_git && __gitbranch \"$@\"' -
 
-  ##
+  ## Quickly amend the latest commit
   amend = commit -a --amend
 
 	## Switch to a branch, creating it if necessary
   co = !bash -c 'source $HOME/.bash_git && __gitcheckout \"$@\"' -
 
-  ## Delete a given branch
+  ## Quickly delete a given branch
   delete = branch -D
 
-  ##
+  ## Quickly create a new commit with all the current changes, acts as a save point
   save = !git add -A && git commit -m 'chore: commit save point'
 
-  ##
+  ## Quickly track the current branch to an upstream origin
   track = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
 
-  ##
+  ## Completely wipe all changes from the current branch, creates a restoration point
   wipe = !git add -A && git commit -qm 'chore: commit wipe point' && git reset HEAD~1 --hard
 
 	## Show the user email for the current repository
 	whoami = config user.email
 
-  ##
+  ## Quickly undo the last commit
   undo = reset HEAD~1 --mixed
 
-  ##
+  ## Pull and rebase any remote changes against the current branch
   update = !git pull --rebase --prune $@ && git submodule update --init --recursive
 
 [apply]

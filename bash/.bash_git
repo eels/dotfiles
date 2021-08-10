@@ -26,7 +26,7 @@ alias git="git_interceptor"
 #   2. FUNCTIONS
 # ----------------------------------------
 
-##
+## Override functionality for `git branch`
 function __gitbranch() {
   if [ $# -eq 0 ]; then
     git branch --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]'
@@ -35,7 +35,7 @@ function __gitbranch() {
   fi
 }
 
-##
+## Override functionality for `git checkout`
 function __gitcheckout() {
   if [ $# -eq 0 ]; then
     git checkout @{-1}
