@@ -64,21 +64,27 @@ export HISTFILESIZE="${HISTSIZE}"
 export HISTCONTROL="ignoreboth"
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
-## Manage Path
-export PATH="$PATH:/usr/local/opt/mysql@5.7/bin"
-export PATH="$PATH:/usr/local/bin"
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-
 ## Set NVM Location
 export NVM_DIR="$HOME/.nvm"
+
+## Set Brew Location
+export BREW_DIR="$(brew --prefix)"
+
+## Manage Path
+export PATH="$PATH:$BREW_DIR/opt/mysql@5.7/bin"
+export PATH="$PATH:$BREW_DIR/bin"
+export PATH="$PATH:$BREW_DIR/sbin"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # ----------------------------------------
 #   3. SOURCES
 # ----------------------------------------
 
 ## Include NVM
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && source "/usr/local/opt/nvm/nvm.sh"
+[ -s "$BREW_DIR/opt/nvm/nvm.sh" ] && source "$BREW_DIR/opt/nvm/nvm.sh"
+
+## Include Bash Completion
+[ -s "$BREW_DIR/etc/bash_completion" ] && source "$BREW_DIR/etc/bash_completion"
 
 # ----------------------------------------
 #   4. FUNCTIONS
