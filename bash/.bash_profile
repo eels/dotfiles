@@ -16,6 +16,9 @@
 #   1. OPTIONS
 # ----------------------------------------
 
+## Ignore `sudo` in any tab completion attempts
+complete -cf sudo
+
 ## Autocorrect typos in path names when using `cd`
 shopt -s cdspell
 
