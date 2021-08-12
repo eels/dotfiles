@@ -4,11 +4,13 @@
 # ----------------------------------------
 
 tap 'buo/cask-upgrade'
+tap 'homebrew/aliases'
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/core'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
+tap 'homebrew/services'
 
 brew 'bash-completion'
 brew 'composer'
