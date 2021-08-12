@@ -26,8 +26,12 @@ Thumbs.db
 *.lock
 *.lock.json
 
-# Local Secrets
+# Local secrets
 # ----------------------------------------
 
 .localrc
-.gitconfig.local
+
+# Git configs
+# ----------------------------------------
+
+.gitconfig.local*
