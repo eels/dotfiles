@@ -18,6 +18,9 @@
 #   0. BOOT
 # ----------------------------------------
 
+## Invalidate the current `sudo` timestamp file
+sudo --reset-timestamp
+
 ## Ask for the administrator password upfront
 sudo -v
 
@@ -32,6 +35,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 if ! test $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+## Setup Homebrew directory permissions
+for directory in "$(brew --prefix)" "$(brew --repository)"; do
+  [ -d $directory ] && chown -R "$USER:admin" $directory > /dev/null 2>&1
+done
 
 ## Install from Brewfile
 brew bundle --file homebrew/brewfile
@@ -90,8 +98,8 @@ done
 
 ## Execute Application icon setter then kill/refresh Finder and Dock
 if [[ ! "$*" == *"--noIconUpdates"* ]]; then
-  sudo node ./macos/.application_icons
-  sudo killall Finder && sudo killall Dock
+  node ./macos/.application_icons
+  killall Finder && killall Dock
 fi
 
 # ----------------------------------------
