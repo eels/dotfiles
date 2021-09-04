@@ -11,7 +11,7 @@
   ## Quickly amend the latest commit
   amend = commit -a --amend
 
-	## Switch to a branch, creating it if necessary
+  ## Switch to a branch, creating it if necessary
   co = !bash -c 'source $HOME/.bash_git && __gitcheckout \"$@\"' -
 
   ## Quickly delete a given branch
@@ -26,8 +26,8 @@
   ## Completely wipe all changes from the current branch, creates a restoration point
   wipe = !git add -A && git commit -qm 'chore: commit wipe point' && git reset HEAD~1 --hard
 
-	## Show the user email for the current repository
-	whoami = config user.email
+  ## Show the user email for the current repository
+  whoami = config user.email
 
   ## Quickly undo the last commit
   undo = reset HEAD~1 --mixed

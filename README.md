@@ -1,13 +1,13 @@
 <div align="center">
-	<h1>
-		<br />
-		<div>:gear:</div>
-		<br />
-		<div>dotfiles</div>
-		<br />
-	</h1>
+  <h1>
+    <br />
+    <div>:gear:</div>
+    <br />
+    <div>dotfiles</div>
+    <br />
+  </h1>
   <br />
-	<div>Another .dotfiles repository, except this one is mine.</div>
+  <div>Another .dotfiles repository, except this one is mine.</div>
   <br />
   <pre>git clone https://github.com/eels/dotfiles ~/.dotfiles</pre>
   <h1></h1>
