@@ -123,6 +123,11 @@ function cdnvm() {
   fi
 }
 
+## Run last command with sudo
+function fuck() {
+  sudo $(history -p !!)
+}
+
 ## Direct output to /dev/null
 function nullify() {
   "$@" > /dev/null 2>&1
@@ -149,8 +154,8 @@ function serve() {
 ## Enable aliases to be sudo'd
 alias sudo="sudo "
 
-## Run last command with sudo
-alias fuck="sudo $(fc -ln -1)"
+## Run last command with sudo but be polite about it
+alias please="fuck"
 
 ## Completely clear the shell
 alias clear="printf \"\033c\""
