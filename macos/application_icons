@@ -13,21 +13,6 @@ const applications = [
     application: 'Amazon Music',
     filename: 'amazon-music.icns',
     path: '/Applications/Amazon Music.app/Contents/Resources/morpho.icns'
-  },
-  {
-    application: 'Hyper',
-    filename: 'hyper.icns',
-    path: '/Applications/Hyper.app/Contents/Resources/Hyper.icns'
-  },
-  {
-    application: 'Spark',
-    filename: 'spark.icns',
-    path: '/Applications/Spark.app/Contents/Resources/AppIcon.icns'
-  },
-  {
-    application: 'Visual Studio Code',
-    filename: 'vsc.icns',
-    path: '/Applications/Visual Studio Code.app/Contents/Resources/Code.icns'
   }
 ];
 
@@ -48,4 +33,4 @@ const callback = function(application) {
   fs.utimesSync(path.join(directory, '../../'), new Date(), new Date());
 };
 
-applications.map((application) => callback(application));
+applications.forEach((application) => callback(application));

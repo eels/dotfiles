@@ -98,7 +98,7 @@ done
 
 ## Execute Application icon setter then kill/refresh Finder and Dock
 if [[ ! "$*" == *"--noIconUpdates"* ]]; then
-  node ./macos/.application_icons
+  node ./macos/application_icons
   killall Finder && killall Dock
 fi
 
