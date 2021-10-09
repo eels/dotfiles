@@ -12,7 +12,7 @@
 #   1. INTERCEPTOR
 # ----------------------------------------
 
-function git_interceptor() {
+function __gitinterceptor() {
   if [ $# -eq 0 ] || ! git config --list | grep -q "^alias\\.override-$1"; then
     git "$@"
   else
@@ -20,7 +20,7 @@ function git_interceptor() {
   fi
 }
 
-alias git="git_interceptor"
+alias git="__gitinterceptor"
 
 # ----------------------------------------
 #   2. FUNCTIONS
