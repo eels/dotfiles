@@ -90,14 +90,14 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 #   4. FUNCTIONS
 # ----------------------------------------
 
-## Create a new directory and enter it
-function cdmkdir() {
-  mkdir -pv "$@" && cd "$_"
-}
-
 ## Change working directory to the top-most Finder location
 function cdfinder() {
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+}
+
+## Create a new directory and enter it
+function cdmkdir() {
+  mkdir -pv "$@" && cd "$_"
 }
 
 ## Change current working and change Node version if `.nvmrc` is present
