@@ -92,7 +92,7 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 ## Create a new directory and enter it
 function cdmkdir() {
-  mkdir -p "$@" && cd "$_"
+  mkdir -pv "$@" && cd "$_"
 }
 
 ## Change working directory to the top-most Finder location
@@ -158,8 +158,8 @@ alias clear="printf \"\033c\""
 ## Overwrite base `cd` function with `cdnvm` function
 alias cd="cdnvm"
 
-## Overwrite base `mkdir` function to also create parents if needed
-alias mkdir="mkdir -pv"
+## Overwrite base `mkdir` function with `cdmkdir` function
+alias mkdir="cdmkdir"
 
 ## Overwrite base `open` function with `openfinder` function
 alias open="openfinder"
