@@ -216,10 +216,12 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias getip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 ## Updates
+alias appsup="mas upgrade"
+alias brewup="brew update && brew upgrade && brew cleanup"
+alias caskup="brew update && brew cu --all --cleanup --yes"
 alias compup="composer global update"
-alias brewup="brew update && brew upgrade && brew cleanup && brew cu"
 alias hypeup="cd $HOME/.hyper_plugins && rm -rf node_modules && rm -f package-lock.json && npm install && cd -"
-alias mcosup="mas upgrade && softwareupdate -i -a"
+alias softup="softwareupdate --all --install"
 alias yarnup="yarn global upgrade"
 
 # ----------------------------------------
