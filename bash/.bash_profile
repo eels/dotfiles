@@ -224,6 +224,9 @@ alias hypeup="cd $HOME/.hyper_plugins && rm -rf node_modules && rm -f package-lo
 alias softup="softwareupdate --all --install"
 alias yarnup="yarn global upgrade"
 
+## Open the dotfiles directory in vscode
+alias dotedit="code --add $HOME/dotfiles --reuse-window"
+
 # ----------------------------------------
 #   6. PROMPT
 # ----------------------------------------
