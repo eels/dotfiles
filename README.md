@@ -36,7 +36,7 @@ bash bootstrap.sh
 
 ## Local Secrets & Other Personal Items
 
-To keep environment variables and other personal tokens out of the commit history, create a `.localrc` file in the root of the project directory and `.bash_profile` will automatically pick it up. Magic :sparkles:
+To keep environment variables and other personal tokens out of the commit history, create a `.localrc` file in the bash directory and `.bash_profile` will automatically pick it up. Magic :sparkles:
 
 ## License
 

@@ -68,7 +68,7 @@ for directory in "bash" "git" "hyper"; do
 done
 
 ## Symlink local secrets file if it exists
-[ -s "$PWD/.localrc" ] && ln -sf "$PWD/.localrc" "$HOME/.localrc"
+[ -s "$PWD/bash/.localrc" ] && ln -sf "$PWD/bash/.localrc" "$HOME/.localrc"
 
 # ----------------------------------------
 #   3. NODE
