@@ -147,6 +147,12 @@ function serve() {
   php -S "localhost:${1:-3000}"
 }
 
+## Update application icons using script from `macos` directory
+function updateicons() {
+  node "$HOME/dotfiles/macos/application_icons"
+  killall Finder && killall Dock
+}
+
 # ----------------------------------------
 #   5. ALIASES
 # ----------------------------------------
