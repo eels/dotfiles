@@ -48,6 +48,9 @@ brew bundle --file homebrew/brewfile
 #   2. SYMLINKS
 # ----------------------------------------
 
+## Symlink dotfiles to the home directory
+[ -s "$PWD" ] && ln -sf "$PWD" "$HOME/dotfiles"
+
 ## Symlink global composer.json to default location
 ln -sf "$PWD/composer/composer.json" "$HOME/.composer/composer.json"
 

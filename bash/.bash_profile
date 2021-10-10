@@ -182,6 +182,7 @@ alias .....="cd ../../../../"
 ## Quick navigation
 alias desktop="cd $HOME/Desktop"
 alias documents="cd $HOME/Documents"
+alias dotfiles="cd $HOME/dotfiles"
 alias downloads="cd $HOME/Downloads"
 alias home="cd $HOME"
 alias projects="cd $HOME/Projects"
