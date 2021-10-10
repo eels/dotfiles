@@ -11,7 +11,8 @@
 #   4. COMPOSER & YARN GLOBALS
 #   5. DIRECTORIES
 #   6. APPLICATION ICONS
-#   7. CLEANUP
+#   7. MACOS DEFAULTS
+#   8. CLEANUP
 # ----------------------------------------
 
 # ----------------------------------------
@@ -106,7 +107,14 @@ if [[ ! "$*" == *"--noIconUpdates"* ]]; then
 fi
 
 # ----------------------------------------
-#   7. CLEANUP
+#   7. MACOS DEFAULTS
+# ----------------------------------------
+
+## Configure some macOS default settings
+/bin/bash ./macos/defaults
+
+# ----------------------------------------
+#   8. CLEANUP
 # ----------------------------------------
 
 exec ${SHELL} -l
