@@ -142,6 +142,12 @@ function openfinder() {
   fi
 }
 
+## Determine size of a file or total size of a directory
+function sizeof() {
+  du -b /dev/null > /dev/null 2>&1 && local arg=-sbh || local arg=-sh
+  [[ -n "$@" ]] && du $arg -- "$@" || du $arg .[^.]* ./*
+}
+
 ## Quick start a HTTP server from the current working directory
 function serve() {
   php -S "localhost:${1:-3000}"
@@ -214,6 +220,7 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 ## Print current IP address
 alias getip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias getlocalip="ipconfig getifaddr en0"
 
 ## Updates
 alias appsup="mas upgrade"
@@ -226,6 +233,9 @@ alias yarnup="yarn global upgrade"
 
 ## Open the dotfiles directory in vscode
 alias dotedit="code --add $HOME/dotfiles --reuse-window"
+
+## Reload the shell
+alias reload="exec ${SHELL} -l"
 
 # ----------------------------------------
 #   6. PROMPT
