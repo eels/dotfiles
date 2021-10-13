@@ -208,7 +208,7 @@ alias getpubkey="pbcopy < $HOME/.ssh/id_ed25519.pub"
 alias getprikey="pbcopy < $HOME/.ssh/id_ed25519"
 
 ## Recursively delete `.DS_Store` files
-alias cleandir="find . -name '*.DS_Store' -type f -ls -delete > /dev/null 2>&1"
+alias cleandir="find / -name '*.DS_Store' -type f -ls -delete > /dev/null 2>&1"
 
 ## Hide/show hidden files
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles 0 && killall Finder"

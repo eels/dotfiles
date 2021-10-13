@@ -34,6 +34,13 @@ cd ~/.dotfiles
 bash bootstrap.sh
 ```
 
+### Set macOS defaults
+
+```bash
+cd ~/.dotfiles
+bash ./macos/defaults
+```
+
 ## Local Secrets & Other Personal Items
 
 To keep environment variables and other personal tokens out of the commit history, create a `.localrc` file in the bash directory and `.bash_profile` will automatically pick it up. Magic :sparkles:

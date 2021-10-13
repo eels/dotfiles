@@ -108,11 +108,11 @@ sudo pmset -a autorestart 1
 ## Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
-## Sleep the display after 10 minutes
+## Sleep the display after X minutes
 sudo pmset -a displaysleep 10
 
-## Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
+## Set machine sleep to X minutes on battery
+sudo pmset -a sleep 15
 
 ## Remove the sleep image file to save disk space
 ## Create a zero-byte file instead and make sure it can't be rewritten
@@ -200,8 +200,8 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 #   6. DOCK AND DASHBOARD
 # ----------------------------------------
 
-## Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
+## Set the icon size of Dock items to 48 pixels
+defaults write com.apple.dock tilesize -int 48
 
 ## Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "genie"
@@ -334,9 +334,6 @@ defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
 ## Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-## Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # ----------------------------------------
 #   9. ACTIVITY MONITOR
