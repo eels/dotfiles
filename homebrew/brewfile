@@ -20,6 +20,7 @@ brew 'imagemagick'
 brew 'mas'
 brew 'mysql'
 brew 'nvm'
+brew 'p7zip'
 brew 'php'
 brew 'yarn'
 
