@@ -90,6 +90,18 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 #   4. FUNCTIONS
 # ----------------------------------------
 
+##
+function archive() {
+  [ $# -eq 0 ] && local archive_path=$PWD || local archive_path=$1
+
+  if [[ ! -f $archive_path && ! -d $archive_path ]]; then
+    echo "$archive_path is not a file or folder" && return
+  fi
+
+  7z a "$(basename $archive_path).7z" $archive_path -xr!.DS_Store
+  mv "$(basename $archive_path).7z" $(dirname $archive_path) > /dev/null 2>&1
+}
+
 ## Change working directory to the top-most Finder location
 function cdfinder() {
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
