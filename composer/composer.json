@@ -1,11 +1,11 @@
 {
-  "name": "liam/global",
-  "description": "Global Dependencies",
-  "require": {
-    "laravel/valet": "^2.16.1"
-  },
+  "private": true,
+  "description": "Global Composer Dependencies",
   "config": {
     "optimize-autoloader": true,
     "sort-packages": true
+  },
+  "require": {
+    "laravel/valet": "^2.16.1"
   }
 }
