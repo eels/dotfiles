@@ -25,6 +25,7 @@ brew 'php'
 brew 'yarn'
 
 cask 'amazon-music'
+cask 'bitwarden'
 cask 'discord'
 cask 'figma'
 cask 'firefox'
