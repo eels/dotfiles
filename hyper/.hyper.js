@@ -119,9 +119,11 @@ module.exports = {
     // default: `true` on Linux, `true` on Windows, ignored on macOS
     showHamburgerMenu: '',
 
-    // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
-    // additionally, set to `'left'` if you want them on the left, like in Ubuntu
-    // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
+    // set to `false` (without backticks and without quotes) if you want to hide the minimize,
+    // maximize and close buttons additionally, set to `'left'` if you want them on the left,
+    // like in Ubuntu
+    // default: `true` (without backticks and without quotes) on Windows and Linux,
+    // ignored on macOS
     showWindowControls: '',
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
@@ -165,19 +167,22 @@ module.exports = {
     // set to `false` for no bell
     bell: false,
 
-    // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
+    // if `true` (without backticks and without quotes), selected text will automatically be
+    // copied to the clipboard
     copyOnSelect: false,
 
-    // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
+    // if `true` (without backticks and without quotes), hyper will be set as the default protocol
+    // client for SSH
     defaultSSHApp: true,
 
-    // if `true` (without backticks and without quotes), on right click selected text will be copied or pasted if no
-    // selection is present (`true` by default on Windows and disables the context menu feature)
+    // if `true` (without backticks and without quotes), on right click selected text will be
+    // copied or pasted if no selection is present (`true` by default on Windows and disables the
+    // context menu feature)
     quickEdit: false,
 
-    // choose either `'vertical'`, if you want the column mode when Option key is hold during selection (Default)
-    // or `'force'`, if you want to force selection regardless of whether the terminal is in mouse events mode
-    // (inside tmux or vim with mouse mode enabled for example).
+    // choose either `'vertical'`, if you want the column mode when Option key is hold during
+    // selection (Default) or `'force'`, if you want to force selection regardless of whether the
+    // terminal is in mouse events mode (inside tmux or vim with mouse mode enabled for example).
     macOptionSelectionMode: 'vertical',
 
     // whether to use the WebGL renderer. Set it to false to use canvas-based
@@ -188,7 +193,8 @@ module.exports = {
     // todo: does not pick up config changes automatically, need to restart terminal :/
     webLinksActivationKey: '',
 
-    // if `false` (without backticks and without quotes), Hyper will use ligatures provided by some fonts
+    // if `false` (without backticks and without quotes), Hyper will use ligatures provided
+    // by some fonts
     disableLigatures: true,
 
     // hyper unlimited power plugin configuration options
