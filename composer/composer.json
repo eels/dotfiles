@@ -2,7 +2,7 @@
   "name": "liam/global",
   "description": "Global Dependencies",
   "require": {
-    "laravel/valet": "^2.13"
+    "laravel/valet": "^2.16.1"
   },
   "config": {
     "optimize-autoloader": true,
