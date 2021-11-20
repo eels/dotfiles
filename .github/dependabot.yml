@@ -1,0 +1,35 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'composer'
+    commit-message:
+      include: scope
+      prefix: build
+      prefix-development: chore
+    directory: '/composer'
+    schedule:
+      day: 'monday'
+      interval: 'weekly'
+      time: '06:00'
+
+  - package-ecosystem: 'github-actions'
+    commit-message:
+      include: scope
+      prefix: build
+      prefix-development: chore
+    directory: '/'
+    schedule:
+      day: 'monday'
+      interval: 'weekly'
+      time: '06:00'
+
+  - package-ecosystem: 'npm'
+    commit-message:
+      include: scope
+      prefix: build
+      prefix-development: chore
+    directory: '/yarn'
+    schedule:
+      day: 'monday'
+      interval: 'weekly'
+      time: '06:00'
