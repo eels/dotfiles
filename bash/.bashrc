@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ----------------------------------------
 #   Author: Liam Howell
 #   Description: No magic here, just load `.bash_profile`

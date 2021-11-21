@@ -22,8 +22,6 @@ RED="\[\033[0;31m\]"
 GREEN="\[\033[0;32m\]"
 YELLOW="\[\033[0;33m\]"
 BLUE="\[\033[0;34m\]"
-PURPLE="\[\033[0;35m\]"
-CYAN="\[\033[0;36m\]"
 WHITE="\[\033[0;37m\]"
 
 # ----------------------------------------
@@ -33,22 +31,33 @@ WHITE="\[\033[0;37m\]"
 function gitprompt() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
 
-  local symbol=''
-  local branch="$(git branch --show-current)"
+  local symbol
+  local branch
+
+  symbol=''
+  branch="$(git branch --show-current)"
 
   ## Check for changes that are uncommitted
-  ! $(git diff --quiet --ignore-submodules --cached) && symbol+='+'
+  if ! eval git diff --quiet --ignore-submodules --cached; then
+    symbol+='+'
+  fi
 
   ## Check for changes that are unstaged
-  ! $(git diff-files --quiet --ignore-submodules --) && symbol+='!'
+  if ! eval git diff-files --quiet --ignore-submodules --; then
+    symbol+='!'
+  fi
 
   ## Check for changes that are untracked
-  [ -n "$(git ls-files --others --exclude-standard)" ] && symbol+='?'
+  if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+    symbol+='?'
+  fi
 
   ## Wrap symbol in square brackets if it isn't empty
-  [ -n "${symbol}" ] && symbol=" [${symbol}]"
+  if [ -n "${symbol}" ]; then
+    symbol="[${symbol}]"
+  fi
 
-  echo -e "${1}${branch}${2}${symbol}"
+  echo -e "${1}${branch}${2} ${symbol}"
 }
 
 # ----------------------------------------

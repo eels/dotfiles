@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ----------------------------------------
 #   Author: Liam Howell
 #   Description: Bash configuration, aliases, functions etc
@@ -68,7 +70,7 @@ export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 export NVM_DIR="$HOME/.nvm"
 
 ## Set Brew Location
-export BREW_DIR="$(brew --prefix)"
+export BREW_DIR="/usr/local"
 
 ## Manage Path
 export PATH="$PATH:$BREW_DIR/opt/mysql@5.7/bin"
@@ -92,40 +94,48 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 ##
 function archive() {
-  [ $# -eq 0 ] && local archive_path=$PWD || local archive_path=$1
+  local archive_path
+
+  [ $# -eq 0 ] && archive_path=$PWD || archive_path=$1
 
   if [[ ! -f $archive_path && ! -d $archive_path ]]; then
-    echo "$archive_path is not a file or folder" && return
+    echo "$archive_path is not a file or folder"
+    return
   fi
 
-  7z a "$(basename $archive_path).7z" $archive_path -xr!.DS_Store
-  mv "$(basename $archive_path).7z" $(dirname $archive_path) > /dev/null 2>&1
+  7z a "$(basename "$archive_path").7z" "$archive_path" -xr!.DS_Store
+  mv "$(basename "$archive_path").7z" "$(dirname "$archive_path")" > /dev/null 2>&1
 }
 
 ## Change working directory to the top-most Finder location
 function cdfinder() {
-  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || exit
 }
 
 ## Create a new directory and enter it
 function cdmkdir() {
-  mkdir -pv "$@" && cd "$_"
+  mkdir -pv "$@" && cd "$_" || exit
 }
 
 ## Change current working and change Node version if `.nvmrc` is present
 function cdnvm() {
-  cd "$@"
+  cd "$@" || exit
 
-  local nvm_path=$(nvm_find_up .nvmrc | tr -d '\n')
-  local default_version=$(nvm version default)
+  local default_version
+  local nvm_path
+  local nvm_version
+  local resolved_version
+
+  nvm_path=$(nvm_find_up .nvmrc | tr -d '\n')
+  default_version=$(nvm version default)
 
   if [[ ! $nvm_path == *[^[:space:]]* ]]; then
-    if [ ! $default_version = $(node -v) ]; then
+    if [ ! "$default_version" = "$(node -v)" ]; then
       nvm use default --silent
     fi
   elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
-    local nvm_version=$(<"$nvm_path"/.nvmrc)
-    local resolved_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+    nvm_version=$(<"$nvm_path"/.nvmrc)
+    resolved_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
 
     if [[ "$resolved_version" == "N/A" ]]; then
       nvm install "$nvm_version"
@@ -137,7 +147,7 @@ function cdnvm() {
 
 ## Run last command with sudo
 function fuck() {
-  sudo $(history -p !!)
+  sudo "$(history -p !!)"
 }
 
 ## Direct output to /dev/null
@@ -147,17 +157,15 @@ function nullify() {
 
 ## Open Finder at the current or supplied location
 function openfinder() {
-  if [ $# -eq 0 ]; then
-    open "$PWD"
-  else
-    open "$@"
-  fi
+  [ $# -eq 0 ] && open "$PWD" || open "$@"
 }
 
 ## Determine size of a file or total size of a directory
 function sizeof() {
-  du -b /dev/null > /dev/null 2>&1 && local arg=-sbh || local arg=-sh
-  [[ -n "$@" ]] && du $arg -- "$@" || du $arg .[^.]* ./*
+  local arg
+
+  du -b /dev/null > /dev/null 2>&1 && arg=-sbh || arg=-sh
+  [[ -n "$*" ]] && du $arg -- "$@" || du $arg .[^.]* ./*
 }
 
 ## Quick start a HTTP server from the current working directory
