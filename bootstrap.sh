@@ -32,13 +32,13 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # ----------------------------------------
 
 ## Install Homebrew
-if ! test $(which brew); then
+if ! test "$(which brew)"; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 ## Setup Homebrew directory permissions
 for directory in "$(brew --prefix)" "$(brew --repository)"; do
-  [ -d $directory ] && chown -R "$USER:admin" $directory > /dev/null 2>&1
+  [ -d "$directory" ] && chown -R "$USER:admin" "$directory" > /dev/null 2>&1
 done
 
 ## Install from Brewfile
@@ -59,7 +59,7 @@ ln -sf "$PWD/yarn/package.json" "$HOME/.config/yarn/global/package.json"
 
 ## Iterate through defined directories and symlink their files to `~`
 for directory in "bash" "git" "hyper"; do
-  for file in ./$directory/.*[a-zA-Z+]; do
+  for file in ./"$directory"/.*[a-zA-Z+]; do
     if [[ ! "${file##*/}" == *".example" ]]; then
       ln -sf "$PWD/$directory/${file##*/}" "$HOME/${file##*/}"
     fi
@@ -92,7 +92,7 @@ yarn global upgrade
 
 ## Create desired directories if they don't already exist
 for directory in "Projects" "Sites"; do
-  [ ! -d $HOME/$directory ] && mkdir $HOME/$directory
+  [ ! -d "$HOME/$directory" ] && mkdir "$HOME/$directory"
 done
 
 # ----------------------------------------
