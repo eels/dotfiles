@@ -32,7 +32,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # ----------------------------------------
 
 ## Install Homebrew
-if ! test "$(which brew)"; then
+if ! test "$(brew -v)"; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
@@ -109,4 +109,4 @@ fi
 #   7. CLEANUP
 # ----------------------------------------
 
-exec ${SHELL} -l
+exec "${SHELL}" -l
