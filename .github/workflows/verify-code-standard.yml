@@ -1,0 +1,21 @@
+name: Verify Code Standard
+
+on: [push]
+
+jobs:
+  verify:
+    name: Verify Code Standard
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt install shellcheck
+
+      - name: Verify Code Standard
+        run: |
+          shellcheck ./bootstrap.sh
+          for file in ./bash/.*[a-zA-Z+]; do shellcheck "$file"; done
