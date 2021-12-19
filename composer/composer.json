@@ -6,6 +6,6 @@
     "sort-packages": true
   },
   "require": {
-    "laravel/valet": "^2.16.1"
+    "laravel/valet": "^2.17.1"
   }
 }
