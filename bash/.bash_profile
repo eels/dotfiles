@@ -154,9 +154,9 @@ function fuck() {
 function killport() {
   local pid
 
-  pid=$(echo $(lsof -n -i4TCP:$1) | awk 'NR==1{print $11}')
+  pid=$(lsof -n -i4TCP:"$1" | awk 'NR==1{print $11}')
 
-  kill -9 $pid > /dev/null 2>&1
+  kill -9 "$pid" > /dev/null 2>&1
 }
 
 ## Direct output to /dev/null
