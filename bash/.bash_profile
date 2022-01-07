@@ -150,6 +150,15 @@ function fuck() {
   sudo "$(history -p !!)"
 }
 
+## Kill the running process running the on specified port
+function killport() {
+  local pid
+
+  pid=$(echo $(lsof -n -i4TCP:$1) | awk 'NR==1{print $11}')
+
+  kill -9 $pid > /dev/null 2>&1
+}
+
 ## Direct output to /dev/null
 function nullify() {
   "$@" > /dev/null 2>&1
