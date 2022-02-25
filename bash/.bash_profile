@@ -258,7 +258,7 @@ alias caskup="brew update && brew cu --all --cleanup --yes"
 alias compup="composer global update"
 alias hypeup="cd $HOME/.hyper_plugins && rm -rf node_modules && rm -f package-lock.json && npm install && cd -"
 alias softup="softwareupdate --all --install"
-alias yarnup="yarn global upgrade"
+alias yarnup="cd $HOME/.config/yarn/global && rm -rf yarn.lock && yarn install && cd -"
 
 ## Open the dotfiles directory in vscode
 alias dotedit="code --add $HOME/dotfiles --reuse-window"
