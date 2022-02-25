@@ -73,7 +73,6 @@ export NVM_DIR="$HOME/.nvm"
 export BREW_DIR="/usr/local"
 
 ## Manage Path
-export PATH="$PATH:$BREW_DIR/opt/mysql@5.7/bin"
 export PATH="$PATH:$BREW_DIR/bin"
 export PATH="$PATH:$BREW_DIR/sbin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
