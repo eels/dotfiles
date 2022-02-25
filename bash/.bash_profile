@@ -119,7 +119,7 @@ function cdmkdir() {
 
 ## Change current working and change Node version if `.nvmrc` is present
 function cdnvm() {
-  cd "$@" || exit
+  cd "$@" || return
 
   local default_version
   local nvm_path
