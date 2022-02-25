@@ -254,7 +254,7 @@ alias getlocalip="ipconfig getifaddr en0"
 ## Updates
 alias appsup="mas upgrade"
 alias brewup="brew update && brew upgrade && brew cleanup"
-alias caskup="brew update && brew cu --all --cleanup --yes"
+alias caskup="brew update && brew cu --cleanup --yes"
 alias compup="composer global update"
 alias hypeup="cd $HOME/.hyper_plugins && rm -rf node_modules && rm -f package-lock.json && npm install && cd -"
 alias softup="softwareupdate --all --install"
