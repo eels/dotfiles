@@ -263,6 +263,10 @@ alias yarnup="yarn global upgrade"
 ## Open the dotfiles directory in vscode
 alias dotedit="code --add $HOME/dotfiles --reuse-window"
 
+## Overwrite base `npx` function
+alias npx="npx --yes"
+alias ypx="npx"
+
 ## Reload the shell
 alias reload="exec ${SHELL} -l"
 
