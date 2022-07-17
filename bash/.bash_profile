@@ -72,6 +72,9 @@ export NVM_DIR="$HOME/.nvm"
 ## Set Brew Location
 export BREW_DIR="/usr/local"
 
+## Set PHP Version Location
+export PHPV_DIR="$(brew --prefix php-version)"
+
 ## Manage Path
 export PATH="$PATH:$BREW_DIR/bin"
 export PATH="$PATH:$BREW_DIR/sbin"
@@ -83,6 +86,9 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 ## Include NVM
 [ -s "$BREW_DIR/opt/nvm/nvm.sh" ] && source "$BREW_DIR/opt/nvm/nvm.sh"
+
+## Include PHP Version
+[ -s "$PHPV_DIR/php-version.sh" ] && source "$PHPV_DIR/php-version.sh"
 
 ## Include Bash Completion
 [ -s "$BREW_DIR/etc/bash_completion" ] && source "$BREW_DIR/etc/bash_completion"
