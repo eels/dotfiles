@@ -13,6 +13,16 @@ const applications = [
     application: 'Amazon Music',
     filename: 'amazon-music.icns',
     path: '/Applications/Amazon Music.app/Contents/Resources/morpho.icns'
+  },
+  {
+    application: 'Notion',
+    filename: 'notion.icns',
+    path: '/Applications/Notion.app/Contents/Resources/electron.icns'
+  },
+  {
+    application: 'Visual Studio Code',
+    filename: 'vscode.icns',
+    path: '/Applications/Visual Studio Code.app/Contents/Resources/Code.icns'
   }
 ];
 
