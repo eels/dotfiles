@@ -47,7 +47,7 @@ function __gitcheckout() {
 ## Override functionality for `git push`
 function __gitpush() {
   if [ $# -eq 0 ]; then
-    git push --set-upstream origin $(git symbolic-ref --short HEAD)
+    git push --set-upstream origin "$(git symbolic-ref --short HEAD)"
   else
     git push "$@"
   fi
