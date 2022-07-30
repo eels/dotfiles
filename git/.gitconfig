@@ -8,6 +8,9 @@
   ## Override existing `git branch` functionality with `__gitbranch`
   override-branch = !bash -c 'source $HOME/.bash_git && __gitbranch \"$@\"' -
 
+  ## Override existing `git push` functionality with `__gitpush`
+  override-push = !bash -c 'source $HOME/.bash_git && __gitpush \"$@\"' -
+
   ## Quickly amend the latest commit
   amend = commit -a --amend
 
