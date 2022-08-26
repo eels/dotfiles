@@ -5,8 +5,9 @@
 #   Description: Bash prompt-only configurations
 #
 #   1. VARIABLES
-#   2. FUNCTIONS
-#   3. PROMPTS
+#   2. UTILITIES
+#   3. MODULES
+#   4. EXPORTS
 # ----------------------------------------
 
 # ----------------------------------------
@@ -24,11 +25,38 @@ YELLOW="\[\033[0;33m\]"
 BLUE="\[\033[0;34m\]"
 WHITE="\[\033[0;37m\]"
 
+## Icons
+## https://onlineunicodetools.com/convert-unicode-to-hex
+NODE="\xef\xa2\x98"
+PHP="\xee\x98\x88"
+
 # ----------------------------------------
-#   2. FUNCTIONS
+#   2. UTILITIES
 # ----------------------------------------
 
-function gitprompt() {
+function upsearch() {
+  local slashes
+  local directory
+
+  slashes=${PWD//[^\/]/}
+  directory="$PWD"
+
+  for (( n=${#slashes}; n>0; --n )); do
+    for file in "$@"; do
+      if compgen -G "$directory/$file" > /dev/null; then
+        echo true && return
+      fi
+    done
+
+    directory="$directory/.."
+  done
+}
+
+# ----------------------------------------
+#   3. MODULES
+# ----------------------------------------
+
+function __gitstatus() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
 
   local symbol
@@ -57,15 +85,36 @@ function gitprompt() {
     symbol="[${symbol}]"
   fi
 
-  echo -e "${1}${branch}${2} ${symbol}"
+  echo -e "${1}on ${2}${branch} ${3}${symbol} "
+}
+
+function __nodeversion() {
+  ! [ -x "$(command -v node)" ] && return
+
+  if [[ $(upsearch "package.json" "*.js" "*.ts" "*.jsx" "*.tsx") ]]; then
+    echo -e "${1}with ${2}${NODE} $(node --version) "
+  fi
+}
+
+function __phpversion() {
+  ! [ -x "$(command -v php)" ] && return
+
+  if [[ $(upsearch "composer.json" ".php-version" "*.php") ]]; then
+    echo -e "${1}with ${2}${PHP} v$(php -v | grep ^PHP | cut -d' ' -f2) "
+  fi
 }
 
 # ----------------------------------------
-#   3. PROMPTS
+#   4. EXPORTS
 # ----------------------------------------
 
 ## Set default prompt
-export PS1="\[\033]0;\w\007\]${GREEN}${NAME} ${WHITE}in ${YELLOW}\w \$(gitprompt \"${WHITE}on ${RED}\" \"${BLUE}\") \n${WHITE}$ ${BLACK}"
+export PS1=""\
+"\[\033]0;\w\007\]${GREEN}${NAME} ${WHITE}in ${YELLOW}\w "\
+"\$(__gitstatus \"${WHITE}\" \"${RED}\" \"${BLUE}\")"\
+"\$(__nodeversion \"${WHITE}\" \"${GREEN}\")"\
+"\$(__phpversion \"${WHITE}\" \"${GREEN}\")"\
+"\n${WHITE}$ ${BLACK}"
 
 ## Set continuation prompt
 export PS2="${WHITE}➜ ${BLACK}"
