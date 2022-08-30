@@ -82,17 +82,17 @@ function __gitstatus() {
 
   ## Wrap symbol in square brackets if it isn't empty
   if [ -n "${symbol}" ]; then
-    symbol="[${symbol}]"
+    symbol=" [${symbol}]"
   fi
 
-  echo -e "${1}on ${2}${branch} ${3}${symbol} "
+  echo -e " ${1}on ${2}${branch}${3}${symbol}"
 }
 
 function __nodeversion() {
   ! [ -x "$(command -v node)" ] && return
 
   if [[ $(upsearch "package.json" "*.js" "*.ts" "*.jsx" "*.tsx") ]]; then
-    echo -e "${1}with ${2}${NODE} $(node --version) "
+    echo -e " ${1}with ${2}${NODE} $(node --version)"
   fi
 }
 
@@ -100,7 +100,7 @@ function __phpversion() {
   ! [ -x "$(command -v php)" ] && return
 
   if [[ $(upsearch "composer.json" ".php-version" "*.php") ]]; then
-    echo -e "${1}with ${2}${PHP} v$(php -v | grep ^PHP | cut -d' ' -f2) "
+    echo -e " ${1}with ${2}${PHP} v$(php -v | grep ^PHP | cut -d' ' -f2)"
   fi
 }
 
@@ -110,7 +110,7 @@ function __phpversion() {
 
 ## Set default prompt
 export PS1=""\
-"\[\033]0;\w\007\]${GREEN}${NAME} ${WHITE}in ${YELLOW}\w "\
+"\[\033]0;\w\007\]${GREEN}${NAME} ${WHITE}in ${YELLOW}\w"\
 "\$(__gitstatus \"${WHITE}\" \"${RED}\" \"${BLUE}\")"\
 "\$(__nodeversion \"${WHITE}\" \"${GREEN}\")"\
 "\$(__phpversion \"${WHITE}\" \"${GREEN}\")"\
