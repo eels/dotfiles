@@ -4,3 +4,4 @@ disable=SC2015
 disable=SC2139
 disable=SC2140
 disable=SC2155
+disable=SC2230
