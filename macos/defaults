@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ----------------------------------------
+# ------------------------------------------------------
 #   Author: Liam Howell
 #   Description: Configure some macOS default settings
 #
@@ -15,11 +15,11 @@
 #   9. ACTIVITY MONITOR
 #   0. MAC APP STORE
 #   1. CLEANUP
-# ----------------------------------------
+# ------------------------------------------------------
 
-# ----------------------------------------
+# ------------------------------------------------------
 #   1. GENERAL UI/UX
-# ----------------------------------------
+# ------------------------------------------------------
 
 ## Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -74,9 +74,9 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 ## Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# ----------------------------------------
+# -----------------------------------------------
 #   2. ACCESSORIES AND INPUT
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -95,9 +95,9 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 ## Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
-# ----------------------------------------
+# -----------------------------------------------
 #   3. ENERGY SAVING
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Enable lid wakeup
 sudo pmset -a lidwake 1
@@ -120,9 +120,9 @@ sudo rm /private/var/vm/sleepimage
 sudo touch /private/var/vm/sleepimage
 sudo chflags uchg /private/var/vm/sleepimage
 
-# ----------------------------------------
+# -----------------------------------------------
 #   4. SCREEN
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -140,9 +140,9 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 1
 ## Enable HiDPI display modes
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
-# ----------------------------------------
+# -----------------------------------------------
 #   5. FINDER
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Disable window animations and Get Info animations
 defaults write com.apple.finder DisableAllAnimations -bool true
@@ -196,9 +196,9 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 ## Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# ----------------------------------------
+# -----------------------------------------------
 #   6. DOCK AND DASHBOARD
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Set the icon size of Dock items to 48 pixels
 defaults write com.apple.dock tilesize -int 48
@@ -245,9 +245,9 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 ## Put the Dock on the bottom of the screen
 defaults write com.apple.dock "orientation" -string "bottom"
 
-# ----------------------------------------
+# -----------------------------------------------
 #   7. SAFARI AND WEBKIT
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Don't send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
@@ -328,16 +328,16 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 ## Update extensions automatically
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
-# ----------------------------------------
+# -----------------------------------------------
 #   8. TIME MACHINE
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# ----------------------------------------
+# -----------------------------------------------
 #   9. ACTIVITY MONITOR
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
@@ -352,9 +352,9 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 
-# ----------------------------------------
+# -----------------------------------------------
 #   0. MAC APP STORE
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Enable the WebKit Developer Tools in the Mac App Store
 defaults write com.apple.appstore WebKitDeveloperExtras -bool true
@@ -380,9 +380,9 @@ defaults write com.apple.commerce AutoUpdate -bool true
 ## Allow the App Store to reboot machine on macOS updates
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
-# ----------------------------------------
+# -----------------------------------------------
 #   1. CLEANUP
-# ----------------------------------------
+# -----------------------------------------------
 
 killall ActivityMonitor &> /dev/null
 killall cfprefsd &> /dev/null

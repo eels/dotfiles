@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-// ----------------------------------------
+// ----------------------------------------------
 //   Author: Liam Howell
 //   Description: Symlink Application icons
-// ----------------------------------------
+// ----------------------------------------------
 
 const fs = require('fs');
 const path = require('path');

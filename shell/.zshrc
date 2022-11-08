@@ -1,53 +1,51 @@
-#!/bin/bash
+#!/bin/zsh
 
-# ----------------------------------------
+# -----------------------------------------------
 #   Author: Liam Howell
-#   Description: Bash configuration, aliases, functions etc
+#   Description: ZSH configuration, aliases, functions etc
 #
 #   1. OPTIONS
 #   2. EXPORTS
 #   3. SOURCES
-#   4. FUNCTIONS
-#   5. ALIASES
-#   6. PROMPT
-#   7. GIT INTERCEPTOR
-#   8. LOCAL SECRETS
-# ----------------------------------------
+#   4. PLUGINS
+#   5. FUNCTIONS
+#   6. ALIASES
+#   7. PROMPT
+#   8. GIT INTERCEPTOR
+#   9. LOCAL SECRETS
+# -----------------------------------------------
 
-# ----------------------------------------
+# -----------------------------------------------
 #   1. OPTIONS
-# ----------------------------------------
-
-## Ignore `sudo` in any tab completion attempts
-complete -cf sudo
+# -----------------------------------------------
 
 ## Autocorrect typos in path names when using `cd`
-shopt -s cdspell
+setopt CORRECT
 
-## Save multi-line commands as one command
-shopt -s cmdhist
+## Do not print the working directory when using `cd`
+setopt CD_SILENT
 
-## Autocorrect on directory names to match a glob.
-shopt -s dirspell > /dev/null 2>&1
-
-## Turn on recursive globbing (enables ** to recurse all directories)
-shopt -s globstar > /dev/null 2>&1
+## Do not push duplicate directories on the stack
+setopt PUSHD_IGNORE_DUPS
 
 ## Append to the history file rather then overwriting it
-shopt -s histappend
+setopt INC_APPEND_HISTORY
 
-## Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob
+## Ignore duplicates in history
+setopt HIST_FIND_NO_DUPS
 
-## Reset output color from custom prompt back to white
-trap "echo -ne '\033[0;37m'" DEBUG
+## Remove older instances of commands from the history
+setopt HIST_IGNORE_ALL_DUPS
 
-# ----------------------------------------
+## Ensure consecutive duplicates don't get added to the history
+setopt HIST_IGNORE_DUPS
+
+## Ensure commands that start with a space don't get added to the history
+setopt HIST_IGNORE_SPACE
+
+# -----------------------------------------------
 #   2. EXPORTS
-# ----------------------------------------
-
-## Silence macOS bash deprecation message
-export BASH_SILENCE_DEPRECATION_WARNING="1"
+# -----------------------------------------------
 
 ## Add color to terminal
 export CLICOLOR="1"
@@ -58,31 +56,41 @@ export EDITOR="nano"
 
 ## Set language and character encoding
 export LANG="en_GB.UTF-8"
+export LANGUAGE="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
 
 ## History options
-export HISTSIZE="32768"
-export HISTFILESIZE="${HISTSIZE}"
 export HISTCONTROL="ignoreboth"
-export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+export HISTFILE="$HOME/.zsh_history"
+export HISTFILESIZE="${HISTSIZE}"
+export HISTSIZE="32768"
+export HISTORY_IGNORE="(exit|ls|bg|fg|history|clear)"
+export SAVEHIST="32768"
 
-## Set NVM Location
+## Set NVM location
 export NVM_DIR="$HOME/.nvm"
 
-## Set Brew Location
+## Set Brew location
 export BREW_DIR="/usr/local"
-
-## Set PHP Version Location
-export PHPV_DIR="$(brew --prefix php-version)"
 
 ## Manage Path
 export PATH="$PATH:$BREW_DIR/bin"
 export PATH="$PATH:$BREW_DIR/sbin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
-# ----------------------------------------
+## Set PHP Version location
+export PHPV_DIR="$(brew --prefix php-version)"
+
+## Set Starship config location
+export STARSHIP_CONFIG="$HOME/dotfiles/starship/starship.toml"
+
+## Set Autosuggest config options
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+
+# -----------------------------------------------
 #   3. SOURCES
-# ----------------------------------------
+# -----------------------------------------------
 
 ## Include NVM
 [ -s "$BREW_DIR/opt/nvm/nvm.sh" ] && source "$BREW_DIR/opt/nvm/nvm.sh"
@@ -90,14 +98,18 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 ## Include PHP Version
 [ -s "$PHPV_DIR/php-version.sh" ] && source "$PHPV_DIR/php-version.sh"
 
-## Include Bash Completion
-[ -s "$BREW_DIR/etc/bash_completion" ] && source "$BREW_DIR/etc/bash_completion"
+# -----------------------------------------------
+#   4. PLUGINS
+# -----------------------------------------------
 
-# ----------------------------------------
-#   4. FUNCTIONS
-# ----------------------------------------
+## Load Sheldon Plugins
+eval "$(sheldon source)"
 
-##
+# -----------------------------------------------
+#   5. FUNCTIONS
+# -----------------------------------------------
+
+## Create an archive of a given directory
 function archive() {
   local archive_path
 
@@ -112,6 +124,14 @@ function archive() {
   mv "$(basename "$archive_path").7z" "$(dirname "$archive_path")" > /dev/null 2>&1
 }
 
+## Generate random password of a given length
+function makepassword() {
+  local length="${1:-16}"
+
+  openssl rand -base64 "$(($length * 2))" | cut -c1-$length | pbcopy
+  pbpaste
+}
+
 ## Change working directory to the top-most Finder location
 function cdfinder() {
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || exit
@@ -119,33 +139,35 @@ function cdfinder() {
 
 ## Create a new directory and enter it
 function cdmkdir() {
-  mkdir -pv "$@" && cd "$_" || exit
+  "mkdir" -pv "$@" && cd "$_" || exit
 }
 
 ## Change current working and change Node version if `.nvmrc` is present
 function cdnvm() {
-  cd "$@" || return
+  "cd" "$@" || return
 
-  local default_version
-  local nvm_path
-  local nvm_version
-  local resolved_version
+  local nvm_path="$(nvm_find_up .nvmrc | tr -d '\n')"
 
-  nvm_path=$(nvm_find_up .nvmrc | tr -d '\n')
-  default_version=$(nvm version default)
-
-  if [[ ! $nvm_path == *[^[:space:]]* ]]; then
-    if [ ! "$default_version" = "$(node -v)" ]; then
-      nvm use default --silent
-    fi
-  elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
-    nvm_version=$(<"$nvm_path"/.nvmrc)
-    resolved_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+  if [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
+    local nvm_version="$(<"$nvm_path"/.nvmrc)"
+    local resolved_version="$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')"
 
     if [[ "$resolved_version" == "N/A" ]]; then
       nvm install "$nvm_version"
-    elif [[ $(nvm current) != "$resolved_version" ]]; then
+    elif [[ "$(nvm current)" != "$resolved_version" ]]; then
       nvm use "$nvm_version" --silent
+    fi
+  fi
+
+  if [[ ! $nvm_path == *[^[:space:]]* ]]; then
+    if [ -z "$(nvm alias default)" ]; then
+      nvm alias default node
+    fi
+
+    local default_version="$(nvm version default)"
+
+    if [ ! "$default_version" = "$(node -v)" ]; then
+      nvm use default --silent
     fi
   fi
 }
@@ -171,7 +193,7 @@ function nullify() {
 
 ## Open Finder at the current or supplied location
 function openfinder() {
-  [ $# -eq 0 ] && open "$PWD" || open "$@"
+  [ $# -eq 0 ] && "open" "$PWD" || "open" "$@"
 }
 
 ## Determine size of a file or total size of a directory
@@ -193,9 +215,15 @@ function updateicons() {
   killall Finder && killall Dock
 }
 
-# ----------------------------------------
-#   5. ALIASES
-# ----------------------------------------
+## Run the dotfiles bootstrap script in update mode
+function dotupdate() {
+  cd "$(readlink -f "$HOME/dotfiles")"
+  bash "$(readlink -f "$HOME/dotfiles/bootstrap.sh")" --update && cd -
+}
+
+# -----------------------------------------------
+#   6. ALIASES
+# -----------------------------------------------
 
 ## Enable aliases to be sudo'd
 alias sudo="sudo "
@@ -219,7 +247,7 @@ alias open="openfinder"
 alias cp="cp -v"
 alias mv="mv -v"
 
-## Navigation Shortcuts
+## Navigation shortcuts
 alias ..="cd .."
 alias ...="cd ../../"
 alias ....="cd ../../../"
@@ -273,25 +301,31 @@ alias npx="npx --yes"
 alias ypx="npx"
 
 ## Reload the shell
-alias reload="exec ${SHELL} -l"
+alias reload="exec $(which zsh) -l"
 
-# ----------------------------------------
-#   6. PROMPT
-# ----------------------------------------
+## Refresh the zsh environment
+alias refresh="source $HOME/.zshrc"
+
+# -----------------------------------------------
+#   7. PROMPT
+# -----------------------------------------------
 
 ## Include Prompt configuration
-[ -s "$HOME/.bash_prompt" ] && source "$HOME/.bash_prompt"
+eval "$(starship init zsh)"
 
-# ----------------------------------------
-#   7. GIT INTERCEPTOR
-# ----------------------------------------
+##
+autoload compinit && compinit
+
+# -----------------------------------------------
+#   8. GIT INTERCEPTOR
+# -----------------------------------------------
 
 ## Include Git Interceptor configuration
-[ -s "$HOME/.bash_git" ] && source "$HOME/.bash_git"
+[ -s "$HOME/.zsh_git" ] && source "$HOME/.zsh_git"
 
-# ----------------------------------------
-#   8. LOCAL SECRETS
-# ----------------------------------------
+# -----------------------------------------------
+#   9. LOCAL SECRETS
+# -----------------------------------------------
 
 ## Include local secrets
 [ -s "$HOME/.localrc" ] && source "$HOME/.localrc"

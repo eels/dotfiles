@@ -1,7 +1,7 @@
-# ----------------------------------------
+# -----------------------------------------------
 #   Author: Liam Howell
 #   Description: Brew & Cask dependency definitions
-# ----------------------------------------
+# -----------------------------------------------
 
 tap 'ferdium/ferdium'
 tap 'buo/cask-upgrade'
@@ -15,7 +15,6 @@ tap 'homebrew/services'
 tap 'shivammathur/php'
 tap 'wilmoore/formulae'
 
-brew 'bash-completion'
 brew 'composer'
 brew 'gh'
 brew 'git'
@@ -27,7 +26,9 @@ brew 'p7zip'
 brew 'php'
 brew 'php-version'
 brew 'pnpm'
+brew 'starship'
 brew 'yarn'
+brew 'zsh'
 
 cask 'amazon-music'
 cask 'docker'
