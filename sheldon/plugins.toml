@@ -3,6 +3,10 @@ shell = "zsh"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
+[plugins.zsh-lazyload]
+github = "qoomon/zsh-lazyload"
+use = ["{{ name }}.zsh"]
+
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 use = ["{{ name }}.zsh"]

@@ -6,8 +6,8 @@
 #
 #   1. OPTIONS
 #   2. EXPORTS
-#   3. SOURCES
-#   4. PLUGINS
+#   3. PLUGINS
+#   4. SOURCES
 #   5. FUNCTIONS
 #   6. ALIASES
 #   7. PROMPT
@@ -89,21 +89,24 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 
 # -----------------------------------------------
-#   3. SOURCES
-# -----------------------------------------------
-
-## Include NVM
-[ -s "$BREW_DIR/opt/nvm/nvm.sh" ] && source "$BREW_DIR/opt/nvm/nvm.sh"
-
-## Include PHP Version
-[ -s "$PHPV_DIR/php-version.sh" ] && source "$PHPV_DIR/php-version.sh"
-
-# -----------------------------------------------
-#   4. PLUGINS
+#   3. PLUGINS
 # -----------------------------------------------
 
 ## Load Sheldon Plugins
 eval "$(sheldon source)"
+
+## Load Completions
+autoload compinit && compinit
+
+# -----------------------------------------------
+#   4. SOURCES
+# -----------------------------------------------
+
+## Include NVM
+lazyload node nvm npm npx yarn -- 'source "$BREW_DIR/opt/nvm/nvm.sh"'
+
+## Include PHP Version
+lazyload composer php -- 'source "$PHPV_DIR/php-version.sh"'
 
 # -----------------------------------------------
 #   5. FUNCTIONS
@@ -209,6 +212,15 @@ function serve() {
   php -S "localhost:${1:-3000}"
 }
 
+## Test the bootup time of the shell
+function testshelltime() {
+  local shell="${1-$SHELL}"
+
+  for i in $(seq 1 10); do
+    /usr/bin/time "$shell" -i -c exit
+  done
+}
+
 ## Update application icons using script from `macos` directory
 function updateicons() {
   node "$HOME/dotfiles/macos/application_icons"
@@ -301,7 +313,7 @@ alias npx="npx --yes"
 alias ypx="npx"
 
 ## Reload the shell
-alias reload="exec $(which zsh) -l"
+alias reload="exec $(which zsh) -l && clear"
 
 ## Refresh the zsh environment
 alias refresh="source $HOME/.zshrc"
@@ -312,9 +324,6 @@ alias refresh="source $HOME/.zshrc"
 
 ## Include Prompt configuration
 eval "$(starship init zsh)"
-
-##
-autoload compinit && compinit
 
 # -----------------------------------------------
 #   8. GIT INTERCEPTOR
