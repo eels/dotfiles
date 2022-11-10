@@ -103,7 +103,7 @@ autoload compinit && compinit
 # -----------------------------------------------
 
 ## Include NVM
-lazyload node nvm npm npx yarn -- 'source "$BREW_DIR/opt/nvm/nvm.sh"'
+lazyload node nvm nvm_find_up npm npx yarn -- 'source "$BREW_DIR/opt/nvm/nvm.sh"'
 
 ## Include PHP Version
 lazyload composer php -- 'source "$PHPV_DIR/php-version.sh"'
