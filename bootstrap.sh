@@ -86,7 +86,7 @@ ln -sf "$PWD/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 
 ## Install latest Node versions
 if [ "$IS_UPDATING" == false ]; then
-  source "/usr/local/opt/nvm/nvm.sh" && nvm install node
+  fnm install --latest
 fi
 
 # -----------------------------------------------

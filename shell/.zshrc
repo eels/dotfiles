@@ -67,9 +67,6 @@ export HISTSIZE="32768"
 export HISTORY_IGNORE="(exit|ls|bg|fg|history|clear)"
 export SAVEHIST="32768"
 
-## Set NVM location
-export NVM_DIR="$HOME/.nvm"
-
 ## Set Brew location
 export BREW_DIR="/usr/local"
 
@@ -92,6 +89,9 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 #   3. PLUGINS
 # -----------------------------------------------
 
+## Load `fnm` (`nvm` Alternative)
+eval "$(fnm env --log-level quiet --use-on-cd --version-file-strategy recursive)"
+
 ## Load Sheldon Plugins
 eval "$(sheldon source)"
 
@@ -101,9 +101,6 @@ autoload compinit && compinit
 # -----------------------------------------------
 #   4. SOURCES
 # -----------------------------------------------
-
-## Include NVM
-lazyload node nvm nvm_find_up npm npx yarn -- 'source "$BREW_DIR/opt/nvm/nvm.sh"'
 
 ## Include PHP Version
 lazyload composer php -- 'source "$PHPV_DIR/php-version.sh"'
@@ -143,36 +140,6 @@ function cdfinder() {
 ## Create a new directory and enter it
 function cdmkdir() {
   "mkdir" -pv "$@" && cd "$_" || exit
-}
-
-## Change current working and change Node version if `.nvmrc` is present
-function cdnvm() {
-  "cd" "$@" || return
-
-  local nvm_path="$(nvm_find_up .nvmrc | tr -d '\n')"
-
-  if [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
-    local nvm_version="$(<"$nvm_path"/.nvmrc)"
-    local resolved_version="$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')"
-
-    if [[ "$resolved_version" == "N/A" ]]; then
-      nvm install "$nvm_version"
-    elif [[ "$(nvm current)" != "$resolved_version" ]]; then
-      nvm use "$nvm_version" --silent
-    fi
-  fi
-
-  if [[ ! $nvm_path == *[^[:space:]]* ]]; then
-    if [ -z "$(nvm alias default)" ]; then
-      nvm alias default node
-    fi
-
-    local default_version="$(nvm version default)"
-
-    if [ ! "$default_version" = "$(node -v)" ]; then
-      nvm use default --silent
-    fi
-  fi
 }
 
 ## Run last command with sudo
@@ -246,9 +213,6 @@ alias please="fuck"
 ## Completely clear the shell
 alias clear="printf \"\033c\""
 
-## Overwrite base `cd` function with `cdnvm` function
-alias cd="cdnvm"
-
 ## Overwrite base `mkdir` function with `cdmkdir` function
 alias mkdir="cdmkdir"
 
@@ -311,6 +275,9 @@ alias dotedit="code --add $(readlink -f "$HOME/dotfiles") --reuse-window"
 ## Overwrite base `npx` function
 alias npx="npx --yes"
 alias ypx="npx"
+
+## Alias `fnm` as an alternate to `nvm`
+alias nvm="fnm"
 
 ## Reload the shell
 alias reload="exec $(which zsh) -l && clear"
