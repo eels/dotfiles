@@ -8,11 +8,12 @@
 #   2. EXPORTS
 #   3. PLUGINS
 #   4. SOURCES
-#   5. FUNCTIONS
-#   6. ALIASES
-#   7. PROMPT
-#   8. GIT INTERCEPTOR
-#   9. LOCAL SECRETS
+#   5. HOOKS
+#   6. FUNCTIONS
+#   7. ALIASES
+#   8. PROMPT
+#   9. GIT INTERCEPTOR
+#   0. LOCAL SECRETS
 # -----------------------------------------------
 
 # -----------------------------------------------
@@ -106,7 +107,26 @@ autoload compinit && compinit
 lazyload composer php -- 'source "$PHPV_DIR/php-version.sh"'
 
 # -----------------------------------------------
-#   5. FUNCTIONS
+#   5. HOOKS
+# -----------------------------------------------
+
+## Ensure invalid and ignored commands don't get added to the history file
+function zshaddhistory() {
+  local trimmed_arg
+  local cmd
+
+  trimmed_arg="$(echo "$1" | xargs)"
+  cmd="${trimmed_arg%% *}"
+
+  if [[ $trimmed_arg == ${~HISTORY_IGNORE} ]]; then
+    return 1
+  fi
+
+  whence "$cmd" >| /dev/null || return 1
+}
+
+# -----------------------------------------------
+#   6. FUNCTIONS
 # -----------------------------------------------
 
 ## Create an archive of a given directory
@@ -205,7 +225,7 @@ function dotupdate() {
 }
 
 # -----------------------------------------------
-#   6. ALIASES
+#   7. ALIASES
 # -----------------------------------------------
 
 ## Enable aliases to be sudo'd
@@ -213,9 +233,6 @@ alias sudo="sudo "
 
 ## Run last command with sudo but be polite about it
 alias please="fuck"
-
-## Completely clear the shell
-alias clear="printf \"\033c\""
 
 ## Overwrite base `mkdir` function with `cdmkdir` function
 alias mkdir="cdmkdir"
@@ -286,21 +303,21 @@ alias reload="exec $(which zsh) -l && clear"
 alias refresh="source $HOME/.zshrc"
 
 # -----------------------------------------------
-#   7. PROMPT
+#   8. PROMPT
 # -----------------------------------------------
 
 ## Include Prompt configuration
 eval "$(starship init zsh)"
 
 # -----------------------------------------------
-#   8. GIT INTERCEPTOR
+#   9. GIT INTERCEPTOR
 # -----------------------------------------------
 
 ## Include Git Interceptor configuration
 [ -s "$HOME/.zsh_git" ] && source "$HOME/.zsh_git"
 
 # -----------------------------------------------
-#   9. LOCAL SECRETS
+#   0. LOCAL SECRETS
 # -----------------------------------------------
 
 ## Include local secrets
