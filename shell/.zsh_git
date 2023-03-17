@@ -13,7 +13,7 @@
 # -----------------------------------------------
 
 function __git() {
-  GIT_OPTIONAL_LOCKS=0 command /usr/local/bin/git "$@"
+  GIT_OPTIONAL_LOCKS=0 command /opt/homebrew/bin/git "$@"
 }
 
 function __gitinterceptor() {
@@ -46,6 +46,18 @@ function __gitcheckout() {
   else
     __git checkout -b "$1" 2> /dev/null || __git checkout "$1"
   fi
+}
+
+## Quickly delete current branch and return to default branch
+function __gitdone() {
+  local defaultbranch
+  local currentbranch
+
+  defaultbranch=$(git branch -rl '*/HEAD' | grep -o '[^/]\+$')
+  currentbranch=$(git rev-parse --abbrev-ref HEAD)
+
+  git checkout "$defaultbranch"
+  git delete "$currentbranch"
 }
 
 ## Override functionality for `git push`

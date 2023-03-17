@@ -68,7 +68,7 @@ export HISTORY_IGNORE="(exit|ls|bg|fg|history|clear)"
 export SAVEHIST="32768"
 
 ## Set Brew location
-export BREW_DIR="/usr/local"
+export BREW_DIR="/opt/homebrew/"
 
 ## Manage Path
 export PATH="$PATH:$BREW_DIR/bin"
@@ -126,7 +126,9 @@ function archive() {
 
 ## Generate random password of a given length
 function makepassword() {
-  local length="${1:-16}"
+  local length
+
+  length="${1:-16}"
 
   openssl rand -base64 "$(($length * 2))" | cut -c1-$length | pbcopy
   pbpaste
@@ -181,7 +183,9 @@ function serve() {
 
 ## Test the bootup time of the shell
 function testshelltime() {
-  local shell="${1-$SHELL}"
+  local shell
+
+  shell="${1-$SHELL}"
 
   for i in $(seq 1 10); do
     /usr/bin/time "$shell" -i -c exit
@@ -218,10 +222,6 @@ alias mkdir="cdmkdir"
 
 ## Overwrite base `open` function with `openfinder` function
 alias open="openfinder"
-
-## Overwrite base `cp` and`mv` funcions
-alias cp="cp -v"
-alias mv="mv -v"
 
 ## Navigation shortcuts
 alias ..="cd .."

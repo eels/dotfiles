@@ -20,6 +20,9 @@
   ## Quickly delete a given branch
   delete = branch -D
 
+  ## Quickly delete current branch and return to default branch
+  done = !zsh -c 'source $HOME/.zsh_git && __gitdone \"$@\"' -
+
   ## When doing "git git log" or some such, do not complain about "git"
   git = !git
 
