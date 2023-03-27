@@ -287,7 +287,8 @@ alias softup="softwareupdate --all --install"
 alias yarnup="cd $HOME/.config/yarn/global && rm -rf yarn.lock && yarn install && cd -"
 
 ## Open the dotfiles directory in vscode
-alias dotedit="code --add $(readlink -f "$HOME/dotfiles") --reuse-window"
+alias code="code --reuse-window"
+alias dotedit="code --add $(readlink -f "$HOME/dotfiles")"
 
 ## Overwrite base `npx` function
 alias npx="npx --yes"
