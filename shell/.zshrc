@@ -83,7 +83,7 @@ export PHPV_DIR="$(brew --prefix php-version)"
 export STARSHIP_CONFIG="$HOME/dotfiles/starship/starship.toml"
 
 ## Set Autosuggest config options
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 
 # -----------------------------------------------
@@ -288,7 +288,7 @@ alias yarnup="cd $HOME/.config/yarn/global && rm -rf yarn.lock && yarn install &
 
 ## Open the dotfiles directory in vscode
 alias code="code --reuse-window"
-alias dotedit="code --add $(readlink -f "$HOME/dotfiles")"
+alias dotedit="code --reuse-window $(readlink -f "$HOME/dotfiles")"
 
 ## Overwrite base `npx` function
 alias npx="npx --yes"
