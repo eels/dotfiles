@@ -8,10 +8,9 @@
 #   1. HOMEBREW
 #   2. SYMLINKS
 #   3. NODE
-#   4. COMPOSER & YARN GLOBALS
+#   4. YARN GLOBALS
 #   5. DIRECTORIES
-#   6. APPLICATION ICONS
-#   7. CLEANUP
+#   6. CLEANUP
 # -----------------------------------------------
 
 # -----------------------------------------------
@@ -58,8 +57,9 @@ if [ "$IS_UPDATING" == false ]; then
   [ -s "$PWD" ] && ln -sf "$PWD" "$HOME/dotfiles"
 fi
 
-## Symlink global composer.json to default location
-ln -sf "$PWD/composer/composer.json" "$HOME/.composer/composer.json"
+## Symlink `asdf` .asdfrc && .tool-versions to default location
+ln -sf "$PWD/asdf/.asdfrc" "$HOME/.asdfrc"
+ln -sf "$PWD/asdf/.tool-versions" "$HOME/.tool-versions"
 
 ## Symlink global package.json to default location
 ln -sf "$PWD/yarn/package.json" "$HOME/.config/yarn/global/package.json"
@@ -80,6 +80,10 @@ done
 [ ! -d "$HOME/.config/sheldon" ] && mkdir "$HOME/.config/sheldon"
 ln -sf "$PWD/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 
+## Symlink tmux configuration to default location
+[ ! -d "$HOME/.config/tmux" ] && mkdir "$HOME/.config/tmux"
+ln -sf "$PWD/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+
 # -----------------------------------------------
 #   3. NODE
 # -----------------------------------------------
@@ -90,13 +94,8 @@ if [ "$IS_UPDATING" == false ]; then
 fi
 
 # -----------------------------------------------
-#   4. COMPOSER & YARN GLOBALS
+#   4. YARN GLOBALS
 # -----------------------------------------------
-
-## Install globals for Composer
-if [ "$IS_UPDATING" == false ]; then
-  composer global upgrade
-fi
 
 ## Install globals for Yarn
 if [ "$IS_UPDATING" == false ]; then
@@ -113,17 +112,7 @@ for directory in "Projects" "Sites"; do
 done
 
 # -----------------------------------------------
-#   6. APPLICATION ICONS
-# -----------------------------------------------
-
-## Execute Application icon setter then kill/refresh Finder and Dock
-if [ "$IS_UPDATING" == false ]; then
-  node ./macos/application_icons
-  killall Finder && killall Dock
-fi
-
-# -----------------------------------------------
-#   7. CLEANUP
+#   6. CLEANUP
 # -----------------------------------------------
 
 ## Reload the shell

@@ -12,9 +12,9 @@
 # OS generated files
 # -----------------------------------------------
 
+._*
 .DS_Store
 .DS_Store?
-._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
@@ -25,6 +25,11 @@ Thumbs.db
 
 *.lock
 *.lock.json
+
+# Plugins
+# -----------------------------------------------
+
+tmux/plugins
 
 # Local secrets
 # -----------------------------------------------

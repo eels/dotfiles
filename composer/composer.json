@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "description": "Global Composer Dependencies",
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true
-  },
-  "require": {}
-}

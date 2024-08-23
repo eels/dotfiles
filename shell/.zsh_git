@@ -12,10 +12,12 @@
 #   1. INTERCEPTOR
 # -----------------------------------------------
 
+## Override `git` command to intercept custom functions
 function __git() {
   GIT_OPTIONAL_LOCKS=0 command /opt/homebrew/bin/git "$@"
 }
 
+## Interceptor for `git` command
 function __gitinterceptor() {
   if [ $# -eq 0 ] || ! __git config --list | grep -q "^alias\\.override-$1"; then
     __git "$@"

@@ -1,6 +1,6 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
-add_newline = false
+add_newline = true
 
 continuation_prompt = "➜ "
 
@@ -10,7 +10,8 @@ $directory\
 $git_branch\
 $git_status\
 $nodejs\
-$php\
+$fill\
+$cmd_duration\
 $character\
 """
 
@@ -18,13 +19,23 @@ $character\
 error_symbol = "\n\\$"
 success_symbol = "\n\\$"
 
+[cmd_duration]
+format = "[previous command took \\[$duration\\]]($style) "
+min_time = 0
+show_milliseconds = true
+style = "black"
+
 [directory]
 format = "in [$path]($style) "
 style = "yellow"
 truncate_to_repo = false
 
+[fill]
+symbol = "  "
+
 [git_branch]
-format = "on [$branch](red) "
+format = "on [$branch]($style) "
+style = "red"
 
 [git_status]
 format = "([\\[$staged$modified$untracked$up_to_date\\]]($style) )"
@@ -34,11 +45,6 @@ style = "blue"
 format = "with [$symbol($version )]($style)"
 style = "green"
 symbol = "\uE718 "
-
-[php]
-format = "with [$symbol($version )]($style)"
-style = "purple"
-symbol = "\uE608 "
 
 [username]
 format = "[liam]($style) "
