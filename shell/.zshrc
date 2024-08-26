@@ -122,7 +122,7 @@ function zshaddhistory() {
   local cmd
 
   trimmed_arg="$(echo "$1" | xargs)"
-  cmd="${trimme                               s71§x5gtrd_arg%% *}"
+  cmd="${trimmed_arg%% *}"
 
   if [[ $trimmed_arg == ${~HISTORY_IGNORE} ]]; then
     return 1
