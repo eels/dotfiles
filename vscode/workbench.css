@@ -1,0 +1,7 @@
+.sidebar .composite-bar {
+	width: 100%;
+}
+
+.sidebar .actions-container {
+	justify-content: space-evenly;
+}
