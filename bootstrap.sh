@@ -8,9 +8,8 @@
 #   1. HOMEBREW
 #   2. SYMLINKS
 #   3. NODE
-#   4. YARN GLOBALS
-#   5. DIRECTORIES
-#   6. CLEANUP
+#   4. DIRECTORIES
+#   5. CLEANUP
 # -----------------------------------------------
 
 # -----------------------------------------------
@@ -61,9 +60,6 @@ fi
 ln -sf "$PWD/asdf/.asdfrc" "$HOME/.asdfrc"
 ln -sf "$PWD/asdf/.tool-versions" "$HOME/.tool-versions"
 
-## Symlink global package.json to default location
-ln -sf "$PWD/yarn/package.json" "$HOME/.config/yarn/global/package.json"
-
 ## Iterate through defined directories and symlink their files to `~`
 for directory in "git" "shell"; do
   for file in ./"$directory"/.*[a-zA-Z+]; do
@@ -99,16 +95,7 @@ if [ "$IS_UPDATING" == false ]; then
 fi
 
 # -----------------------------------------------
-#   4. YARN GLOBALS
-# -----------------------------------------------
-
-## Install globals for Yarn
-if [ "$IS_UPDATING" == false ]; then
-  yarn global upgrade
-fi
-
-# -----------------------------------------------
-#   5. DIRECTORIES
+#   4. DIRECTORIES
 # -----------------------------------------------
 
 ## Create desired directories if they don't already exist
@@ -117,7 +104,7 @@ for directory in "Projects" "Sites"; do
 done
 
 # -----------------------------------------------
-#   6. CLEANUP
+#   5. CLEANUP
 # -----------------------------------------------
 
 ## Reload the shell
