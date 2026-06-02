@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # -----------------------------------------------
 #   Author: Liam Howell
@@ -7,9 +8,8 @@
 #   0. BOOT
 #   1. HOMEBREW
 #   2. SYMLINKS
-#   3. NODE
-#   4. DIRECTORIES
-#   5. CLEANUP
+#   3. DIRECTORIES
+#   4. CLEANUP
 # -----------------------------------------------
 
 # -----------------------------------------------
@@ -17,7 +17,11 @@
 # -----------------------------------------------
 
 ## Set flag to say if this is an initial run or an update
-[[ "$*" == *"--update"* ]] && IS_UPDATING=true || IS_UPDATING=false
+IS_UPDATING=false
+
+for arg in "$@"; do
+  [ "$arg" = "--update" ] && IS_UPDATING=true
+done
 
 ## Invalidate the current `sudo` timestamp file
 sudo --reset-timestamp
@@ -27,19 +31,21 @@ sudo -v
 
 ## Keep-alive: update existing `sudo` time stamp until `bootstrap.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+_KEEPALIVE_PID=$!
+trap 'kill "$_KEEPALIVE_PID" 2>/dev/null || true' EXIT
 
 # -----------------------------------------------
 #   1. HOMEBREW
 # -----------------------------------------------
 
 ## Install Homebrew
-if ! test "$(brew -v)"; then
+if ! command -v brew &>/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 ## Setup Homebrew directory permissions
 for directory in "$(brew --prefix)" "$(brew --repository)"; do
-  [ -d "$directory" ] && chown -R "$USER:admin" "$directory" > /dev/null 2>&1
+  [ -d "$directory" ] && chown -R "$USER:$(id -gn)" "$directory" || true
 done
 
 ## Install from Brewfile
@@ -53,14 +59,11 @@ fi
 
 ## Symlink dotfiles to the home directory
 if [ "$IS_UPDATING" == false ]; then
-  [ -s "$PWD" ] && ln -sf "$PWD" "$HOME/dotfiles"
+  [ ! -L "$HOME/dotfiles" ] && ln -sf "$PWD" "$HOME/dotfiles"
 fi
 
-## Symlink `asdf` .asdfrc && .tool-versions to default location
-ln -sf "$PWD/asdf/.asdfrc" "$HOME/.asdfrc"
-ln -sf "$PWD/asdf/.tool-versions" "$HOME/.tool-versions"
-
 ## Iterate through defined directories and symlink their files to `~`
+shopt -s nullglob
 for directory in "git" "shell"; do
   for file in ./"$directory"/.*[a-zA-Z+]; do
     if [[ ! "${file##*/}" == *".example" ]]; then
@@ -68,44 +71,41 @@ for directory in "git" "shell"; do
     fi
   done
 done
+shopt -u nullglob
+
+## Symlink `asdf` .asdfrc && .tool-versions to default location
+ln -sf "$PWD/asdf/.asdfrc" "$HOME/.asdfrc"
+ln -sf "$PWD/asdf/.tool-versions" "$HOME/.tool-versions"
 
 ## Symlink local secrets file if it exists
 [ -s "$PWD/shell/.localrc" ] && ln -sf "$PWD/shell/.localrc" "$HOME/.localrc"
 
 ## Create + symlink Ghostty directory + config file
-[ ! -d "$HOME/.config/ghostty" ] && mkdir "$HOME/.config/ghostty"
+mkdir -p "$HOME/.config/ghostty"
 ln -sf "$PWD/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
 
 ## Create + symlink OpenCode directory
-[ ! -d "$HOME/.config/opencode" ] && mkdir "$HOME/.config/opencode"
+mkdir -p "$HOME/.config/opencode"
 ln -sf "$PWD/opencode/agents" "$HOME/.config/opencode/agents"
 ln -sf "$PWD/opencode/skills" "$HOME/.config/opencode/skills"
 
 ## Create + symlink Sheldon directory + plugin file
-[ ! -d "$HOME/.config/sheldon" ] && mkdir "$HOME/.config/sheldon"
+mkdir -p "$HOME/.config/sheldon"
 ln -sf "$PWD/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 
 # -----------------------------------------------
-#   3. NODE
-# -----------------------------------------------
-
-## Install latest Node versions
-if [ "$IS_UPDATING" == false ]; then
-  fnm install --latest
-fi
-
-# -----------------------------------------------
-#   4. DIRECTORIES
+#   3. DIRECTORIES
 # -----------------------------------------------
 
 ## Create desired directories if they don't already exist
 for directory in "Projects" "Sites"; do
-  [ ! -d "$HOME/$directory" ] && mkdir "$HOME/$directory"
+  mkdir -p "$HOME/$directory"
 done
 
 # -----------------------------------------------
-#   5. CLEANUP
+#   4. CLEANUP
 # -----------------------------------------------
 
 ## Reload the shell
-exec "$(which zsh)" -l
+kill "$_KEEPALIVE_PID" 2>/dev/null || true
+exec "${ZSH:-$(command -v zsh)}" -l
