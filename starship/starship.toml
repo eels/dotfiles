@@ -11,19 +11,12 @@ $git_branch\
 $git_status\
 $nodejs\
 $fill\
-$cmd_duration\
 $character\
 """
 
 [character]
 error_symbol = "\n\\$"
 success_symbol = "\n\\$"
-
-[cmd_duration]
-format = "[previous command took \\[$duration\\]]($style) "
-min_time = 0
-show_milliseconds = true
-style = "black"
 
 [directory]
 format = "in [$path]($style) "
