@@ -7,66 +7,24 @@
 #   1. GENERAL UI/UX
 #   2. ACCESSORIES AND INPUT
 #   3. ENERGY SAVING
-#   4. SCREEN
-#   5. FINDER
-#   6. DOCK AND DASHBOARD
-#   7. SAFARI AND WEBKIT
-#   8. TIME MACHINE
-#   9. ACTIVITY MONITOR
-#   0. MAC APP STORE
-#   1. CLEANUP
+#   4. FINDER
+#   5. DOCK AND DASHBOARD
+#   6. ACTIVITY MONITOR
+#   7. CLEANUP
 # ------------------------------------------------------
 
 # ------------------------------------------------------
 #   1. GENERAL UI/UX
 # ------------------------------------------------------
 
-## Set sidebar icon size to medium
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
-
-## Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
-
-## Adjust toolbar title rollover delay
-defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
-
-## Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-
-## Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-## Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
 ## Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
-
-## Disable the "Are you sure you want to open this application?" dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
-## Disable Resume system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-
-## Disable automatic termination of inactive apps
-defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 ## Enable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool true
 
-## Disable smart dashes as they're annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
 ## Enable automatic period substitution
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-
-## Disable smart quotes as they're annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-## Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # -----------------------------------------------
 #   2. ACCESSORIES AND INPUT
@@ -85,9 +43,6 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightC
 
 ## Disable "natural" scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
-## Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 # -----------------------------------------------
 #   3. ENERGY SAVING
@@ -109,25 +64,8 @@ sudo pmset -a displaysleep 10
 sudo pmset -a sleep 15
 
 # -----------------------------------------------
-#   4. SCREEN
+#   4. FINDER
 # -----------------------------------------------
-
-## Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-## Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
-
-## Save screenshots in PNG format
-defaults write com.apple.screencapture type -string "png"
-
-# -----------------------------------------------
-#   5. FINDER
-# -----------------------------------------------
-
-## Disable window animations and Get Info animations
-defaults write com.apple.finder DisableAllAnimations -bool true
 
 ## Set Home as the default location for new Finder windows
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
@@ -141,20 +79,8 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 ## Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-## Hide status bar
-defaults write com.apple.finder ShowStatusBar -bool false
-
-## Hide path bar
-defaults write com.apple.finder ShowPathbar -bool false
-
 ## Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
-
-## When performing a search, search the current folder by default
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-## Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 ## Enable spring loading for directories
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
@@ -166,47 +92,18 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0.5
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-## Disable disk image verification
-defaults write com.apple.frameworks.diskimages skip-verify -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
-
 ## Use list view in all Finder windows by default
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-## Disable the warning before emptying the Trash
-defaults write com.apple.finder WarnOnEmptyTrash -bool false
-
 # -----------------------------------------------
-#   6. DOCK AND DASHBOARD
+#   5. DOCK AND DASHBOARD
 # -----------------------------------------------
 
-## Set the icon size of Dock items to 48 pixels
+## Set the icon size of Dock items to 59 pixels
 defaults write com.apple.dock tilesize -int 59
-
-## Change minimize/maximize window effect
-defaults write com.apple.dock mineffect -string "genie"
-
-## Disable minimizing windows into their application icon
-defaults write com.apple.dock minimize-to-application -bool false
-
-## Enable spring loading for all Dock items
-defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
-
-## Show indicator lights for open applications in the Dock
-defaults write com.apple.dock show-process-indicators -bool true
-
-## Speed up Mission Control animations
-defaults write com.apple.dock expose-animation-duration -float 0.1
-
-## Don't group windows by application in Mission Control
-defaults write com.apple.dock expose-group-by-app -bool false
 
 ## Don't automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
-
-## Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0
 
 ## Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
@@ -217,89 +114,8 @@ defaults write com.apple.dock show-recents -bool false
 ## Disable the Launchpad gesture (pinch with thumb and three fingers)
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
-## Put the Dock on the bottom of the screen
-defaults write com.apple.dock "orientation" -string "bottom"
-
 # -----------------------------------------------
-#   7. SAFARI AND WEBKIT
-# -----------------------------------------------
-
-## Don't send search queries to Apple
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-
-## Show the full URL in the address bar
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-## Set Safari's home page to `about:blank` for faster loading
-defaults write com.apple.Safari HomePage -string "about:blank"
-
-## Prevent Safari from opening 'safe' files automatically after downloading
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-
-## Hide Safari's bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar -bool false
-
-## Hide Safari's sidebar in Top Sites
-defaults write com.apple.Safari ShowSidebarInTopSites -bool false
-
-## Disable Safari's thumbnail cache for History and Top Sites
-defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
-
-## Enable Safari's debug menu
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-
-## Make Safari's search banners default to Contains instead of Starts With
-defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
-
-## Remove useless icons from Safari's bookmarks bar
-defaults write com.apple.Safari ProxiesInBookmarksBar "()"
-
-## Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-
-## Add a context menu item for showing the Web Inspector in web views
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-## Enable continuous spellchecking
-defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
-
-## Disable auto-correct
-defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
-
-## Disable AutoFill
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
-
-## Warn about fraudulent websites
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
-
-## Block pop-up windows
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
-defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
-
-## Disable auto-playing video
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false
-defaults write com.apple.Safari WebKitMediaPlaybackAllowsInline -bool false
-defaults write com.apple.SafariTechnologyPreview com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false
-defaults write com.apple.SafariTechnologyPreview WebKitMediaPlaybackAllowsInline -bool false
-
-## Update extensions automatically
-defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
-
-# -----------------------------------------------
-#   8. TIME MACHINE
-# -----------------------------------------------
-
-## Prevent Time Machine from prompting to use new hard drives as backup volume
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# -----------------------------------------------
-#   9. ACTIVITY MONITOR
+#   6. ACTIVITY MONITOR
 # -----------------------------------------------
 
 ## Show the main window when launching Activity Monitor
@@ -316,33 +132,10 @@ defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 # -----------------------------------------------
-#   0. MAC APP STORE
-# -----------------------------------------------
-
-## Enable the automatic update check
-defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
-
-## Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
-## Download newly available updates in background
-defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
-
-## Install System data files & security updates
-defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
-
-## Turn on app auto-update
-defaults write com.apple.commerce AutoUpdate -bool true
-
-## Allow the App Store to reboot machine on macOS updates
-defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
-
-# -----------------------------------------------
-#   1. CLEANUP
+#   7. CLEANUP
 # -----------------------------------------------
 
 killall ActivityMonitor &> /dev/null
 killall cfprefsd &> /dev/null
 killall Dock &> /dev/null
 killall Finder &> /dev/null
-killall Safari &> /dev/null
