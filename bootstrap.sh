@@ -87,11 +87,15 @@ ln -sf "$PWD/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
 ## Create + symlink OpenCode directory
 mkdir -p "$HOME/.config/opencode"
 ln -sf "$PWD/opencode/agents" "$HOME/.config/opencode/agents"
+ln -sf "$PWD/opencode/commands" "$HOME/.config/opencode/commands"
 ln -sf "$PWD/opencode/skills" "$HOME/.config/opencode/skills"
 
 ## Create + symlink Sheldon directory + plugin file
 mkdir -p "$HOME/.config/sheldon"
 ln -sf "$PWD/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
+
+## Symlink VSCode User settings directory
+ln -sf "$PWD/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 
 # -----------------------------------------------
 #   3. DIRECTORIES
