@@ -24,7 +24,7 @@
 # -----------------------------------------------
 
 ## Clear the terminal on shell startup
-printf '\33c\e[3J'
+clear
 
 # -----------------------------------------------
 #   1. OPTIONS
@@ -326,7 +326,7 @@ alias refresh="source $HOME/.zshrc"
 # -----------------------------------------------
 
 ## Include Prompt configuration
-_source_or_cache starship init zsh
+_evalcache starship init zsh
 
 # -----------------------------------------------
 #   1. GIT INTERCEPTOR
