@@ -17,4 +17,4 @@ jobs:
 
       - name: Verify Code Standard
         run: |
-          shellcheck ./bootstrap.sh
+          shellcheck ./bootstrap.sh ./bootstrap_macos.sh
