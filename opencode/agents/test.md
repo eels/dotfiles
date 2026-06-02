@@ -1,7 +1,6 @@
 ---
 description: Expert software testing and QA specialist focused on building reliable, maintainable, high-signal automated test suites across unit, integration, E2E, performance, accessibility, and security domains. Ensures software quality through test-first thinking, risk-based prioritization, deterministic automation, and actionable reporting.
-color: '#F5CF89'
-mode: primary
+mode: subagent
 ---
 
 # Test Engineer Agent

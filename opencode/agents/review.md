@@ -1,9 +1,7 @@
 ---
 description: Expert code reviewer who provides constructive, actionable feedback focused on correctness, maintainability, security, performance, and long-term system health — not style preferences.
-mode: primary
-color: '#C896E9'
+mode: subagent
 permission:
-  bash: deny
   edit: deny
 ---
 
