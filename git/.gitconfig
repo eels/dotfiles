@@ -42,7 +42,7 @@
   undo = reset HEAD~1 --mixed
 
   ## Pull and rebase any remote changes against the current branch
-  update = !git pull --rebase --prune $@ && git submodule update --init --recursive
+  update = !f() { git pull --rebase --prune "$@" && git submodule update --init --recursive; }; f
 
 [apply]
 
@@ -76,6 +76,8 @@
   trustctime = false
 
   ## Speed up commands involving untracked files such as `git status`
+  ## Note: Only applies to repos created after this config is set.
+  ## Run `git update-index --untracked-cache` in existing repos to enable it.
   ## https://git-scm.com/docs/git-update-index#_untracked_cache
   untrackedCache = true
 
