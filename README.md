@@ -9,7 +9,7 @@
   <br />
   <div>Another .dotfiles repository, except this one is mine.</div>
   <br />
-  <pre>git clone https://github.com/eels/dotfiles ~/.dotfiles</pre>
+  <pre>git clone https://github.com/eels/dotfiles ~/dotfiles</pre>
   <h1></h1>
 </div>
 
@@ -18,7 +18,7 @@
 ### Clone
 
 ```bash
-git clone https://github.com/eels/dotfiles ~/.dotfiles
+git clone https://github.com/eels/dotfiles ~/dotfiles
 ```
 
 ### Install Xcode Command Line Tools
@@ -30,14 +30,14 @@ xcode-select --install
 ### Bootstrap
 
 ```bash
-cd ~/.dotfiles
+cd ~/dotfiles
 bash bootstrap.sh
 ```
 
 ### Set macOS defaults
 
 ```bash
-cd ~/.dotfiles
+cd ~/dotfiles
 bash bootstrap_macos.sh
 ```
 
