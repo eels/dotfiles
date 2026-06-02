@@ -32,5 +32,8 @@ github = "grigorii-zander/zsh-npm-scripts-autocomplete"
 use = ["{{ name }}.plugin.zsh"]
 apply = ["defer"]
 
+[plugins.zsh-evalcache]
+github = "mattmc3/zsh-evalcache"
+
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"

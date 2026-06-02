@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # -----------------------------------------------
 #   Author: Liam Howell
@@ -59,7 +59,7 @@ function __gitdone() {
   currentbranch=$(git rev-parse --abbrev-ref HEAD)
 
   git checkout "$defaultbranch"
-  git delete "$currentbranch"
+  git branch -d "$currentbranch"
 }
 
 ## Override functionality for `git push`

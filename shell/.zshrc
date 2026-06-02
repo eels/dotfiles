@@ -74,10 +74,7 @@ export LANGUAGE="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
 
 ## History options
-export HISTCONTROL="ignoreboth"
-export HISTDUP="erase"
 export HISTFILE="$HOME/.zsh_history"
-export HISTFILESIZE="${HISTSIZE}"
 export HISTORY_IGNORE="(exit|ls|bg|fg|history|clear)"
 export HISTSIZE="32768"
 export SAVEHIST="32768"
@@ -131,7 +128,7 @@ function zshaddhistory() {
   trimmed_arg="$(echo "$1" | xargs)"
   cmd="${trimmed_arg%% *}"
 
-  if [[ $trimmed_arg == ${~HISTORY_IGNORE} ]]; then
+  if [[ $cmd == ${~HISTORY_IGNORE} ]]; then
     return 1
   fi
 
@@ -154,44 +151,36 @@ bindkey '^[[B' history-substring-search-down
 
 ## Create an archive of a given directory
 function archive() {
-  local archive_path
-
-  [ $# -eq 0 ] && archive_path=$PWD || archive_path=$1
+  local archive_path="${1:-$PWD}"
 
   if [[ ! -f $archive_path && ! -d $archive_path ]]; then
     echo "$archive_path is not a file or folder"
     return
   fi
 
-  7z a "$(basename "$archive_path").7z" "$archive_path" -xr!.DS_Store
-  mv "$(basename "$archive_path").7z" "$(dirname "$archive_path")" > /dev/null 2>&1
+  7z a "$(dirname "$archive_path")/$(basename "$archive_path").7z" "$archive_path" -xr!.DS_Store
 }
 
 ## Set the modified date to equal the creation date of files of a given directory
 function restoredate() {
-  local target_path
+  local target_path="${1:-$PWD}"
 
-  [ $# -eq 0 ] && target_path=$PWD || target_path=$1
-
-  for f in "$target_path"/*; do
+  for f in "$target_path"/*(N); do
     SetFile -m "$(GetFileInfo -d "$f")" "$f"
   done
 }
 
 ## Copy the creation date of files of a given directory to the modified date
 function copyvideodate() {
-  local target_path
-  local output_path
-
-  [ $# -eq 0 ] && target_path=$PWD || target_path=$1
-  [ $# -eq 0 ] && output_path=$2
+  local target_path="${1:-$PWD}"
+  local output_path="${2:-$PWD}"
 
   if [[ ! -d $output_path ]]; then
     echo "$output_path is not a folder"
     return
   fi
 
-  for f in "$target_path"/*; do
+  for f in "$target_path"/*(N); do
     SetFile -m "$(GetFileInfo -d "$f")" "$output_path/${$(basename "$f")/.mov/.mp4}"
   done
 }
@@ -208,21 +197,12 @@ function makepassword() {
 
 ## Change working directory to the top-most Finder location
 function cdfinder() {
-  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || exit
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || return
 }
 
 ## Run last command with sudo
 function fuck() {
   sudo "$(history -p !!)"
-}
-
-## Kill the running process running the on specified port
-function killport() {
-  local pid
-
-  pid=$(lsof -n -i4TCP:"$1" | awk 'NR==1{print $11}')
-
-  kill -9 "$pid" > /dev/null 2>&1
 }
 
 ## Direct output to /dev/null
@@ -254,15 +234,14 @@ function testshelltime() {
 
   shell="${1-$SHELL}"
 
-  for i in $(seq 1 10); do
+  for i in {1..10}; do
     /usr/bin/time "$shell" -i -c exit
   done
 }
 
 ## Run the dotfiles bootstrap script in update mode
 function dotupdate() {
-  cd "$(readlink -f "$HOME/dotfiles")"
-  bash "$(readlink -f "$HOME/dotfiles/bootstrap.sh")" --update && cd -
+  cd "$HOME/dotfiles" && bash "$HOME/dotfiles/bootstrap.sh" --update && cd -
 }
 
 # -----------------------------------------------
@@ -271,7 +250,7 @@ function dotupdate() {
 
 ## Override the `mkdir` function to create a directory and change into it
 function __mkdir() {
-  "mkdir" -pv "$@" && cd "$_" || exit
+  "mkdir" -pv "$@" && cd "$_" || return
 }
 
 # -----------------------------------------------
@@ -304,10 +283,9 @@ alias whereami="echo $PWD"
 
 ## Copy Public/Private SSH key to clipboard
 alias getpubkey="pbcopy < $HOME/.ssh/id_ed25519.pub"
-alias getprikey="pbcopy < $HOME/.ssh/id_ed25519"
 
 ## Recursively delete `.DS_Store` files
-alias cleandir="find / -name '*.DS_Store' -type f -ls -delete > /dev/null 2>&1"
+alias cleandir="find $HOME -name '.DS_Store' -type f -delete > /dev/null 2>&1"
 
 ## Hide/show hidden files
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles 0 && killall Finder"
@@ -331,17 +309,14 @@ alias yarnup="cd $HOME/.config/yarn/global && rm -rf yarn.lock && yarn install &
 
 ## Open the dotfiles directory in vscode
 alias code="code --reuse-window"
-alias dotedit="code --reuse-window $(readlink -f "$HOME/dotfiles")"
+alias dotedit="code --reuse-window $HOME/dotfiles"
 
 ## Overwrite base `npx` function
 alias npx="npx --yes"
 alias ypx="npx"
 
-## Alias `fnm` as an alternate to `nvm`
-alias nvm="fnm"
-
 ## Reload the shell
-alias reload="exec $(which zsh) -l && clear"
+alias reload="exec ${ZSH:-$(command -v zsh)} -l"
 
 ## Refresh the zsh environment
 alias refresh="source $HOME/.zshrc"
@@ -351,7 +326,7 @@ alias refresh="source $HOME/.zshrc"
 # -----------------------------------------------
 
 ## Include Prompt configuration
-eval "$(starship init zsh)"
+_source_or_cache starship init zsh
 
 # -----------------------------------------------
 #   1. GIT INTERCEPTOR
