@@ -109,8 +109,8 @@ autoload -Uz compinit && compinit
 #   4. SOURCES
 # -----------------------------------------------
 
-## Include ASDF
-source "$(brew --prefix asdf)/libexec/asdf.sh"
+export PATH="$PATH:$HOME/.asdf/shims"
+export PATH="$PATH:$HOME/.yarn/bin"
 
 # -----------------------------------------------
 #   5. HOOKS
@@ -335,6 +335,9 @@ alias nvm="fnm"
 
 ## Reload the shell
 alias reload="exec $(which zsh) -l && clear"
+
+## Reload tmux
+alias reloadtmux="tmux source-file ~/dotfiles/tmux/tmux.conf"
 
 ## Refresh the zsh environment
 alias refresh="source $HOME/.zshrc"
