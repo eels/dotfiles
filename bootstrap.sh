@@ -76,6 +76,15 @@ done
 ## Symlink local secrets file if it exists
 [ -s "$PWD/shell/.localrc" ] && ln -sf "$PWD/shell/.localrc" "$HOME/.localrc"
 
+## Create + symlink Ghostty directory + config file
+[ ! -d "$HOME/.config/ghostty" ] && mkdir "$HOME/.config/ghostty"
+ln -sf "$PWD/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
+
+## Create + symlink OpenCode directory
+[ ! -d "$HOME/.config/opencode" ] && mkdir "$HOME/.config/opencode"
+ln -sf "$PWD/opencode/agents" "$HOME/.config/opencode/agents"
+ln -sf "$PWD/opencode/skills" "$HOME/.config/opencode/skills"
+
 ## Create + symlink Sheldon directory + plugin file
 [ ! -d "$HOME/.config/sheldon" ] && mkdir "$HOME/.config/sheldon"
 ln -sf "$PWD/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
