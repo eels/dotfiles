@@ -1,0 +1,64 @@
+# ----------------------------------------------
+#   Author: Liam Howell
+#   Description: Configuration options for Ghostty goodness
+# ----------------------------------------------
+
+## Font
+font-family-bold = "JetBrainsMono Nerd Font Bold"
+font-feature = -calt
+font-size = 14
+font-thicken = true
+
+## Shell
+command = "/opt/homebrew/bin/zsh --login"
+
+## Theme / Colors
+background = #292D3F
+cursor-color = #C7CBE0
+cursor-text = #C7CBE0
+foreground = #C7CBE0
+selection-background = #C7CBE0
+selection-foreground = #292D3F
+
+## ANSI Colors
+palette = 0=#697098
+palette = 1=#ED6E7D
+palette = 2=#B5E085
+palette = 3=#F5CF89
+palette = 4=#81AAFF
+palette = 5=#C896E9
+palette = 6=#93D8EC
+palette = 7=#C7CBE0
+palette = 8=#697098
+palette = 9=#ED6E7D
+palette = 10=#B5E085
+palette = 11=#F5CF89
+palette = 12=#81AAFF
+palette = 13=#C896E9
+palette = 14=#93D8EC
+palette = 15=#C7CBE0
+
+## Cursor
+cursor-style = block
+cursor-style-blink = false
+
+## Window
+title = " "
+window-height = 40
+window-padding-x = 18,10
+window-padding-y = 0,15
+window-save-state = never
+window-width = 165
+
+## macOS
+copy-on-select = false
+macos-icon = custom-style
+macos-icon-frame = plastic
+macos-icon-ghost-color = #ffffff
+macos-icon-screen-color = #1a1b26,#7aa2f7
+macos-option-as-alt = true
+macos-titlebar-style = tabs
+right-click-action = ignore
+
+## Confirm close behaviour
+confirm-close-surface = false
