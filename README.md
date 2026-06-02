@@ -38,7 +38,7 @@ bash bootstrap.sh
 
 ```bash
 cd ~/.dotfiles
-bash ./macos/defaults
+bash bootstrap_macos.sh
 ```
 
 ## Local Secrets & Other Personal Items
