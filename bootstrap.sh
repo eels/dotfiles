@@ -89,10 +89,6 @@ ln -sf "$PWD/opencode/skills" "$HOME/.config/opencode/skills"
 [ ! -d "$HOME/.config/sheldon" ] && mkdir "$HOME/.config/sheldon"
 ln -sf "$PWD/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 
-## Symlink tmux configuration to default location
-[ ! -d "$HOME/.config/tmux" ] && mkdir "$HOME/.config/tmux"
-ln -sf "$PWD/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
-
 # -----------------------------------------------
 #   3. NODE
 # -----------------------------------------------

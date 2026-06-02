@@ -4,6 +4,7 @@
 #   Author: Liam Howell
 #   Description: ZSH configuration, aliases, functions etc
 #
+#   0. BOOT
 #   1. OPTIONS
 #   2. EXPORTS
 #   3. PLUGINS
@@ -16,8 +17,14 @@
 #   0. PROMPT
 #   1. GIT INTERCEPTOR
 #   2. LOCAL SECRETS
-#   3. BOOT TMUX
 # -----------------------------------------------
+
+# -----------------------------------------------
+#   0. BOOT
+# -----------------------------------------------
+
+## Clear the terminal on shell startup
+printf '\33c\e[3J'
 
 # -----------------------------------------------
 #   1. OPTIONS
@@ -336,9 +343,6 @@ alias nvm="fnm"
 ## Reload the shell
 alias reload="exec $(which zsh) -l && clear"
 
-## Reload tmux
-alias reloadtmux="tmux source-file ~/dotfiles/tmux/tmux.conf"
-
 ## Refresh the zsh environment
 alias refresh="source $HOME/.zshrc"
 
@@ -362,26 +366,3 @@ eval "$(starship init zsh)"
 
 ## Include local secrets
 [ -s "$HOME/.localrc" ] && source "$HOME/.localrc"
-
-# -----------------------------------------------
-#   3. BOOT TMUX
-# -----------------------------------------------
-
-## Exit early if running in a non-tmux compatible terminal
-if [[ $- != *i* ]] || [ -n "$TMUX" ]; then
-  return 2>/dev/null
-fi
-
-## Exit early if running in a VSCode terminal
-if [ "$TERM_PROGRAM" = "vscode" ] || [ "$VSCODE_RESOLVING_ENVIRONMENT" = "1" ]; then
-  return 2>/dev/null
-fi
-
-## Get a list of all tmux sessions
-sessions=$(tmux list-sessions -F "#{session_name}" 2>/dev/null)
-
-## Get the first tmux session from the list of sessions
-first_session=$(echo "$sessions" | head -n 1)
-
-## Boot tmux if it's not already running
-[[ -n "$sessions" ]] && exec tmux attach -t "$first_session" || exec tmux new -t "default session"

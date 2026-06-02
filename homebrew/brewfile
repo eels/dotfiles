@@ -13,7 +13,6 @@ brew 'mas'
 brew 'p7zip'
 brew 'sheldon'
 brew 'starship'
-brew 'tmux'
 brew 'zsh'
 
 cask 'beekeeper-studio'
