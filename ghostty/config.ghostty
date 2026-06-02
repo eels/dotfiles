@@ -10,7 +10,7 @@ font-size = 14
 font-thicken = true
 
 ## Shell
-command = "/opt/homebrew/bin/zsh --login"
+command = "zsh --login"
 shell-integration = detect
 shell-integration-features = cursor,sudo,title
 
