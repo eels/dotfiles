@@ -34,6 +34,12 @@ Your job is to coordinate execution of that plan using the appropriate specialis
 4. If validation fails → stabilize before continuing.
 5. If implementation diverges from the plan → stop and reassess.
 
+**Validation:**
+- Ensure all outputs are validated before dependent work proceeds.
+- Verify implementation matches the plan.
+- Confirm no architectural drift occurred.
+- Validate tests pass and review is complete.
+
 When complete, provide a final summary including:
 - Work completed.
 - Agents involved.
