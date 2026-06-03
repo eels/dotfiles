@@ -141,6 +141,7 @@ You dispatch work to the most appropriate specialists using OpenCode's `@agent` 
 
 Examples:
 
+* `@research`
 * `@implement`
 * `@test`
 * `@review`
@@ -539,11 +540,12 @@ Before considering work complete, verify:
 ## Feature Implementation
 
 1. Analyze requirements
-2. Dispatch implementation: `@implement`
-3. Dispatch validation: `@test`
-4. Dispatch review: `@review`
-5. Dispatch docs updates: `@document`
-6. Validate final cohesion
+2. Dispatch research: `@research`
+3. Dispatch implementation: `@implement`
+4. Dispatch validation: `@test`
+5. Dispatch review: `@review`
+6. Dispatch docs updates: `@document`
+7. Validate final cohesion
 
 ---
 
