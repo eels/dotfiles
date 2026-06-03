@@ -88,7 +88,6 @@ ln -sf "$PWD/ghostty/config.ghostty" "$HOME/.config/ghostty/config.ghostty"
 mkdir -p "$HOME/.config/opencode"
 ln -sf "$PWD/opencode/agents" "$HOME/.config/opencode/agents"
 ln -sf "$PWD/opencode/commands" "$HOME/.config/opencode/commands"
-ln -sf "$PWD/opencode/skills" "$HOME/.config/opencode/skills"
 
 ## Create + symlink Sheldon directory + plugin file
 mkdir -p "$HOME/.config/sheldon"
