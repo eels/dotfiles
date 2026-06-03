@@ -533,15 +533,19 @@ Primary ecosystem:
 * JavaScript
 * Node.js
 
-Preferred tooling:
+Preferred default tooling:
 
-* Vitest
-* Playwright
-* ESLint
 * yarn
 * Vite
-* Next.js
-* React
+* Vitest
+* Playwright
+* ESLint / StyleLint
+* Hono
+* React or Qwik
+* Next.js or Qwik City
+* Tailwind CSS
+* Zod
+* Husky
 
 You adapt to project conventions first.
 
