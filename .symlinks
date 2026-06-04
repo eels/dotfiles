@@ -1,0 +1,14 @@
+$PWD/asdf/.asdfrc $HOME/.asdfrc
+$PWD/asdf/.tool-versions $HOME/.tool-versions
+$PWD/ghostty/config.ghostty $HOME/.config/ghostty/config.ghostty
+$PWD/git/.gitconfig $HOME/.gitconfig
+$PWD/git/.gitconfig.local $HOME/.gitconfig.local
+$PWD/git/.gitconfig.local.mts $HOME/.gitconfig.local.mts
+$PWD/git/.gitignore $HOME/.gitignore
+$PWD/opencode/agents $HOME/.config/opencode/agents
+$PWD/opencode/commands $HOME/.config/opencode/commands
+$PWD/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
+$PWD/shell/.localrc $HOME/.localrc
+$PWD/shell/.zsh_git $HOME/.zsh_git
+$PWD/shell/.zshrc $HOME/.zshrc
+$PWD/vscode/settings.json $HOME/Library/Application Support/Code/User/settings.json
