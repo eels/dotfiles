@@ -32,8 +32,8 @@ function parse_line() {
   [ -z "$TRIM_LINE" ] && return 1
 
   eval "parts=($line)"
-  SRC="${parts[1]}"
-  DEST="${parts[2]}"
+  SRC="${parts[0]}"
+  DEST="${parts[1]}"
 }
 
 ## Verify the source path exists before attempting to link
@@ -44,19 +44,6 @@ function source_exists() {
 ## Create the parent directory of the destination path if it does not exist
 function ensure_parent_dir() {
   mkdir -p "$(dirname "$DEST")"
-}
-
-## Remove an existing non-symlink target that would block `ln -sf`
-function remove_conflicting_target() {
-  [ -e "$DEST" ] || [ -L "$DEST" ] || return 0
-  [ -L "$DEST" ] && return 0
-
-  if [ -d "$DEST" ]; then
-    echo "✗ Skipping $DEST - existing directory, not a symlink" >&2
-    return 1
-  fi
-
-  rm -f "$DEST"
 }
 
 ## Create the symlink and print a status line
@@ -73,7 +60,6 @@ function process_config() {
     parse_line "$line" || continue
     source_exists || continue
     ensure_parent_dir
-    remove_conflicting_target || continue
     create_symlink
   done < "$config"
 }
