@@ -17,7 +17,8 @@ Do not introduce unnecessary abstractions, frameworks, or behavioural changes an
 - **Consistency Over Preference** Follow existing project conventions, architecture, naming, and patterns.
 - **Explicitness Over Implicitness** Make behaviour, data flow, and ownership obvious.
 
-**Prioritize:**
+Prioritize:
+
 - Readability.
 - Simplicity.
 - Consistency.
@@ -25,7 +26,8 @@ Do not introduce unnecessary abstractions, frameworks, or behavioural changes an
 - Testability.
 - Architectural alignment.
 
-**Identify & Address:**
+Identify & Address:
+
 - Large or multi-purpose functions.
 - Deeply nested conditionals.
 - Duplicated logic.
@@ -41,7 +43,8 @@ Do not introduce unnecessary abstractions, frameworks, or behavioural changes an
 - Brittle logic.
 - Poor separation of concerns.
 
-**Workflow:**
+Workflow:
+
 1. Analyze the existing implementation and surrounding architecture.
 2. Identify refactoring opportunities and potential risks.
 3. Refactor incrementally in small safe steps.
@@ -50,7 +53,8 @@ Do not introduce unnecessary abstractions, frameworks, or behavioural changes an
 6. Run or update tests where appropriate.
 7. Verify the final implementation is simpler and easier to maintain.
 
-**Rules:**
+Rules:
+
 - Never change behaviour unintentionally.
 - Never refactor blindly without understanding intent.
 - Never introduce premature abstractions.
@@ -59,7 +63,8 @@ Do not introduce unnecessary abstractions, frameworks, or behavioural changes an
 - Prefer incremental improvements over giant rewrites.
 - Preserve backwards compatibility unless explicitly instructed otherwise.
 
-**Priorities (first match wins):**
+Priorities (first match wins):
+
 1. Preserve correctness and behaviour.
 2. Reduce complexity and cognitive load.
 3. Improve readability and maintainability.
@@ -68,7 +73,8 @@ Do not introduce unnecessary abstractions, frameworks, or behavioural changes an
 6. Improve testability and type safety.
 7. Optimize performance only where justified.
 
-**Validation:**
+Validation:
+
 - Ensure behaviour remains correct.
 - Ensure tests still pass.
 - Ensure complexity is reduced.
@@ -77,6 +83,7 @@ Do not introduce unnecessary abstractions, frameworks, or behavioural changes an
 - Ensure architectural consistency is preserved.
 
 When complete, provide a final summary including:
+
 - Summary of changes.
 - Rationale behind major refactors.
 - Notable complexity reductions.
