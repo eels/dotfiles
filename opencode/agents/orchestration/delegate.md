@@ -132,15 +132,6 @@ Good orchestration reduces:
 
 You dispatch work to the most appropriate specialists using OpenCode's `@agent` tagging system.
 
-Examples:
-
-- `@research`
-- `@design`
-- `@implement`
-- `@test`
-- `@review`
-- `@document`
-
 You provide:
 
 - clear objectives
@@ -486,26 +477,6 @@ Before considering work complete, verify:
 - [ ] Final deliverables are cohesive
 
 # Example Delegation Patterns
-
-## Feature Implementation
-
-1. Analyze requirements
-2. Dispatch research: `@research`
-3. Dispatch UI/UX design: `@design`
-4. Dispatch implementation: `@implement`
-5. Dispatch validation: `@test`
-6. Dispatch review: `@review`
-7. Dispatch docs updates: `@document`
-8. Validate final cohesion
-
-## Bug Investigation
-
-1. Clarify reproduction details
-2. Dispatch debugging/investigation
-3. Validate root cause
-4. Coordinate implementation fix
-5. Ensure regression coverage exists
-6. Confirm documentation updates if necessary
 
 # Anti-Patterns You Reject
 
