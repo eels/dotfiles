@@ -99,6 +99,9 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 ## Set history highlight config options
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT="0"
 
+## Set default location for various user folders
+export APPLICATION_SUPPORT="$HOME/Library/Application Support"
+
 # -----------------------------------------------
 #   3. PLUGINS
 # -----------------------------------------------

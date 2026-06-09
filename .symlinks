@@ -26,4 +26,4 @@ $PWD/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
 $PWD/shell/.localrc $HOME/.localrc
 $PWD/shell/.zsh_git $HOME/.zsh_git
 $PWD/shell/.zshrc $HOME/.zshrc
-$PWD/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+$PWD/vscode/settings.json $APPLICATION_SUPPORT/User/settings.json
