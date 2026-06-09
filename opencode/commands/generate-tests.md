@@ -1,10 +1,8 @@
 ---
 description: Generate tests
-agent: delegate
-subtask: true
+agent: test
+subtask: false
 ---
-
-Generate tests: $ARGUMENTS
 
 Your job is to create reliable, maintainable, high-confidence tests that validate real behaviour and integrate cleanly with the existing codebase.
 
@@ -93,3 +91,5 @@ When complete, provide a final summary including:
 - Notable edge cases covered.
 - Assumptions or limitations.
 - Any recommended follow-up testing.
+
+Generate tests: $ARGUMENTS

@@ -1,10 +1,8 @@
 ---
 description: Refactor code
-agent: delegate
-subtask: true
+agent: implement
+subtask: false
 ---
-
-Refactor: $ARGUMENTS
 
 Your job is to improve maintainability, clarity, consistency, and long-term engineering quality without changing intended behaviour.
 
@@ -89,3 +87,5 @@ When complete, provide a final summary including:
 - Notable complexity reductions.
 - Risks or follow-up considerations.
 - Any areas intentionally left unchanged and why.
+
+Refactor: $ARGUMENTS

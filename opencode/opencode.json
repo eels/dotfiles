@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "plan",
+  "formatter": false,
+  "permission": {
+    "edit": {
+      "~/.config/opencode/**": "deny",
+      "~/dotfiles/opencode/**": "deny"
+    },
+    "external_directory": {
+      "~/.config/opencode/**": "allow",
+      "~/dotfiles/opencode/**": "allow"
+    }
+  }
+}
