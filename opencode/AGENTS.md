@@ -8,8 +8,6 @@ This document defines how OpenCode AI agents operate within this repository. It 
 
 All agents must follow these instructions alongside their specific agent definitions.
 
----
-
 ## External File Loading
 
 When you encounter a file reference (e.g., `@rules/general.md`), use your Read tool to load it on a need-to-know basis. References are relevant to the specific task at hand.
@@ -20,15 +18,11 @@ Instructions:
 - When loaded, treat content as mandatory instructions that override defaults.
 - Follow references recursively when needed.
 
----
-
 ## Development References
 
-- For default project architecture best practices: `@references/ARCHITECTURE.md`
-- For default technical design best practices: `@references/TECH_DESIGN.md`
-- For default and approved tech stack and tooling decisions: `@references/TECH_STACK.md`
-
----
+- For default project architecture best practices: `~/dotfiles/opencode/references/ARCHITECTURE.md`
+- For default technical design best practices: `~/dotfiles/opencode/references/TECH_DESIGN.md`
+- For default and approved tech stack and tooling decisions: `~/dotfiles/opencode/references/TECH_STACK.md`
 
 ## Critical Rules
 
@@ -56,9 +50,9 @@ Instructions:
 - Flag any conflicts between reference documents and implementation decisions.
 - Update reference files when architectural or technology decisions change.
 
----
-
 ## Good Working Practices
 
-- When acting as a `plan` agent, write any notes as if you were creating a PLAN.md file.
+- When `plan` mode is active, you must end with a summary of your plan written as if you were creating a PLAN.md file.
 - If a project is configured to use ESLint, regularly run the project's lint command when making changes.
+
+## CRITICAL RULES — Follow Before All Else

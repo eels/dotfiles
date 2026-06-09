@@ -21,7 +21,7 @@ $PWD/opencode/commands/refactor.md $HOME/.config/opencode/commands/refactor.md
 $PWD/opencode/opencode.json $HOME/.config/opencode/opencode.json
 $PWD/opencode/references/ARCHITECTURE.md $HOME/.config/opencode/references/ARCHITECTURE.md
 $PWD/opencode/references/TECH_DESIGN.md $HOME/.config/opencode/references/TECH_DESIGN.md
-$PWD/opencode/references/TECH_STACK_UPDATED.md $HOME/.config/opencode/references/TECH_STACK_UPDATED.md
+$PWD/opencode/references/TECH_STACK.md $HOME/.config/opencode/references/TECH_STACK.md
 $PWD/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
 $PWD/shell/.localrc $HOME/.localrc
 $PWD/shell/.zsh_git $HOME/.zsh_git

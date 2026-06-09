@@ -14,13 +14,6 @@ It is intentionally concise and optimised for:
 - edge-runtime compatibility
 - predictable architectural decisions
 
-If this document conflicts with:
-
-1. `AGENTS.md` → follow `AGENTS.md`
-2. direct task requirements → follow the task requirements
-
----
-
 ## Core Technology Decisions
 
 | Concern | Approved Technology | Notes |
@@ -43,8 +36,6 @@ If this document conflicts with:
 | IaC | Terraform | Optional for larger systems |
 | Monorepo Workflow | Turborepo | Preferred monorepo tooling |
 
----
-
 ## Frontend Standards
 
 ### Preferred
@@ -58,7 +49,7 @@ If this document conflicts with:
 - colocated routes/loaders/actions
 - framework-native state primitives
 - shared lightweight UI primitives
-- use `@micheldever/qwik-compose` for Tailwind-powered component composition and variants
+- ALWAYS use `@micheldever/qwik-compose` for Tailwind-powered component composition and variants
 - keep Tailwind class composition declarative and reusable
 - prefer composable variant-driven styling patterns over inline conditional class logic
 
@@ -73,8 +64,6 @@ If this document conflicts with:
 - ad-hoc Tailwind class concatenation across components
 - duplicated variant logic
 - deeply nested conditional class builders
-
----
 
 ## Backend Standards
 
@@ -97,8 +86,6 @@ If this document conflicts with:
 - fat controllers/routes
 - circular dependencies
 
----
-
 ## Database Standards
 
 ### Preferred
@@ -117,8 +104,6 @@ If this document conflicts with:
 - hidden DB side effects
 - oversized JSON blobs
 - business logic in triggers
-
----
 
 ## Testing Stack
 
@@ -143,8 +128,6 @@ Avoid:
 - snapshot-heavy suites
 - excessive E2E coverage
 - over-mocking internals
-
----
 
 ## Repository Standards
 
@@ -171,8 +154,6 @@ Required before merge:
 | Type Checking | TypeScript |
 | Git Hooks | Husky |
 
----
-
 ## Dependency Philosophy
 
 ### Preferred
@@ -191,8 +172,6 @@ Required before merge:
 - unnecessary utility wrappers
 - Node-specific packages in edge runtimes
 
----
-
 ## AI Agent Guidance
 
 ### When Implementing
@@ -203,17 +182,15 @@ Required before merge:
 - keep changes small and focused
 - maintain edge compatibility
 - prefer editing existing files
-- when building reusable UI components with Qwik + Tailwind CSS, use `@micheldever/qwik-compose`
+- when building reusable UI components with Qwik + Tailwind CSS, ALWAYS use `@micheldever/qwik-compose`
 - prefer shared composable styling primitives over duplicated Tailwind utilities
 - centralise component variant definitions where possible
-
----
 
 ## Qwik + Tailwind Composition Standards
 
 When using Qwik together with Tailwind CSS:
 
-- use `@micheldever/qwik-compose` for reusable component styling
+- ALWAYS use `@micheldever/qwik-compose` for reusable component styling
 - define variants through composition utilities rather than manual string concatenation
 - prefer predictable variant APIs for shared UI primitives
 - keep styling colocated in a sibling `styled.ts` file to the component
@@ -232,8 +209,6 @@ When using Qwik together with Tailwind CSS:
 - bypass validation or typing
 - duplicate existing utilities
 - introduce unnecessary hydration
-
----
 
 ## Final Principle
 

@@ -13,13 +13,6 @@ This file is intended to help:
 - contributors understand tradeoffs
 - maintain long-term technical coherence
 
-If this document conflicts with:
-
-1. `AGENTS.md` → follow `AGENTS.md`
-2. direct task requirements → follow the task requirements
-
----
-
 ## Engineering Philosophy
 
 ### Decision Priorities
@@ -33,8 +26,6 @@ When multiple solutions are possible, prioritise:
 5. operational efficiency
 6. performance
 7. abstraction reuse
-
----
 
 ## Design Preferences
 
@@ -59,8 +50,6 @@ When multiple solutions are possible, prioritise:
 - tightly coupled modules
 - hidden runtime behaviour
 
----
-
 ## Frontend Design Guidance
 
 ### Component Design
@@ -79,8 +68,6 @@ Avoid:
 - business logic embedded in UI
 - unnecessary client effects
 - excessive prop drilling without justification
-
----
 
 ## Backend Design Guidance
 
@@ -103,8 +90,6 @@ All external input should:
 - fail explicitly
 - avoid implicit coercion unless intentional
 
----
-
 ## API Design Guidance
 
 ### API Characteristics
@@ -126,8 +111,6 @@ Responses should:
 - expose meaningful error messages
 - support pagination where needed
 
----
-
 ## Testing Design Guidance
 
 ### Preferred Testing Style
@@ -145,8 +128,6 @@ Priority order:
 2. validation boundaries
 3. integration behaviour
 4. critical user journeys
-
----
 
 ## Performance Design Guidance
 
@@ -169,8 +150,6 @@ Design assuming:
 - Node APIs may not exist
 - latency should remain globally low
 
----
-
 ## Dependency Evaluation Standards
 
 Before adding a dependency, evaluate:
@@ -180,8 +159,6 @@ Before adding a dependency, evaluate:
 - TypeScript support
 - bundle/runtime cost
 - whether native APIs solve the problem already
-
----
 
 ## AI Agent Implementation Guidance
 
@@ -213,8 +190,6 @@ AI agents should:
 - replace lightweight solutions with heavyweight frameworks
 - introduce Node-only assumptions into edge runtimes
 
----
-
 ## Related Documentation
 
 | Document | Purpose |
@@ -224,8 +199,6 @@ AI agents should:
 | `ARCHITECTURE.md` | Structural system architecture |
 | `README.md` | Project overview |
 | `CONTRIBUTING.md` | Contribution standards |
-
----
 
 ## Final Principle
 

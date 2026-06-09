@@ -14,13 +14,6 @@ The goal is to maintain:
 - predictable code organisation
 - AI-agent-friendly implementation patterns
 
-If this document conflicts with:
-
-1. `AGENTS.md` → follow `AGENTS.md`
-2. direct task requirements → follow the task requirements
-
----
-
 ## Architectural Principles
 
 ### Core Principles
@@ -33,8 +26,6 @@ If this document conflicts with:
 - design for edge-first deployment
 - minimise operational overhead
 - favour consistency over novelty
-
----
 
 ## High-Level System Architecture
 
@@ -58,8 +49,6 @@ Preferred order:
 3. shared state only when justified
 
 Avoid global state stores unless complexity requires them.
-
----
 
 ### Backend Architecture
 
@@ -89,8 +78,6 @@ Business logic should:
 - support composition
 - remain independently testable
 
----
-
 ## API Architecture
 
 ### Preferred
@@ -109,8 +96,6 @@ Business logic should:
 - leaking internal implementation details
 - breaking API changes without migration plans
 
----
-
 ## Database Architecture
 
 ### Preferred Data Design
@@ -128,8 +113,6 @@ Business logic should:
 - excessive JSON columns
 - implicit ORM behaviour
 - business logic in database triggers
-
----
 
 ## Infrastructure Architecture
 
@@ -159,8 +142,6 @@ Avoid:
 - multi-cloud complexity
 - stateful runtimes
 
----
-
 ## Security Architecture
 
 ### Required
@@ -177,8 +158,6 @@ Avoid:
 - trust client validation
 - expose internal stack traces
 - log sensitive user data
-
----
 
 ## Performance Architecture
 
@@ -197,54 +176,6 @@ Avoid:
 - large hydration payloads
 - N+1 database queries
 - premature optimisation
-
----
-
-## Recommended Repository Structure
-
-```text
-applications/
-  api/
-    src/
-      connections/
-      datasources/
-      lib/
-      middleware/
-      routes/
-      types/
-  web/
-    src/
-      lib/
-      loaders/
-      queries/
-      routes/
-      styles/
-      types/
-      ui/
-        tokens/
-        components/
-        features/
-        hooks/
-        utilities/
-
-common/
-  types/
-    src/
-  schemas/
-    src/
-  utilities/
-    src/
-
-configurations/
-  stylelint/
-    lib/
-  tailwindcss/
-    lib/
-  typescript/
-    lib/
-```
-
----
 
 ## AI Agent Architectural Guidance
 
@@ -267,8 +198,6 @@ Never introduce:
 - duplicated service layers
 - tightly coupled feature modules
 - Node-specific runtime assumptions
-
----
 
 ## Final Principle
 
