@@ -6,9 +6,14 @@ $PWD/git/.gitconfig.local $HOME/.gitconfig.local
 $PWD/git/.gitconfig.local.mts $HOME/.gitconfig.local.mts
 $PWD/git/.gitignore $HOME/.gitignore
 $PWD/opencode/AGENTS.md $HOME/.config/opencode/AGENTS.md
+$PWD/opencode/agents/analytical/context-scout.md $HOME/.config/opencode/agents/context-scout.md
+$PWD/opencode/agents/analytical/external-context-scout.md $HOME/.config/opencode/agents/external-context-scout.md
+$PWD/opencode/agents/analytical/prioritise.md $HOME/.config/opencode/agents/prioritise.md
 $PWD/opencode/agents/analytical/research.md $HOME/.config/opencode/agents/research.md
 $PWD/opencode/agents/analytical/review.md $HOME/.config/opencode/agents/review.md
 $PWD/opencode/agents/analytical/test.md $HOME/.config/opencode/agents/test.md
+$PWD/opencode/agents/creative/architect.md $HOME/.config/opencode/agents/architect.md
+$PWD/opencode/agents/creative/copywrite.md $HOME/.config/opencode/agents/copywrite.md
 $PWD/opencode/agents/creative/design.md $HOME/.config/opencode/agents/design.md
 $PWD/opencode/agents/creative/document.md $HOME/.config/opencode/agents/document.md
 $PWD/opencode/agents/creative/implement.md $HOME/.config/opencode/agents/implement.md
