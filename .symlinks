@@ -21,7 +21,7 @@ $PWD/opencode/agents/orchestration/delegate.md $HOME/.config/opencode/agents/del
 $PWD/opencode/commands/commit.md $HOME/.config/opencode/commands/commit.md
 $PWD/opencode/commands/generate-design-documentation.md $HOME/.config/opencode/commands/generate-design-documentation.md
 $PWD/opencode/commands/generate-tests.md $HOME/.config/opencode/commands/generate-tests.md
-$PWD/opencode/commands/implement.md $HOME/.config/opencode/commands/implement.md
+$PWD/opencode/commands/orchestrate.md $HOME/.config/opencode/commands/orchestrate.md
 $PWD/opencode/commands/refactor.md $HOME/.config/opencode/commands/refactor.md
 $PWD/opencode/opencode.json $HOME/.config/opencode/opencode.json
 $PWD/opencode/references/ARCHITECTURE.md $HOME/.config/opencode/references/ARCHITECTURE.md

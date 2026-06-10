@@ -1,5 +1,5 @@
 ---
-description: Implement approved plan
+description: Orchestrate approved plan
 agent: delegate
 subtask: false
 ---
@@ -54,4 +54,4 @@ When complete, provide a final summary including:
 - Testing/review status.
 - Confirmation of delivery quality.
 
-Implement: $ARGUMENTS
+Orchestrate: $ARGUMENTS
