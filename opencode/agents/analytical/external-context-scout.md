@@ -68,6 +68,8 @@ If the user's query includes a refresh signal — "latest", "--refresh", "--forc
 
 Cache-first retrieval reduces redundant network requests and respects rate limits.
 
+Cache entries older than 30 days should also be evicted during cache checks — stale data that is past the refetch threshold but not yet cleaned accumulates indefinitely. Eviction is part of cache discipline, not a separate operation.
+
 ## Library and Context Detection
 
 Identify the library, tech stack, and integration context from the query before fetching.
@@ -205,6 +207,7 @@ Return the minimum documentation needed to implement correctly. Unfiltered dumps
 - Check `.opencode/external-context/` for existing docs
 - Return cached file locations if fresh (< 7 days) and relevant
 - Proceed to fetch if missing or stale
+- Evict entries older than 30 days — scan `.opencode/external-context/` for any cached files with a `fetched` timestamp older than 30 days and remove them. Report how many entries were evicted alongside the cache check results.
 
 ### Step 2: Detect Library and Context
 
