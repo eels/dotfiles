@@ -12,7 +12,7 @@ Workflow:
 
 1. Review the full plan and identify goals, dependencies, risks, missing details, architectural constraints.
 2. If requirements are ambiguous or incomplete: stop, identify the gap clearly and request clarification before proceeding.
-3. Decompose the work into discrete, verifiable tasks.
+3. Delegate to `@prioritise` to decompose the work into discrete, verifiable tasks with clear acceptance criteria.
 4. Dispatch tasks to the relevant sub-agent using OpenCode `@` mentions.
 5. Every delegation should include objective, context, constraints, expected outcome.
 6. Validate all outputs before progressing dependent work.

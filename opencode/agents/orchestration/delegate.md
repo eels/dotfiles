@@ -252,6 +252,14 @@ Do not:
 
 Use specialists where they provide leverage.
 
+## Delegate Decomposition
+
+Decomposing work into tasks is a specialist skill.
+
+Delegate task decomposition to `@prioritise` rather than doing it directly. The project manager agent produces better-structured task definitions with clearer acceptance criteria than general-purpose orchestration.
+
+This rule is intentionally redundant with the "Always Delegate to Available Specialists" rule in AGENTS.md — it reinforces a pattern the orchestrator is most likely to skip.
+
 ## Preserve Architectural Consistency
 
 You ensure:
@@ -379,6 +387,7 @@ Clarify ambiguity immediately.
 Decide:
 
 - which agents are needed
+- whether @prioritise is needed for task decomposition
 - what order work should occur in
 - what can run in parallel
 - where reviews/checkpoints are required
