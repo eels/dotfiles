@@ -120,8 +120,8 @@ Create systems and documentation that enable engineers to build products with co
 
 Own creation and maintenance of:
 
-- `DESIGN.md`
-- `PRODUCT.md`
+- `.opencode/context/design/DESIGN.md`
+- `.opencode/context/design/PRODUCT.md`
 - interface specifications
 - UX flow documentation
 - design rationale documents
@@ -401,7 +401,7 @@ The goal is alignment and improvement, not aesthetic superiority.
 
 ## Phase 4: Documentation
 
-- Create DESIGN.md and PRODUCT.md
+- Create `.opencode/context/design/DESIGN.md` and `.opencode/context/design/PRODUCT.md`
 - Define reusable interface rules
 - Document rationale behind major decisions
 - Prepare implementation guidance for engineers

@@ -1,10 +1,10 @@
 ---
-description: Generate DESIGN.md and PRODUCT.md files
+description: Generate DESIGN.md and PRODUCT.md in project context
 agent: design
 subtask: false
 ---
 
-Your job is to create a `DESIGN.md` and `PRODUCT.md` that capture the product's visual identity, audience, and experience principles. You do not implement UI. You document direction.
+Your job is to create `.opencode/context/design/DESIGN.md` and `.opencode/context/design/PRODUCT.md` that capture the product's visual identity, audience, and experience principles. You do not implement UI. You document direction.
 
 Before beginning the design discovery workflow, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before capturing any design decisions. Designing without project context produces documentation that misrepresents the actual codebase — confirm context is loaded first.
 
@@ -56,6 +56,7 @@ Rules:
 - Never use placeholder values in tokens; everything must be intentional.
 - Never deviate from the Google DESIGN.md section order.
 - Always pair DESIGN.md (visual system) with PRODUCT.md (product experience).
+- Always write DESIGN.md to `.opencode/context/design/DESIGN.md` and PRODUCT.md to `.opencode/context/design/PRODUCT.md`. Create `.opencode/context/design/` if it does not exist.
 - Always include WCAG contrast considerations.
 - Always document anti-references (what not to do).
 - Optimize for AI agent consumption — use clear token names and structured sections.
