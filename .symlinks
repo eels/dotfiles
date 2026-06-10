@@ -8,6 +8,8 @@ $PWD/git/.gitignore $HOME/.gitignore
 $PWD/opencode/AGENTS.md $HOME/.config/opencode/AGENTS.md
 $PWD/opencode/agents/analytical/context-scout.md $HOME/.config/opencode/agents/context-scout.md
 $PWD/opencode/agents/analytical/external-context-scout.md $HOME/.config/opencode/agents/external-context-scout.md
+$PWD/opencode/agents/analytical/investigate.md $HOME/.config/opencode/agents/investigate.md
+$PWD/opencode/agents/analytical/platform.md $HOME/.config/opencode/agents/platform.md
 $PWD/opencode/agents/analytical/prioritise.md $HOME/.config/opencode/agents/prioritise.md
 $PWD/opencode/agents/analytical/research.md $HOME/.config/opencode/agents/research.md
 $PWD/opencode/agents/analytical/review.md $HOME/.config/opencode/agents/review.md
