@@ -19,12 +19,15 @@ $PWD/opencode/agents/creative/document.md $HOME/.config/opencode/agents/document
 $PWD/opencode/agents/creative/implement.md $HOME/.config/opencode/agents/implement.md
 $PWD/opencode/agents/orchestration/delegate.md $HOME/.config/opencode/agents/delegate.md
 $PWD/opencode/commands/commit.md $HOME/.config/opencode/commands/commit.md
+$PWD/opencode/commands/context-extract.md $HOME/.config/opencode/commands/context-extract.md
+$PWD/opencode/commands/context-harvest.md $HOME/.config/opencode/commands/context-harvest.md
 $PWD/opencode/commands/generate-design-documentation.md $HOME/.config/opencode/commands/generate-design-documentation.md
 $PWD/opencode/commands/generate-tests.md $HOME/.config/opencode/commands/generate-tests.md
 $PWD/opencode/commands/orchestrate.md $HOME/.config/opencode/commands/orchestrate.md
 $PWD/opencode/commands/refactor.md $HOME/.config/opencode/commands/refactor.md
 $PWD/opencode/opencode.json $HOME/.config/opencode/opencode.json
 $PWD/opencode/references/ARCHITECTURE.md $HOME/.config/opencode/references/ARCHITECTURE.md
+$PWD/opencode/references/MVI_FORMAT.md $HOME/.config/opencode/references/MVI_FORMAT.md
 $PWD/opencode/references/TECH_DESIGN.md $HOME/.config/opencode/references/TECH_DESIGN.md
 $PWD/opencode/references/TECH_STACK.md $HOME/.config/opencode/references/TECH_STACK.md
 $PWD/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
