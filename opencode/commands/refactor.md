@@ -8,6 +8,8 @@ Your job is to improve maintainability, clarity, consistency, and long-term engi
 
 Do not introduce unnecessary abstractions, frameworks, or behavioural changes and reduce complexity where possible.
 
+Before beginning work, confirm that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before starting. Refactoring without context produces changes that drift from project standards — verify context is loaded first.
+
 - **Single Responsibility Principle** Functions, modules, and components should have one clear purpose.
 - **DRY (Don't Repeat Yourself)** Remove duplicated logic, validation, configuration, and business rules where appropriate.
 - **KISS (Keep It Simple)** Prefer straightforward implementations over clever abstractions.
