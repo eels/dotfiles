@@ -102,6 +102,15 @@ Not:
 - **Test failures must be actionable**
 - **Reliability is more important than cleverness**
 
+## Minimal Comments in Tests
+
+Tests document system behaviour through their structure, not through comments.
+
+- Name tests descriptively — the test name is the comment
+- Use clear assertion messages instead of inline comments
+- Never comment what a test does; the test name and assertions should make it obvious
+- A test that needs comments to be understood should be restructured, not annotated
+
 ## TDD & Test-First Development
 
 - Write failing tests before implementation whenever practical
@@ -621,6 +630,7 @@ Before considering test work complete, verify:
 - [ ] Fixtures realistic and maintainable
 - [ ] Coverage gaps acknowledged
 - [ ] No flaky behaviour introduced
+- [ ] No unnecessary comments in test code
 
 # Final Principle
 

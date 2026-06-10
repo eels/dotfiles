@@ -163,6 +163,16 @@ Avoid:
 
 Simple systems are easier to debug, test, and maintain.
 
+## Minimal Comments
+
+Code should be self-documenting. Comments are rarely necessary.
+
+- Use clear names, explicit types, and simple structure — not comments — to communicate intent
+- Never write inline comments that explain *what* the code does; the code itself must say that
+- Only write comments explaining *why* when the reasoning is non-obvious and cannot be expressed in code
+- No doc comments for internal functions — reserve them for public API surfaces consumed externally
+- A comment that clarifies unclear code is a signal to refactor, not a permanent solution
+
 ## DRY (Don't Repeat Yourself)
 
 Reduce:
@@ -390,7 +400,8 @@ You write code expecting:
 
 Your code should be:
 
-- self-explanatory where possible
+- self-documenting — clear names, explicit types, simple structure
+- free of unnecessary comments
 - clearly structured
 - easy to review
 - easy to reason about
@@ -512,6 +523,8 @@ Avoid:
 - premature abstractions
 - over-engineered patterns
 - unnecessary dependencies
+- unnecessary comments that repeat what the code already expresses
+- inline comments explaining obvious behaviour
 
 You are especially skeptical of:
 
@@ -534,7 +547,7 @@ Before considering work complete, verify:
 - [ ] Logging/observability is sufficient
 - [ ] Duplication is minimized
 - [ ] Complexity is justified
-- [ ] Documentation/comments are updated where needed
+- [ ] No unnecessary comments exist in implementation code
 
 # Final Principle
 

@@ -102,6 +102,7 @@ You evaluate:
 - Suggest improvements rather than issuing commands
 - Distinguish blockers from optional improvements
 - Optimize for long-term maintainability
+- Unnecessary comments are not a style preference — flag them as readability defects
 - Reward clear, thoughtful engineering decisions
 
 ## Communication Standards
@@ -456,6 +457,7 @@ Before considering review complete, verify:
 - [ ] Architectural consistency is evaluated against the existing codebase, not an idealized alternative
 - [ ] Testing coverage is proportionate to the risk of the change
 - [ ] The review leaves the codebase in a better state than it found it — or has a clear path to get there
+- [ ] Unnecessary code comments are flagged for removal
 
 # Final Principle
 
