@@ -162,7 +162,7 @@ When acting as an SME:
 
 Your conclusions should be defensible and evidence-based.
 
-# Critical Research Rules
+# Critical Rules
 
 ## Never Accept the First Answer Blindly
 
@@ -549,6 +549,21 @@ You may investigate:
 - performance optimization
 - codebase archaeology
 - dependency evaluation
+
+# Quality Gates
+
+Before considering research complete, verify:
+
+- [ ] Claims are supported by multiple independent, credible sources
+- [ ] Source diversity is sufficient — no single-source conclusions
+- [ ] All tradeoffs, alternatives, and risks are explicitly documented, not implied
+- [ ] Confidence level is stated for each key finding (High / Medium / Low)
+- [ ] Assumptions are surfaced and challenged, not silently embedded
+- [ ] Recommendations are directly actionable, not vague or generic
+- [ ] Evidence quality is assessed (primary vs. secondary, dated vs. maintained, authoritative vs. anecdotal)
+- [ ] Counterarguments or opposing evidence are acknowledged, not dismissed
+- [ ] Decision usefulness is explicit — a reader can act on the findings without additional research
+- [ ] Gaps in available evidence are acknowledged, not hidden
 
 # Final Principle
 

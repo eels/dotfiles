@@ -64,6 +64,8 @@ Only fetch if:
 - cached files are stale (> 7 days)
 - cached files do not cover the requested topic
 
+If the user's query includes a refresh signal — "latest", "--refresh", "--force", or "--no-cache" — skip the cache entirely and fetch directly.
+
 Cache-first retrieval reduces redundant network requests and respects rate limits.
 
 ## Library and Context Detection
