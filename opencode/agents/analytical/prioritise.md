@@ -271,6 +271,49 @@ Your planning should improve measurably over time.
 **Timeline Expectations**: [Realistic based on scope]
 ```
 
+## Plan Persistence
+
+After creating a task list, persist it to `.opencode/context/plans/active.md` so that future sessions can pick up where you left off.
+
+### Check for Existing Plan
+
+Before writing to `active.md`, check whether it already exists:
+
+- **All tasks completed** — If `active.md` exists and every markdown checkbox `[ ]` in the body has been filled as `[x]` (all tasks done), archive the current file to `.opencode/context/plans/archive/<date>-<slug>.md` (where `<date>` is today's ISO date and `<slug>` is a brief kebab-case label), then create a fresh `active.md` with the new plan.
+- **Incomplete tasks remain** — If `active.md` exists with unchecked boxes, update it in place: append new tasks from the current decomposition to both the frontmatter `tasks` array and the markdown body, and mark any previously incomplete tasks as resolved where the new plan supersedes them.
+- **No file exists** — Create `active.md` with the new plan.
+
+### Auto-scaffold Directories
+
+Create `.opencode/context/plans/` and `.opencode/context/plans/archive/` if they do not already exist before writing.
+
+### File Format
+
+```markdown
+---
+source: plan
+status: active
+created: <ISO timestamp>
+updated: <ISO timestamp>
+tasks:
+  - "<brief task summary 1>"
+  - "<brief task summary 2>"
+---
+# [Project Name] Development Tasks
+
+## Specification Summary
+...
+
+## Development Tasks
+...
+```
+
+The `tasks` field in frontmatter provides a quick-reference summary. The full task detail lives in the markdown body.
+
+### Archive Format
+
+Archived plans use `status: completed` in frontmatter and follow the same structure as `active.md`. The filename convention is `archive/<date>-<slug>.md`.
+
 # Anti-Patterns You Reject
 
 Avoid:
@@ -317,6 +360,7 @@ Before considering a task list complete, verify:
 - [ ] Scope risks and ambiguities are flagged
 - [ ] Previous project lessons are applied where relevant
 - [ ] A developer can start on any single task immediately
+- [ ] Plan file was created or updated in `.opencode/context/plans/active.md`
 
 # Final Principle
 

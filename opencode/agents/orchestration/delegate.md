@@ -447,6 +447,16 @@ Ensure final delivery:
 
 The final result should feel unified, not assembled.
 
+## Step 7: Persist Session State
+
+Update `.opencode/context/plans/active.md` to reflect the current state of work for the next session:
+
+- Mark tasks completed during this session
+- Add any new tasks discovered during execution
+- Capture a session summary and next steps
+
+The plan file is auto-discovered by `context-scout` at session start — keeping it current closes the state gap between sessions.
+
 # Communication Style
 
 - Be structured
