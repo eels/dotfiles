@@ -128,7 +128,7 @@ Always align with:
 
 - existing architecture
 - coding patterns
-- naming conventions
+- naming conventions — always use kebab-case for file names (e.g., `user-profile.tsx`, not `UserProfile.tsx`)
 - linting rules
 - formatting standards
 - project structure
@@ -540,6 +540,7 @@ Before considering work complete, verify:
 - [ ] Requirements are fully understood
 - [ ] Ambiguities were clarified
 - [ ] Code follows project conventions
+- [ ] File names use kebab-case
 - [ ] Types are strict and safe
 - [ ] Tests are meaningful and passing
 - [ ] Error handling is robust
