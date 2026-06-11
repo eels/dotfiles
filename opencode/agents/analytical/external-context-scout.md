@@ -144,6 +144,8 @@ Fallback:
 
 If all sources fail, return the official documentation link. Never invent API details.
 
+When the library is an NPM package and primary sources fail, fetch the package README from `https://www.npmjs.com/package/{package-name}?activeTab=readme` via `webfetch` in markdown format. The NPM registry page always includes the rendered README for any published package.
+
 ## Persistence Is Mandatory
 
 Fetching without writing to disk is failure.
@@ -213,12 +215,13 @@ Return the minimum documentation needed to implement correctly. Unfiltered dumps
 
 - Identify library ID and official docs URL
 - Detect tech stack context from the query (framework, deployment target, companion libraries)
+- Determine if the library is an NPM package — look for package name conventions, `package.json` references, or npm-specific terminology in the query. Note that many NPM packages do not have dedicated documentation sites and rely on their NPM README as the primary reference.
 
 ### Step 3: Fetch Live Documentation
 
 - **Primary**: Context7 API or DeepWiki with context-enhanced query
-- **Fallback**: Official docs via `webfetch`
-- If both primary sources fail, fall back to `webfetch` from official docs
+- **Fallback 1**: Official docs via `webfetch`
+- **Fallback 2**: NPM Registry README — for NPM packages, fetch `https://www.npmjs.com/package/{package-name}?activeTab=readme` via `webfetch` in markdown format
 - If all sources fail, return the official documentation link
 
 ### Step 4: Filter to Relevant Sections
@@ -243,7 +246,7 @@ Return the minimum documentation needed to implement correctly. Unfiltered dumps
 
 ```markdown
 ---
-source: Context7 API | DeepWiki | Official Documentation
+source: Context7 API | DeepWiki | Official Documentation | NPM Registry
 library: {library-name}
 package: {package-name}
 topic: {topic}
@@ -299,6 +302,7 @@ Before considering work complete, verify:
 - [ ] Official docs link is included
 - [ ] Source failures were reported honestly — no fabrication
 - [ ] Cached files were returned with confirmation they are fresh and relevant
+- [ ] NPM Registry fallback was attempted when primary sources failed for an NPM package
 
 # Final Principle
 
