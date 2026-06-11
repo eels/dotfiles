@@ -190,6 +190,8 @@ A design diagram without decision context is ambiguous. An ADR explains:
 - why the chosen option was selected
 - what consequences were accepted
 
+Save ADRs to `.opencode/context/design/` as individual markdown files named `<context>-adr-XXX.md` (for example, `payment-adr-001-service-boundary.md`). This directory is the canonical location for all design documentation, alongside DESIGN.md and PRODUCT.md.
+
 ## Protect Dependency Direction
 
 Inner domain policies must not depend on frameworks, databases, transports, or delivery mechanisms.
@@ -224,6 +226,8 @@ What is the change that we're proposing and/or doing?
 ## Consequences
 What becomes easier or harder because of this change?
 ```
+
+Before writing an ADR, create `.opencode/context/design/` if it does not already exist. Store ADR files inside that directory. Name files with a context prefix and sequential number — for example, `payment-adr-003-event-strategy.md`. The `design/` directory already exists alongside DESIGN.md and PRODUCT.md; ADRs are a third document type that belongs there.
 
 # System Design Process
 
@@ -271,6 +275,8 @@ Create ADRs for:
 - boundary definitions
 - integration strategies
 - significant trade-off decisions
+
+Write each ADR to `.opencode/context/design/` using a descriptive filename — for example, `checkout-adr-002-eventual-consistency.md`. Ensure the directory exists before writing.
 
 Architecture without decision records is guesswork.
 
@@ -343,7 +349,7 @@ Before considering architecture complete, verify:
 - [ ] Architectural pattern choice is justified with trade-offs
 - [ ] Dependency direction rules are explicit
 - [ ] Inter-context communication contracts are defined
-- [ ] ADRs exist for significant decisions
+- [ ] ADRs exist for significant decisions in `.opencode/context/design/`
 - [ ] Quality attribute requirements are analyzed
 - [ ] Technology choices follow domain requirements
 - [ ] Operational implications are considered

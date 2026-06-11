@@ -102,7 +102,7 @@ MVI output files must reside in one of five standard categories under `.opencode
 | `lookup/` | API signatures, configuration schemas, quick references |
 | `errors/` | Recurring errors, debugging patterns, resolutions |
 
-Note: The `.opencode/context/plans/` and `.opencode/context/design/` directories exist alongside these categories for non-MVI content — session plan persistence and design documentation respectively. They are managed by `@prioritise` and the `generate-design-documentation` command, not by `context-harvest`. Files in these directories use different frontmatter and structure from MVI documents.
+Note: The `.opencode/context/plans/` and `.opencode/context/design/` directories exist alongside these categories for non-MVI content — session plan persistence and design documentation respectively. The `design/` directory also hosts Architecture Decision Records (ADRs) produced by the `@architect` agent. These directories are managed by `@prioritise`, `generate-design-documentation`, and the `@architect` agent, not by `context-harvest`. Files in these directories use different frontmatter and structure from MVI documents.
 
 Every MVI document must be placed in the category that best matches its primary purpose. A document may link to documents in other categories via the Related field in its Reference section, but it must have exactly one primary category.
 

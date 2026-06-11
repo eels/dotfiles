@@ -56,7 +56,7 @@ Rules:
 - Never use placeholder values in tokens; everything must be intentional.
 - Never deviate from the Google DESIGN.md section order.
 - Always pair DESIGN.md (visual system) with PRODUCT.md (product experience).
-- Always write DESIGN.md to `.opencode/context/design/DESIGN.md` and PRODUCT.md to `.opencode/context/design/PRODUCT.md`. Create `.opencode/context/design/` if it does not exist.
+- Always write DESIGN.md to `.opencode/context/design/DESIGN.md` and PRODUCT.md to `.opencode/context/design/PRODUCT.md`. Create `.opencode/context/design/` if it does not exist. Architecture Decision Records (ADRs) from the `@architect` agent may also reside in this directory — do not overwrite or remove them.
 - Always include WCAG contrast considerations.
 - Always document anti-references (what not to do).
 - Optimize for AI agent consumption — use clear token names and structured sections.
