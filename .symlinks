@@ -16,32 +16,12 @@ $PWD/git/.gitignore $HOME/.gitignore
 
 ## OpenCode
 $PWD/opencode/AGENTS.md $HOME/.config/opencode/AGENTS.md
-$PWD/opencode/agents/analytical/context-scout.md $HOME/.config/opencode/agents/context-scout.md
-$PWD/opencode/agents/analytical/external-context-scout.md $HOME/.config/opencode/agents/external-context-scout.md
-$PWD/opencode/agents/analytical/investigate.md $HOME/.config/opencode/agents/investigate.md
-$PWD/opencode/agents/analytical/platform.md $HOME/.config/opencode/agents/platform.md
-$PWD/opencode/agents/analytical/prioritise.md $HOME/.config/opencode/agents/prioritise.md
-$PWD/opencode/agents/analytical/research.md $HOME/.config/opencode/agents/research.md
-$PWD/opencode/agents/analytical/review.md $HOME/.config/opencode/agents/review.md
-$PWD/opencode/agents/analytical/test.md $HOME/.config/opencode/agents/test.md
-$PWD/opencode/agents/creative/architect.md $HOME/.config/opencode/agents/architect.md
-$PWD/opencode/agents/creative/copywrite.md $HOME/.config/opencode/agents/copywrite.md
-$PWD/opencode/agents/creative/design.md $HOME/.config/opencode/agents/design.md
-$PWD/opencode/agents/creative/document.md $HOME/.config/opencode/agents/document.md
-$PWD/opencode/agents/creative/implement.md $HOME/.config/opencode/agents/implement.md
-$PWD/opencode/agents/orchestration/delegate.md $HOME/.config/opencode/agents/delegate.md
-$PWD/opencode/commands/commit.md $HOME/.config/opencode/commands/commit.md
-$PWD/opencode/commands/context-extract.md $HOME/.config/opencode/commands/context-extract.md
-$PWD/opencode/commands/context-harvest.md $HOME/.config/opencode/commands/context-harvest.md
-$PWD/opencode/commands/generate-design-documentation.md $HOME/.config/opencode/commands/generate-design-documentation.md
-$PWD/opencode/commands/generate-tests.md $HOME/.config/opencode/commands/generate-tests.md
-$PWD/opencode/commands/orchestrate.md $HOME/.config/opencode/commands/orchestrate.md
-$PWD/opencode/commands/refactor.md $HOME/.config/opencode/commands/refactor.md
+$PWD/opencode/agents/analytical/* $HOME/.config/opencode/agents/*
+$PWD/opencode/agents/creative/* $HOME/.config/opencode/agents/*
+$PWD/opencode/agents/orchestration/* $HOME/.config/opencode/agents/*
+$PWD/opencode/commands/* $HOME/.config/opencode/commands/*
 $PWD/opencode/opencode.json $HOME/.config/opencode/opencode.json
-$PWD/opencode/references/ARCHITECTURE.md $HOME/.config/opencode/references/ARCHITECTURE.md
-$PWD/opencode/references/MVI_FORMAT.md $HOME/.config/opencode/references/MVI_FORMAT.md
-$PWD/opencode/references/TECH_DESIGN.md $HOME/.config/opencode/references/TECH_DESIGN.md
-$PWD/opencode/references/TECH_STACK.md $HOME/.config/opencode/references/TECH_STACK.md
+$PWD/opencode/references/* $HOME/.config/opencode/references/*
 
 ## Sheldon
 $PWD/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
