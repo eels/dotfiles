@@ -85,9 +85,6 @@ key-mapping.preset = 'qwerty'
 
 [mode.main.binding]
 
-## Toggle between accordion and tiled layout
-alt-comma = 'layout accordion horizontal vertical'
-
 ## Toggle between tiled layouts
 alt-slash = 'layout tiles horizontal vertical'
 
@@ -107,48 +104,42 @@ alt-shift-l = 'move right'
 alt-equal = 'resize smart +50'
 alt-minus = 'resize smart -50'
 
+## Toggle fullscreen
+alt-cmd-f = 'fullscreen'
+
 ## Switch to workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
+alt-cmd-1 = 'workspace 1'
+alt-cmd-2 = 'workspace 2'
+alt-cmd-3 = 'workspace 3'
+alt-cmd-4 = 'workspace 4'
+alt-cmd-5 = 'workspace 5'
+alt-cmd-6 = 'workspace 6'
+alt-cmd-7 = 'workspace 7'
+alt-cmd-8 = 'workspace 8'
+alt-cmd-9 = 'workspace 9'
 
 ## Move window to workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
+cmd-cmd-1 = 'move-node-to-workspace 1'
+cmd-cmd-2 = 'move-node-to-workspace 2'
+cmd-cmd-3 = 'move-node-to-workspace 3'
+cmd-cmd-4 = 'move-node-to-workspace 4'
+cmd-cmd-5 = 'move-node-to-workspace 5'
+cmd-cmd-6 = 'move-node-to-workspace 6'
+cmd-cmd-7 = 'move-node-to-workspace 7'
+cmd-cmd-8 = 'move-node-to-workspace 8'
+cmd-cmd-9 = 'move-node-to-workspace 9'
 
 ## Switch to previous workspace
 alt-tab = 'workspace-back-and-forth'
 
-## Move workspace to next monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
 ## Enter service mode
 alt-shift-semicolon = 'mode service'
-
-## Toggle fullscreen
-alt-cmd-f = 'fullscreen'
 
 # -----------------------------------------------
 #   6. BINDINGS: SERVICE
 # -----------------------------------------------
 
 [mode.service.binding]
-
-## Close all windows except current and return to main mode
-backspace = ['close-all-windows-but-current', 'mode main']
 
 ## Reload config and return to main mode
 esc = ['reload-config', 'mode main']
