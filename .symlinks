@@ -1,3 +1,4 @@
+$PWD/aerospace/aerospace.toml $HOME/.config/aerospace/aerospace.toml
 $PWD/asdf/.asdfrc $HOME/.asdfrc
 $PWD/asdf/.tool-versions $HOME/.tool-versions
 $PWD/ghostty/config.ghostty $HOME/.config/ghostty/config.ghostty

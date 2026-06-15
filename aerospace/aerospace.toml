@@ -1,0 +1,175 @@
+# -----------------------------------------------
+#   Author: Liam Howell
+#   Description: Configuration options for Aerospace
+#
+#   0. GENERAL
+#   1. LAYOUT
+#   2. UI
+#   3. WORKSPACES
+#   4. KEY MAPPING
+#   5. BINDINGS: MAIN
+#   6. BINDINGS: SERVICE
+#   7. WINDOW RULES
+# -----------------------------------------------
+
+# -----------------------------------------------
+#   0. GENERAL
+# -----------------------------------------------
+
+## Config version for compatibility and deprecations
+config-version = 2
+
+## Commands to run after AeroSpace startup
+after-startup-command = []
+
+## Start AeroSpace at login
+start-at-login = false
+
+## Callback when binding mode changes
+on-mode-changed = []
+
+# -----------------------------------------------
+#   1. LAYOUT
+# -----------------------------------------------
+
+## Normalize container layout on window changes
+enable-normalization-flatten-containers = true
+
+## Normalize opposite orientation for nested containers
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+## Size of accordion padding (0 to disable)
+accordion-padding = 0
+
+## Default layout for root containers (tiles or accordion)
+default-root-container-layout = 'tiles'
+
+## Default orientation for root containers (horizontal, vertical, or auto)
+default-root-container-orientation = 'auto'
+
+## Gaps between windows and monitor edges
+gaps.inner.horizontal = 8
+gaps.inner.vertical = 8
+gaps.outer.bottom = 8
+gaps.outer.left = 8
+gaps.outer.right = 8
+gaps.outer.top = 8
+
+# -----------------------------------------------
+#   2. UI
+# -----------------------------------------------
+
+## Move mouse to focused monitor when focus changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+## Automatically unhide macOS hidden apps when switching workspaces
+automatically-unhide-macos-hidden-apps = true
+
+# -----------------------------------------------
+#   3. WORKSPACES
+# -----------------------------------------------
+
+## Workspaces that persist even when empty
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+# -----------------------------------------------
+#   4. KEY MAPPING
+# -----------------------------------------------
+
+## Key mapping preset to use (qwerty, dvorak, colemak)
+key-mapping.preset = 'qwerty'
+
+# -----------------------------------------------
+#   5. BINDINGS: MAIN
+# -----------------------------------------------
+
+[mode.main.binding]
+
+## Toggle between accordion and tiled layout
+alt-comma = 'layout accordion horizontal vertical'
+
+## Toggle between tiled layouts
+alt-slash = 'layout tiles horizontal vertical'
+
+## Focus direction
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+## Move window in direction
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+## Resize window
+alt-equal = 'resize smart +50'
+alt-minus = 'resize smart -50'
+
+## Switch to workspace
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+## Move window to workspace
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+## Switch to previous workspace
+alt-tab = 'workspace-back-and-forth'
+
+## Move workspace to next monitor
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+## Enter service mode
+alt-shift-semicolon = 'mode service'
+
+## Toggle fullscreen
+alt-cmd-f = 'fullscreen'
+
+# -----------------------------------------------
+#   6. BINDINGS: SERVICE
+# -----------------------------------------------
+
+[mode.service.binding]
+
+## Close all windows except current and return to main mode
+backspace = ['close-all-windows-but-current', 'mode main']
+
+## Reload config and return to main mode
+esc = ['reload-config', 'mode main']
+
+## Toggle between floating and tiling
+f = ['layout floating tiling', 'mode main']
+
+## Reset workspace layout
+r = ['flatten-workspace-tree', 'mode main']
+
+## Join window with neighbour
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+# -----------------------------------------------
+#   7. WINDOW RULES
+# -----------------------------------------------
+
+## Float Finder windows by default
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'layout floating'
