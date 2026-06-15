@@ -1,11 +1,20 @@
+## Aerospace
 $PWD/aerospace/aerospace.toml $HOME/.config/aerospace/aerospace.toml
+
+## ASDF
 $PWD/asdf/.asdfrc $HOME/.asdfrc
 $PWD/asdf/.tool-versions $HOME/.tool-versions
+
+## Ghostty
 $PWD/ghostty/config.ghostty $HOME/.config/ghostty/config.ghostty
+
+## Git
 $PWD/git/.gitconfig $HOME/.gitconfig
 $PWD/git/.gitconfig.local $HOME/.gitconfig.local
 $PWD/git/.gitconfig.local.mts $HOME/.gitconfig.local.mts
 $PWD/git/.gitignore $HOME/.gitignore
+
+## OpenCode
 $PWD/opencode/AGENTS.md $HOME/.config/opencode/AGENTS.md
 $PWD/opencode/agents/analytical/context-scout.md $HOME/.config/opencode/agents/context-scout.md
 $PWD/opencode/agents/analytical/external-context-scout.md $HOME/.config/opencode/agents/external-context-scout.md
@@ -33,7 +42,11 @@ $PWD/opencode/references/ARCHITECTURE.md $HOME/.config/opencode/references/ARCHI
 $PWD/opencode/references/MVI_FORMAT.md $HOME/.config/opencode/references/MVI_FORMAT.md
 $PWD/opencode/references/TECH_DESIGN.md $HOME/.config/opencode/references/TECH_DESIGN.md
 $PWD/opencode/references/TECH_STACK.md $HOME/.config/opencode/references/TECH_STACK.md
+
+## Sheldon
 $PWD/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
+
+## Shell
 $PWD/shell/.localrc $HOME/.localrc
 $PWD/shell/.zsh_git $HOME/.zsh_git
 $PWD/shell/.zshrc $HOME/.zshrc

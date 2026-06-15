@@ -30,6 +30,7 @@ function parse_line() {
   TRIM_LINE="$line"
 
   [ -z "$TRIM_LINE" ] && return 1
+  [[ "$TRIM_LINE" == '#'* ]] && return 1
 
   eval "parts=($line)"
   SRC="${parts[0]}"
