@@ -61,13 +61,12 @@ These two systems are complementary and parallel:
 
 ## Startup Sequence
 
-When operating in `plan` or `build` mode, OpenCode follows a strict five-step startup sequence on every invocation. This sequence establishes the context hierarchy, loads discovered information, and delegates execution. Each step depends on the previous one; no step is optional.
+When operating in `plan` or `build` mode, OpenCode follows a strict four-step startup sequence on every invocation. This sequence establishes the context hierarchy, loads discovered information, and delegates execution. Each step depends on the previous one; no step is optional.
 
 - **Step 1 — Load AGENTS.md**: The mode loads this file (`AGENTS.md`) as the highest-priority guidance. All subsequent context loading and delegation decisions are governed by the rules defined here. This step always succeeds — the file is embedded in the agent definition.
 - **Step 2 — Discover Project Context**: The mode invokes `@context-scout` to search `.opencode/context/` in the target project directory. If the directory does not exist or is empty, `context-scout` returns nothing and the mode proceeds. This is correct behaviour, not an error.
 - **Step 3 — Load Global References**: The mode loads relevant reference files from `~/dotfiles/opencode/references/`. These are always-available standards (architecture, design, tech stack) that apply across all projects. Loaded references must remain in context for the duration of the task.
-- **Step 4 — Delegate to Specialist**: The mode delegates to `@delegate`, passing the complete user request alongside all loaded context (AGENTS.md rules, project context, and global references). The delegate subagent receives a fully populated context and is responsible for execution.
-- **Step 5 — Report Failure Upward**: Failure at any step — a missing file, a broken reference, an unresponsive subagent — must be reported, not silently skipped. Silent failures produce incorrect results that violate the guarantees established by this startup sequence.
+- **Step 4 — Report Failure Upward**: Failure at any step — a missing file, a broken reference, an unresponsive subagent — must be reported, not silently skipped. Silent failures produce incorrect results that violate the guarantees established by this startup sequence.
 
 # Critical Rules
 
@@ -78,12 +77,6 @@ Always use `context-scout` before starting any task. It searches `.opencode/cont
 If the directory does not exist or is empty, `context-scout` returns nothing — that is correct behaviour, not an error. Move on to loading references.
 
 Failure to load context produces output that does not match project standards.
-
-## Always Delegate to Available Specialists
-
-When in `plan` or `build` mode, always use the `delegate` subagent to handle the request — unless the prompt explicitly calls another agent via `@` or a specified command agent.
-
-You do not handle complex tasks directly when a specialist is available.
 
 ## Load References Before Acting
 

@@ -17,6 +17,7 @@ $PWD/git/.gitignore $HOME/.gitignore
 ## OpenCode
 $PWD/opencode/AGENTS.md $HOME/.config/opencode/AGENTS.md
 $PWD/opencode/agents/analytical/* $HOME/.config/opencode/agents/*
+$PWD/opencode/agents/core/* $HOME/.config/opencode/agents/*
 $PWD/opencode/agents/creative/* $HOME/.config/opencode/agents/*
 $PWD/opencode/agents/orchestration/* $HOME/.config/opencode/agents/*
 $PWD/opencode/commands/* $HOME/.config/opencode/commands/*
