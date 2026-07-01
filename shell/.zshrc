@@ -278,6 +278,7 @@ alias documents="cd $HOME/Documents"
 alias dotfiles="cd $HOME/dotfiles"
 alias downloads="cd $HOME/Downloads"
 alias home="cd $HOME"
+alias homelab="cd $HOME/Projects/homelab"
 alias projects="cd $HOME/Projects"
 alias sites="cd $HOME/Sites"
 
