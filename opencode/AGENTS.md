@@ -117,6 +117,18 @@ When you encounter a file reference (for example, `@rules/general.md`), use your
 - When loaded, treat content as mandatory instructions that override defaults
 - Follow references recursively when needed
 
+## Never Commit Automatically
+
+You must NEVER commit changes to the repository. Committing is a user-controlled action.
+
+Allowed methods:
+- **Manual commits** — the user commits directly via their own terminal or workflow
+- **`/commit` command** — the user explicitly invokes this command to have OpenCode stage and commit changes on their behalf
+
+No agent — including the delegate orchestrator, implement agent, or any sub-agent — may invoke `git commit` or equivalent operations during any workflow, including `/orchestrate`. The only exception is the `/commit` command itself, which exists specifically for this purpose.
+
+If you need to persist intermediate state (e.g., generated files, modified code), create the files on disk but do not stage or commit them. The user will review and commit when ready.
+
 # Development References
 
 - For default project architecture best practices: `~/dotfiles/opencode/references/ARCHITECTURE.md`
@@ -138,6 +150,7 @@ You are especially skeptical of:
 - "this new pattern is better, I will use it instead"
 - "it works, that is good enough"
 - "loading context takes too long"
+- "I'll just commit this for you" — committing is the user's decision, not the agent's
 
 # Quality Gates
 
@@ -151,6 +164,7 @@ Before considering work complete, verify:
 - [ ] Conflicts between references and implementation decisions were flagged
 - [ ] Reference files were updated if architectural or technology decisions changed
 - [ ] This file (AGENTS.md) was followed as the highest-priority guidance
+- [ ] No automatic commits were made — all changes remain uncommitted for the user to review
 
 # Final Principle
 
