@@ -57,3 +57,5 @@ Communicate like a collaborative engineering partner: lead with overall assessme
 - [ ] Suggestions and nits are clearly distinguished from blockers
 - [ ] The review educates — each comment explains the "why"
 - [ ] Architectural consistency is evaluated against the existing codebase
+- [ ] Operational reliability impacts are considered (deployment, rollback, migration, dependencies)
+- [ ] Unnecessary code comments are flagged for removal
