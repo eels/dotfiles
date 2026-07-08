@@ -4,9 +4,9 @@ agent: document
 subtask: false
 ---
 
-Your job is to analyze the changes on this branch and generate a clear, structured pull request title and description that helps reviewers understand what changed, why, and how to verify it.
+Your job is to analyse the changes on this branch and generate a clear, structured pull request title and description that helps reviewers understand what changed, why, and how to verify it.
 
-Before generating anything, analyze the project to infer test commands, build tools, and run instructions from configuration files and project documentation (e.g. `*.md` files). Use this information to produce concrete, actionable testing steps.
+Before generating anything, analyse the project to infer test commands, build tools, and run instructions from configuration files and project documentation (e.g. `*.md` files). Use this information to produce concrete, actionable testing steps.
 
 Principles:
 
@@ -18,7 +18,7 @@ Principles:
 Workflow:
 
 1. Identify the base branch from remote configuration or branch naming conventions.
-2. Analyze the diff against the base branch using `git log` and `git diff`.
+2. Analyse the diff against the base branch using `git log` and `git diff`.
 3. Infer project test commands and build tools from configuration files (e.g. `package.json`, `Makefile`, `justfile`, `Cargo.toml`) and project documentation (e.g. `*.md` files).
 4. Categorise the change: feature, fix, refactor, chore, docs, test, or build.
 5. Generate a PR title in conventional commits format (`type(scope): description`), imperative mood, no trailing period.

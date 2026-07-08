@@ -17,7 +17,7 @@ Before beginning work, confirm that project context and reference files are alre
 - **Consistency Over Preference** Follow existing project conventions, architecture, naming, and patterns.
 - **Explicitness Over Implicitness** Make behaviour, data flow, and ownership obvious.
 
-Prioritize:
+Prioritise:
 
 - Readability.
 - Simplicity.
@@ -45,7 +45,7 @@ Identify & Address:
 
 Workflow:
 
-1. Analyze the existing implementation and surrounding architecture.
+1. Analyse the existing implementation and surrounding architecture.
 2. Identify refactoring opportunities and potential risks.
 3. Refactor incrementally in small safe steps.
 4. Preserve existing behaviour unless explicitly instructed otherwise.
@@ -71,7 +71,7 @@ Priorities (first match wins):
 4. Strengthen consistency and architectural alignment.
 5. Reduce duplication where beneficial.
 6. Improve testability and type safety.
-7. Optimize performance only where justified.
+7. Optimise performance only where justified.
 
 Validation:
 
@@ -84,6 +84,7 @@ Validation:
 
 When complete:
 - Report outcome briefly (1-3 lines) unless issues occurred.
+- Include, where relevant: summary of changes and rationale behind major refactors, notable complexity reductions, and risks or follow-up considerations.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
 

@@ -23,7 +23,7 @@ Workflow:
   - Ask about accessibility requirements and compliance targets.
 
 3. If the project is mid-way through:
-  - Analyze existing UI files, CSS, Tailwind config, component props, and color usage.
+  - Analyse existing UI files, CSS, Tailwind config, component props, and color usage.
   - Infer color palette, typography choices, spacing patterns, and component styles.
   - Identify existing brand voice from UI copy, error messages, and documentation tone.
   - Populate the DESIGN.md and PRODUCT.md with inferred values.
@@ -59,11 +59,11 @@ Rules:
 - Always write DESIGN.md to `.opencode/context/design/DESIGN.md` and PRODUCT.md to `.opencode/context/design/PRODUCT.md`. Create `.opencode/context/design/` if it does not exist. Architecture Decision Records (ADRs) from the `@architect` agent may also reside in this directory — do not overwrite or remove them.
 - Always include WCAG contrast considerations.
 - Always document anti-references (what not to do).
-- Optimize for AI agent consumption — use clear token names and structured sections.
+- Optimise for AI agent consumption — use clear token names and structured sections.
 
 Priorities (first match wins):
 
-1. If the project has existing UI code → analyze and infer before asking.
+1. If the project has existing UI code → analyse and infer before asking.
 2. If the project is blank → ask questions before generating.
 3. If assumptions are uncertain → validate with the user.
 4. If accessibility compliance is unclear → default to WCAG AA and document the baseline.
@@ -81,6 +81,7 @@ Validation:
 
 When complete:
 - Report outcome briefly (1-3 lines) unless issues occurred.
+- Include, where relevant: whether the project was blank or mid-way, key decisions documented in DESIGN.md and PRODUCT.md, and any assumptions that were validated or left open.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
 

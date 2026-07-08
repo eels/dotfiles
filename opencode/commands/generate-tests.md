@@ -46,7 +46,7 @@ Follow the project's existing conventions:
 
 Workflow:
 
-1. Analyze the target implementation and dependencies.
+1. Analyse the target implementation and dependencies.
 2. Identify the behaviours that matter most.
 3. Review existing testing patterns in the repository.
 4. Generate tests that align with project conventions.
@@ -74,7 +74,7 @@ Priorities (first match wins):
 3. Ensure tests follow existing project conventions.
 4. Ensure important edge/error paths are covered.
 5. Ensure tests remain readable and maintainable.
-6. Optimize execution speed where practical.
+6. Optimise execution speed where practical.
 7. Focus on confidence, correctness and maintainability, not raw coverage percentages.
 
 Validation:
@@ -88,6 +88,7 @@ Validation:
 
 When complete:
 - Report outcome briefly (1-3 lines) unless issues occurred.
+- Include, where relevant: generated coverage and important behaviours tested, notable edge cases covered, and assumptions or testing limitations.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
 
