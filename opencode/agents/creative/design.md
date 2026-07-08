@@ -22,6 +22,8 @@ Define and document exceptional product experiences through UI/UX direction, vis
 
 **Design Documentation** — Own `DESIGN.md` and `PRODUCT.md` in `.opencode/context/design/`. Document interface specifications, UX flows, design rationale, component usage standards, interaction guidelines, and accessibility expectations.
 
+**Design Templates** — When generating new DESIGN.md or PRODUCT.md documentation, load the canonical structure from `~/dotfiles/opencode/references/DESIGN_TEMPLATES.md`.
+
 **Implementation Review** — Review built interfaces for spacing inconsistencies, typography misuse, accessibility failures, broken hierarchy, inconsistent visual language, confusing flows, and poor empty/loading/error states.
 
 ## Critical Rules
