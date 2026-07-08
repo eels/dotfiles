@@ -1,173 +1,77 @@
 ---
-description: Defines how OpenCode AI agents operate within this repository — file loading conventions, development guidelines, working practices, and critical rules for consistent agent behaviour.
+description: Defines how OpenCode AI agents operate within this repository - file loading conventions, development guidelines, working practices, and critical rules for consistent agent behaviour.
 ---
 
 # Agent Configuration & Guidance
 
-This document defines how OpenCode AI agents operate within this repository. It governs file loading conventions, development guidelines, working practices, and critical rules for consistent agent behaviour.
+This document defines how OpenCode AI agents operate within this repository.
 
-All agents must follow these instructions alongside their specific agent definitions.
+## Identity
 
-You do not skip instructions in this file.
+Defines how OpenCode AI agents operate within this repository. All agents must follow these instructions alongside their specific agent definitions. You do not skip instructions in this file. Context files prevent hallucinations, specialists deliver better outcomes, references establish standards, and consistency prevents architecture rot. Optimise for context completeness, specialist delegation, pattern consistency, and reference verification - never skip context, assume understanding, introduce unjustified patterns, or trust unloaded references.
 
-You understand:
+## Context Architecture
 
-- Context files prevent hallucinations and drift — skipping them produces incorrect results
-- Specialists deliver better outcomes than generalists — delegate whenever possible
-- Reference files establish project standards — loading them before acting is mandatory
-- External files referenced via `@` are instruction files, not suggestions
-- Consistency with existing patterns prevents architecture rot and rework
-- This file takes precedence over all other guidance when conflicts arise
+OpenCode uses two separate context systems with different locations and purposes.
 
-You optimize for:
+**Project Context (`.opencode/context/`)** - Per-project, optional. Discovered by `context-scout`. Contains project-specific standards, workflows, and patterns. If absent, context-scout returns nothing - that is correct behaviour.
 
-- context completeness before implementation
-- specialist delegation over direct execution
-- pattern consistency over novel approaches
-- reference verification over assumption
+**Global References (`~/dotfiles/opencode/references/`)** - Always available. Loaded directly by Step 3 of the startup sequence, not by `context-scout`. Contains architecture, design, and tech stack standards.
 
-Not:
-
-- skipping context to save time
-- implementing without understanding project standards
-- introducing new patterns without justification
-- assuming reference content without loading it
-
-# Context Architecture
-
-OpenCode uses two separate context systems with different locations and purposes. Understanding the split between them is essential for correct agent behaviour.
-
-## Project Context (`.opencode/context/`)
-
-- **Location**: `.opencode/context/` inside a specific project repository
-- **Purpose**: Project-specific documentation — standards, workflows, patterns, contracts
-- **Availability**: May not exist in fresh projects. That is expected and acceptable.
-- **Discovery**: Handled by `context-scout`, which searches this directory and returns nothing if it is absent or empty
-- **Scope**: Per-project, optional, discovered dynamically
-
-## Global References (`~/dotfiles/opencode/references/`)
-
-- **Location**: `~/dotfiles/opencode/references/` in the dotfiles repository
-- **Purpose**: Always-available standards — architecture, design, tech stack
-- **Availability**: Always present in the dotfiles repo. Not project-specific.
-- **Discovery**: Loaded directly via the "Load References Before Acting" rule. Not within `context-scout`'s scope.
-- **Scope**: Global, always available, loaded directly
-
-These two systems are complementary and parallel:
-
-- `context-scout` discovers project-level context (`.opencode/context/`)
-- The "Load References Before Acting" rule loads global references (`~/dotfiles/opencode/references/`)
-- Both steps are required; neither replaces the other
+Both steps are required; neither replaces the other.
 
 ## Startup Sequence
 
-When operating in `plan` or `build` mode, OpenCode follows a strict four-step startup sequence on every invocation. This sequence establishes the context hierarchy, loads discovered information, and delegates execution. Each step depends on the previous one; no step is optional.
+On every invocation in plan or build mode:
 
-- **Step 1 — Load AGENTS.md**: The mode loads this file (`AGENTS.md`) as the highest-priority guidance. All subsequent context loading and delegation decisions are governed by the rules defined here. This step always succeeds — the file is embedded in the agent definition.
-- **Step 2 — Discover Project Context**: The mode invokes `@context-scout` to search `.opencode/context/` in the target project directory. If the directory does not exist or is empty, `context-scout` returns nothing and the mode proceeds. This is correct behaviour, not an error.
-- **Step 3 — Load Global References**: The mode loads relevant reference files from `~/dotfiles/opencode/references/`. These are always-available standards (architecture, design, tech stack) that apply across all projects. Loaded references must remain in context for the duration of the task.
-- **Step 4 — Report Failure Upward**: Failure at any step — a missing file, a broken reference, an unresponsive subagent — must be reported, not silently skipped. Silent failures produce incorrect results that violate the guarantees established by this startup sequence.
+1. **Load AGENTS.md** - This file, highest-priority guidance. Always succeeds.
+2. **Discover Project Context** - `@context-scout` searches `.opencode/context/`. If absent or empty, proceed - that is correct behaviour, not an error.
+3. **Load Global References** - Load relevant files from `~/dotfiles/opencode/references/`. Keep in context for the duration.
+4. **Report Failure Upward** - Missing files, broken references, unresponsive agents must be reported, not silently skipped. Silent failures violate the guarantees established by this sequence.
 
-# Critical Rules
+## Critical Rules
 
-## Always Use context-scout First
+1. **Always use context-scout first** - Searches `.opencode/context/` at the project level. If absent or empty, returns nothing - proceed to references. Failure to load context produces output that does not match project standards.
 
-Always use `context-scout` before starting any task. It searches `.opencode/context/` at the project level and discovers relevant context files that prevent hallucinations, drift, and inconsistency.
+2. **Load references before acting** - Load relevant global reference files from `~/dotfiles/opencode/references/` before architecture, design, or technology decisions. Keep them in context for the duration.
 
-If the directory does not exist or is empty, `context-scout` returns nothing — that is correct behaviour, not an error. Move on to loading references.
+3. **Follow reference hierarchy** - Conflicts resolve as: AGENTS.md → Direct task requirements → Reference files.
 
-Failure to load context produces output that does not match project standards.
+4. **Preserve consistency** - Align with existing patterns before introducing new approaches. When uncertain, prefer the simpler established pattern. Never bypass standards without justification. Consistency is a force multiplier; every novel pattern increases cognitive overhead.
 
-## Load References Before Acting
+5. **Validate against references** - Before completing work, verify alignment with reference documents. Flag conflicts; update references when decisions change.
 
-Load relevant global reference files from `~/dotfiles/opencode/references/` before making decisions about architecture, design, or technology choices.
+6. **External file loading** - Load references via Read tool on a need-to-know basis. Treat loaded content as mandatory instructions. Follow references recursively when needed.
 
-These are always-available standards (ARCHITECTURE.md, TECH_DESIGN.md, TECH_STACK.md) that live at the dotfiles level, not per-project. They are loaded directly — not through `context-scout`.
+7. **Never commit automatically** - Only the user commits (manually or via `/commit`). No agent may invoke `git commit` during any workflow. Persist state by creating files on disk; do not stage or commit. The user will review and commit when ready.
 
-Keep loaded references in context for the duration of the task.
+## Development References
 
-## Follow Reference Hierarchy
+- Architecture: `~/dotfiles/opencode/references/ARCHITECTURE.md`
+- Technical design: `~/dotfiles/opencode/references/TECH_DESIGN.md`
+- Tech stack and tooling: `~/dotfiles/opencode/references/TECH_STACK.md`
 
-Conflicts between guidance sources are resolved in this order, from highest to lowest:
+## Anti-Patterns
 
-1. **`AGENTS.md`** — Takes precedence over all other guidance (this file)
-2. **Direct task requirements** — Override reference defaults when explicitly stated
-3. **Reference files** — Authoritative for their domain (architecture, design, stack)
-
-## Preserve Consistency
-
-- Always align with existing patterns before introducing new approaches
-- When uncertain, prefer the simpler established pattern over novel solutions
-- Never bypass architectural, design, or technology standards without justification
-
-Consistency is a force multiplier. Every novel pattern increases cognitive overhead.
-
-## Validate Against References
-
-Before completing work, verify alignment with relevant reference documents.
-
-- Flag any conflicts between reference documents and implementation decisions
-- Update reference files when architectural or technology decisions change
-
-## External File Loading
-
-When you encounter a file reference (for example, `@rules/general.md`), use your Read tool to load it on a need-to-know basis. References are relevant to the specific task at hand.
-
-- Do not preemptively load all references — use lazy loading based on actual need
-- When loaded, treat content as mandatory instructions that override defaults
-- Follow references recursively when needed
-
-## Never Commit Automatically
-
-You must NEVER commit changes to the repository. Committing is a user-controlled action.
-
-Allowed methods:
-- **Manual commits** — the user commits directly via their own terminal or workflow
-- **`/commit` command** — the user explicitly invokes this command to have OpenCode stage and commit changes on their behalf
-
-No agent — including the delegate orchestrator, implement agent, or any sub-agent — may invoke `git commit` or equivalent operations during any workflow, including `/orchestrate`. The only exception is the `/commit` command itself, which exists specifically for this purpose.
-
-If you need to persist intermediate state (e.g., generated files, modified code), create the files on disk but do not stage or commit them. The user will review and commit when ready.
-
-# Development References
-
-- For default project architecture best practices: `~/dotfiles/opencode/references/ARCHITECTURE.md`
-- For default technical design best practices: `~/dotfiles/opencode/references/TECH_DESIGN.md`
-- For default and approved tech stack and tooling decisions: `~/dotfiles/opencode/references/TECH_STACK.md`
-
-# Anti-Patterns You Reject
-
-Avoid:
-
-- skipping quality gates to save time
-- assuming you know the project well enough to skip setup steps
-
-You are especially skeptical of:
-
+- Skipping quality gates to save time
+- Assuming you know the project well enough to skip setup steps
 - "I know this project well enough, I do not need context"
 - "I can handle this myself, no need to delegate"
-- "the reference is probably the same as last time"
-- "this new pattern is better, I will use it instead"
-- "it works, that is good enough"
-- "loading context takes too long"
-- "I'll just commit this for you" — committing is the user's decision, not the agent's
+- "The reference is probably the same as last time"
+- "This new pattern is better, I will use it instead"
+- "It works, that is good enough"
+- "Loading context takes too long"
+- "I'll just commit this for you" - committing is the user's decision, not the agent's
 
-# Quality Gates
+## Quality Gates
 
 Before considering work complete, verify:
 
 - [ ] `context-scout` was used at the start of the task or session
-- [ ] Required context files were loaded before any implementation
-- [ ] Relevant reference files were loaded and their instructions followed
+- [ ] Required context and reference files were loaded before implementation
 - [ ] Work was delegated to specialist agents when appropriate
 - [ ] Implementation aligns with existing project patterns and conventions
 - [ ] Conflicts between references and implementation decisions were flagged
 - [ ] Reference files were updated if architectural or technology decisions changed
 - [ ] This file (AGENTS.md) was followed as the highest-priority guidance
-- [ ] No automatic commits were made — all changes remain uncommitted for the user to review
-
-# Final Principle
-
-Your responsibility is not merely to execute instructions.
-
-Your responsibility is to ensure every action aligns with project standards, leverages available context, produces consistent results, and maintains the integrity of the codebase — without skipping steps, assuming knowledge, or inventing conventions.
+- [ ] No automatic commits were made - all changes remain uncommitted for review
