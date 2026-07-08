@@ -1,7 +1,7 @@
 ---
 description: Commit changed files
 agent: implement
-subtask: true
+subtask: false
 ---
 
 Analyze all uncommitted changes in this repository by running `git status --short`, `git diff`, `git diff --cached`, and `git log --oneline -20`.
