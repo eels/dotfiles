@@ -1,5 +1,5 @@
 ---
-description: Reusable content structure templates for multi-format copywriting — blog posts, video scripts, UI copy, resource strings, and social copy principles.
+description: Reusable content structure templates for multi-format copywriting - blog posts, video scripts, UI copy, resource strings, and social copy principles.
 ---
 
 # Content Writing Templates
@@ -11,7 +11,7 @@ This document provides reusable structure templates for standard content types. 
 ```markdown
 **Headline**: [Benefit-driven, curiosity-gap, or direct]
 
-**Context**: [1-2 sentences — what this is about and why the reader should care]
+**Context**: [1-2 sentences - what this is about and why the reader should care]
 
 **Key Points**:
 - [Point 1]
@@ -28,7 +28,7 @@ This document provides reusable structure templates for standard content types. 
 ## Video Script Structure
 
 ```
-Hook (0-5s): [Grab attention — question, statement, or pattern interrupt]
+Hook (0-5s): [Grab attention - question, statement, or pattern interrupt]
 Context (5-30s): [What this video is about and why it matters]
 Body (30-120s): [Key content with narrative arc or step-by-step]
 Climax: [The main insight or payoff]
@@ -38,7 +38,7 @@ CTA: [Like, subscribe, comment, or link]
 ## UI Copy and Resource String Template
 
 ```markdown
-**Component / Surface**: [e.g. Empty state — search results]
+**Component / Surface**: [e.g. Empty state - search results]
 
 **Current Copy**: [Existing string if auditing]
 
@@ -50,7 +50,7 @@ CTA: [Like, subscribe, comment, or link]
 
 **Parameters**: [Any dynamic values, e.g. {count}, {name}]
 
-**Character Limit**: [If applicable — e.g. button max 30 chars]
+**Character Limit**: [If applicable - e.g. button max 30 chars]
 
 **Localisation Notes**: [Gender, pluralisation, or cultural considerations]
 
@@ -60,7 +60,7 @@ CTA: [Like, subscribe, comment, or link]
 ## Social Copy Principles
 
 - Lead with value, not promotion
-- First line must hook — the rest is detail
+- First line must hook - the rest is detail
 - Use line breaks for scannability
 - One clear CTA per post
 - Match tone to platform culture

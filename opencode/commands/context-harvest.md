@@ -4,9 +4,9 @@ agent: implement
 subtask: false
 ---
 
-Your job is to scan the project workspace for knowledge — both from existing markdown files and by auto-discovering the codebase itself — and distil it into permanent, structured context files under `.opencode/context/`.
+Your job is to scan the project workspace for knowledge - both from existing markdown files and by auto-discovering the codebase itself - and distil it into permanent, structured context files under `.opencode/context/`.
 
-Before harvesting any files, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before scanning the workspace. Harvesting without project context produces context files that drift from project standards — verify context is loaded first.
+Before harvesting any files, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before scanning the workspace. Harvesting without project context produces context files that drift from project standards - verify context is loaded first.
 
 This command operates in two phases: codebase auto-discovery (Phase 1) and markdown harvest (Phase 2).
 
@@ -16,10 +16,10 @@ Auto-scaffold `.opencode/context/<category>/` directories as needed. On the firs
 
 Workflow:
 
-Phase 1 — Codebase Auto-Discovery:
+Phase 1 - Codebase Auto-Discovery:
 
 1. Probe the project root for configuration and registry files: `package.json`, `Cargo.toml`, `pyproject.toml`, `composer.json`, `Gemfile`, `go.mod`, `setup.py`, `CMakeLists.txt`, `tsconfig.json`, `.eslintrc*`, `prettier.config.*`, `vite.config.*`, `next.config.*`, `vitest.config.*`, `jest.config.*`, `.editorconfig`, `.nvmrc`, `.node-version`.
-2. Perform a shallow directory scan (depth ≤ 3) to identify module boundaries — look for `src/`, `lib/`, `api/`, `app/`, `packages/`, `apps/`, `backend/`, `frontend/`, `services/`.
+2. Perform a shallow directory scan (depth ≤ 3) to identify module boundaries - look for `src/`, `lib/`, `api/`, `app/`, `packages/`, `apps/`, `backend/`, `frontend/`, `services/`.
 3. Glob for test files (`**/*.test.*`, `**/*.spec.*`, `__tests__/`) with a sampling limit of 10 to infer testing conventions.
 4. From the information gathered, compose relevant categorised MVI-formatted context files in a similar fashion to Phase 2.
 5. Present a pre-flight summary: "Auto-discovery found: {list of detected sources}. Create {N} context files? (Y/n)"
@@ -27,15 +27,15 @@ Phase 1 — Codebase Auto-Discovery:
 
 Example outputs of auto-discovered context:
 
-- `.opencode/context/concepts/tech-stack.md` — language, framework, key dependencies (runtime + dev), build tooling, package manager
-- `.opencode/context/concepts/project-architecture.md` — module boundaries, architectural layers, monorepo structure, entry points
-- `.opencode/context/concepts/project-conventions.md` — config conventions, test framework and patterns, naming conventions, export patterns, strictness settings
+- `.opencode/context/concepts/tech-stack.md` - language, framework, key dependencies (runtime + dev), build tooling, package manager
+- `.opencode/context/concepts/project-architecture.md` - module boundaries, architectural layers, monorepo structure, entry points
+- `.opencode/context/concepts/project-conventions.md` - config conventions, test framework and patterns, naming conventions, export patterns, strictness settings
 
-Phase 2 — Markdown Harvest:
+Phase 2 - Markdown Harvest:
 
 1. Scan all `.md` files in the project recursively, excluding `node_modules/`, `.git/`, `dist/`, `build/`, `.opencode/`, and `.tmp/`.
-2. Present a pre-flight summary: "Found {N} markdown files. Harvest all? (Y/n)" — if declined, skip Phase 2.
-3. For each file, check whether existing context under `.opencode/context/` already covers the same topic — ask before overwriting; disambiguate with a distinct filename otherwise.
+2. Present a pre-flight summary: "Found {N} markdown files. Harvest all? (Y/n)" - if declined, skip Phase 2.
+3. For each file, check whether existing context under `.opencode/context/` already covers the same topic - ask before overwriting; disambiguate with a distinct filename otherwise.
 4. Classify each file into a category: `concepts/`, `guides/`, `examples/`, `lookup/`, `errors/`. When ambiguous, default to `concepts/`.
 5. Write MVI-formatted file to `.opencode/context/<category>/<descriptive-name>.md` with `source` and `harvested` in frontmatter. Follow the MVI spec at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
 6. Leave original source files in place.
@@ -48,7 +48,7 @@ Rules:
 - Always include `source` and `harvested` frontmatter fields in every output file.
 - Always auto-scaffold `.opencode/context/<category>/` if it does not exist.
 - For auto-discovery: include the sources probed as `source` in frontmatter (e.g., "package.json, tsconfig.json").
-- Keep category directories flat — no nesting inside categories.
+- Keep category directories flat - no nesting inside categories.
 
 Priorities (first match wins):
 

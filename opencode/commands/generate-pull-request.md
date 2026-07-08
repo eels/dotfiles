@@ -10,10 +10,10 @@ Before generating anything, analyse the project to infer test commands, build to
 
 Principles:
 
-- **Accuracy** — describe what actually changed; never fabricate or speculate.
-- **Clarity** — reviewers should immediately understand scope and impact.
-- **Completeness** — cover motivation, key changes, and testing steps.
-- **Conciseness** — the description must never exceed 4,000 characters.
+- **Accuracy** - describe what actually changed; never fabricate or speculate.
+- **Clarity** - reviewers should immediately understand scope and impact.
+- **Completeness** - cover motivation, key changes, and testing steps.
+- **Conciseness** - the description must never exceed 4,000 characters.
 
 Workflow:
 
@@ -27,9 +27,9 @@ Workflow:
 
 Description Sections:
 
-**Summary** — one-paragraph overview of what this PR does and why.
-**Changes** — bullet list of key modifications, grouped logically by area.
-**Steps to Test** — numbered instructions with concrete commands inferred from project tooling and documentation.
+**Summary** - one-paragraph overview of what this PR does and why.
+**Changes** - bullet list of key modifications, grouped logically by area.
+**Steps to Test** - numbered instructions with concrete commands inferred from project tooling and documentation.
 
 Rules:
 

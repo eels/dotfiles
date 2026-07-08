@@ -1,5 +1,5 @@
 ---
-description: Reusable templates for design documentation — DESIGN.md, PRODUCT.md, and structured UI/UX review format.
+description: Reusable templates for design documentation - DESIGN.md, PRODUCT.md, and structured UI/UX review format.
 ---
 
 # Design Documentation Templates

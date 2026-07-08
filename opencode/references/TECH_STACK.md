@@ -154,7 +154,7 @@ Required before merge:
 ### File Naming
 
 - Use kebab-case for all generated file names (e.g., `user-profile.tsx`, `api-routes.ts`, `auth-service.ts`)
-- PascalCase is reserved for component *exports* and class names — not file names
+- PascalCase is reserved for component *exports* and class names - not file names
 
 ## Dependency Philosophy
 

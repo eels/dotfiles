@@ -4,29 +4,29 @@ agent: implement
 subtask: false
 ---
 
-Your job is to accept a source — local file, local directory, or web URL — and distil its content into a structured, permanent context file under `.opencode/context/`.
+Your job is to accept a source - local file, local directory, or web URL - and distil its content into a structured, permanent context file under `.opencode/context/`.
 
-Before extracting any content, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before processing the source. Extracting without project context produces context files that drift from project standards — verify context is loaded first.
+Before extracting any content, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before processing the source. Extracting without project context produces context files that drift from project standards - verify context is loaded first.
 
 Auto-scaffold `.opencode/context/<category>/` directories as needed. On the first-ever creation of `.opencode/context/`, also create an `_INDEX_.md` explaining the category structure and linking to the MVI format specification at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
 
 Workflow:
 
 1. Identify the source type: local file, local directory, or web URL (must start with `http://` or `https://`).
-2. Verify the source exists and is readable — for files, check the path; for directories, enumerate `.md` files (with `--recursive` for subdirectories); for URLs, extract and display the domain, then ask the user to confirm before fetching.
-3. If the source references a library with cached docs in `.opencode/external-context/`, prefer the cache over fetching — notify the user and use the cached version.
+2. Verify the source exists and is readable - for files, check the path; for directories, enumerate `.md` files (with `--recursive` for subdirectories); for URLs, extract and display the domain, then ask the user to confirm before fetching.
+3. If the source references a library with cached docs in `.opencode/external-context/`, prefer the cache over fetching - notify the user and use the cached version.
 4. Classify the source content into a category: `concepts/`, `guides/`, `examples/`, `lookup/`, or `errors/`. When ambiguous, default to `concepts/` and note the uncertainty in the Reference section.
 5. If the source is a single file or URL and exceeds 200 lines, prompt the user: "This source is large. Distil key sections or process the whole file?"
-6. If the source is a directory, present a batch prompt: "Process all N files? (y/N)" before proceeding. Each file gets its own output file — never merge multiple files into one.
+6. If the source is a directory, present a batch prompt: "Process all N files? (y/N)" before proceeding. Each file gets its own output file - never merge multiple files into one.
 7. If the target `.opencode/context/<category>/` directory does not exist, create it.
 8. For each output file, write an MVI document following the format defined at `~/dotfiles/opencode/references/MVI_FORMAT.md`. For URLs, frontmatter includes `source_url` and `fetched` fields. For local files, frontmatter includes `source` with the relative project path.
-9. Keep category directories flat — no nesting inside categories.
+9. Keep category directories flat - no nesting inside categories.
 10. If the user declines domain confirmation for a URL, exit without fetching.
 
 Rules:
 
 - Never fetch a URL without showing the domain and asking for confirmation first.
-- Never merge multiple source files into a single output file — each file gets its own.
+- Never merge multiple source files into a single output file - each file gets its own.
 - Never overwrite an existing context file without asking the user.
 - Always create the target `.opencode/context/<category>/` directory if it does not exist.
 - Always follow the MVI format defined at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
