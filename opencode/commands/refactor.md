@@ -82,12 +82,9 @@ Validation:
 - Ensure abstractions are justified.
 - Ensure architectural consistency is preserved.
 
-When complete, provide a final summary including:
-
-- Summary of changes.
-- Rationale behind major refactors.
-- Notable complexity reductions.
-- Risks or follow-up considerations.
-- Any areas intentionally left unchanged and why.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.
 
 Refactor: $ARGUMENTS

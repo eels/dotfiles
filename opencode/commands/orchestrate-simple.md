@@ -43,12 +43,9 @@ Validation:
 - Confirm no architectural drift or unintended side effects.
 - Ensure the change is coherent and complete.
 
-When complete, provide a final summary including:
-
-- What was requested.
-- What was changed (files and nature of changes).
-- Which specialist agent performed the work.
-- Confirmation that the output was validated.
-- Any assumptions that were made.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.
 
 orchestrate-simple: $ARGUMENTS

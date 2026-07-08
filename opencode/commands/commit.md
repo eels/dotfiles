@@ -49,8 +49,7 @@ Validation:
 - Verify no expected changes remain uncommitted.
 - Ensure commit messages match the repository convention.
 
-When complete, provide a final summary including:
-
-- Number of commits made.
-- List of commit messages.
-- Any files left uncommitted (if any) and why.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.

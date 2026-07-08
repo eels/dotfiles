@@ -56,13 +56,9 @@ Validation:
 - Ensure category directories remain flat with no nesting.
 - Ensure `_INDEX_.md` was created when `.opencode/context/` was first created.
 
-When complete, provide a final summary including:
-
-- Source type and path processed.
-- Number of output files created.
-- Categories and filenames created under `.opencode/context/`.
-- Whether the cache was used for external-context.
-- Whether any overwrites were approved or rejected.
-- Any content flagged as large and how it was handled.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.
 
 context-extract: $ARGUMENTS

@@ -44,14 +44,9 @@ Validation:
 - Confirm no architectural drift occurred.
 - Validate tests pass and review is complete.
 
-When complete, provide a final summary including:
-
-- Work completed.
-- Agents involved.
-- Major revisions requested.
-- Blockers encountered.
-- Unresolved follow-ups (if any).
-- Testing/review status.
-- Confirmation of delivery quality.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.
 
 Orchestrate: $ARGUMENTS

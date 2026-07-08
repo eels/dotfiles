@@ -79,13 +79,9 @@ Validation:
 - WCAG AA contrast ratios must be considered for all text-on-background pairings.
 - Anti-references must be concrete and specific, not generic.
 
-When complete, provide a final summary including:
-
-- Whether the project was blank or mid-way.
-- Key decisions documented in DESIGN.md (color palette, typography, component approach).
-- Key decisions documented in PRODUCT.md (audience, voice, anti-references).
-- Any assumptions that were validated or left open.
-- Accessibility compliance baseline documented.
-- Recommended next steps.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.
 
 Generate design documentation: $ARGUMENTS

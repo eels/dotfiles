@@ -86,12 +86,9 @@ Validation:
 - Ensure test structure matches the codebase.
 - Ensure failures produce useful debugging information.
 
-When complete, provide a final summary including:
-
-- Generated coverage.
-- Important behaviours tested.
-- Notable edge cases covered.
-- Assumptions or limitations.
-- Any recommended follow-up testing.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.
 
 Generate tests: $ARGUMENTS

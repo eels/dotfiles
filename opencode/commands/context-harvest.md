@@ -66,11 +66,9 @@ Validation:
 - For auto-discovery: validate that produced context reflects actual codebase contents.
 - Confirm `_INDEX_.md` was created when `.opencode/context/` was first created.
 
-When complete, provide a final summary including:
-
-- Number of markdown files harvested and their categories.
-- Auto-discovered context files created (or note if none were created).
-- Whether any overwrites were approved or rejected.
-- List of original files left in place.
+When complete:
+- Report outcome briefly (1-3 lines) unless issues occurred.
+- If blockers, revisions, or risks existed, explain them.
+- Only generate a full summary if the user explicitly asks.
 
 context-harvest: $ARGUMENTS
