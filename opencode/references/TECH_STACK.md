@@ -11,7 +11,7 @@ It is intentionally concise and optimised for:
 - rapid AI agent ingestion
 - implementation consistency
 - dependency governance
-- edge-runtime compatibility
+- container-runtime compatibility
 - predictable architectural decisions
 
 ## Core Technology Decisions
@@ -23,18 +23,16 @@ It is intentionally concise and optimised for:
 | Styling | Tailwind CSS | Utility-first styling |
 | UI Composition | `@micheldever/qwik-compose` | Preferred utility for composing Qwik + Tailwind CSS component variants |
 | Validation | Zod | Shared schemas preferred |
-| Backend Runtime | Cloudflare Workers | Default runtime target |
+| Backend Runtime | Node.js | Default runtime target |
 | Backend Framework | Hono | Preferred API framework |
 | ORM | Drizzle ORM | Typed schema-first approach |
-| Database | PostgreSQL / SQLite | Depends on scale |
-| Edge Database | Cloudflare D1 | Default edge-hosted relational DB |
-| Object Storage | Cloudflare R2 | Default blob/file storage |
-| Cache | Cloudflare KV | Lightweight edge caching |
-| Background Jobs | Cloudflare Queues | Async processing |
+| Database | Turso (libSQL/SQLite) | Default database |
 | Testing | Vitest + Playwright | Unit + E2E |
 | CI/CD | GitHub Actions | Preferred automation |
 | IaC | Terraform | Optional for larger systems |
 | Monorepo Workflow | Turborepo | Preferred monorepo tooling |
+| Hosting | VPS + Dokploy | Default deployment platform |
+| Container Runtime | Docker | Containerisation for all services |
 
 ## Frontend Standards
 
@@ -75,12 +73,11 @@ It is intentionally concise and optimised for:
 - stateless request handling
 - shared validation schemas
 - functional composition
-- edge-compatible libraries only
+- container-compatible libraries preferred
 
 ### Avoid
 
 - Express-style middleware sprawl
-- Node-only dependencies
 - hidden side effects
 - mutable shared state
 - fat controllers/routes
@@ -165,7 +162,7 @@ Required before merge:
 
 - small focused libraries
 - web standards first
-- edge-compatible dependencies
+- container-compatible dependencies
 - runtime-light tooling
 - strong TypeScript support
 - composable styling utilities aligned with Qwik resumability patterns
@@ -175,7 +172,6 @@ Required before merge:
 - large framework ecosystems
 - poorly maintained dependencies
 - unnecessary utility wrappers
-- Node-specific packages in edge runtimes
 
 ## AI Agent Guidance
 
@@ -185,7 +181,7 @@ Required before merge:
 - prefer Qwik-native approaches
 - minimise new abstractions
 - keep changes small and focused
-- maintain edge compatibility
+- maintain container compatibility
 - prefer editing existing files
 - when building reusable UI components with Qwik + Tailwind CSS, ALWAYS use `@micheldever/qwik-compose`
 - prefer shared composable styling primitives over duplicated Tailwind utilities

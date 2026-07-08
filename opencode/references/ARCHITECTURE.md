@@ -10,7 +10,7 @@ The goal is to maintain:
 
 - consistency across features
 - low operational complexity
-- edge-native compatibility
+- container-native compatibility
 - predictable code organisation
 - AI-agent-friendly implementation patterns
 
@@ -23,7 +23,7 @@ The goal is to maintain:
 - prefer composition over inheritance
 - optimise for maintainability
 - minimise infrastructure complexity
-- design for edge-first deployment
+- design for VPS-first deployment
 - minimise operational overhead
 - favour consistency over novelty
 
@@ -120,27 +120,27 @@ Business logic should:
 
 Primary infrastructure assumptions:
 
-- Cloudflare-first deployment
-- edge-native execution
-- stateless services
-- managed infrastructure services
-- free-tier-conscious architecture
+- VPS-first deployment with Dokploy
+- containerised execution via Docker
+- stateless services where practical
+- SQLite-backed persistence via Turso
+- minimal infrastructure complexity
 
 ### Hosting Philosophy
 
 Preferred:
 
-- fast cold starts
-- globally distributed execution
-- low-maintenance managed services
-- low operational overhead
+- simple VPS-based hosting
+- containerised deployment via Docker
+- low-maintenance operations
+- cost-predictable infrastructure
+- always-on availability
 
 Avoid:
 
 - Kubernetes without scale justification
-- always-on servers
 - multi-cloud complexity
-- stateful runtimes
+- over-engineered deployment setups
 
 ## Security Architecture
 
@@ -164,7 +164,7 @@ Avoid:
 ### Preferred
 
 - minimal client JavaScript
-- edge-optimised latency
+- optimised request latency
 - streamed responses where practical
 - caching for expensive operations
 - paginated large datasets

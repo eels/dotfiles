@@ -79,7 +79,7 @@ Detect:
 - library name and package identifier
 - official documentation URL
 - framework context (Next.js, Remix, Astro, etc.)
-- deployment target (Cloudflare Workers, Node.js, edge, etc.)
+- deployment target (Node.js, Docker, VPS, etc.)
 - companion libraries (ORM, auth, database, etc.)
 - common pitfalls or version-specific guidance
 
@@ -177,7 +177,7 @@ A bare library name is not enough. Enhance queries with framework context, compa
 |----------|----------------|
 | "TanStack Query setup" | "TanStack Query setup with Next.js App Router SSR hydration common mistakes" |
 | "Drizzle schema" | "Drizzle schema with PostgreSQL modular patterns common pitfalls" |
-| "Better Auth" | "Better Auth setup with Drizzle ORM adapter Cloudflare Workers" |
+| "Better Auth" | "Better Auth setup with Drizzle ORM adapter Node.js" |
 
 Context-rich queries produce better, more specific documentation results.
 

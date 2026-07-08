@@ -22,7 +22,7 @@ When multiple solutions are possible, prioritise:
 1. maintainability
 2. simplicity
 3. explicitness
-4. edge compatibility
+4. container compatibility
 5. operational efficiency
 6. performance
 7. abstraction reuse
@@ -141,20 +141,20 @@ Rules:
 - minimise client JavaScript
 - minimise runtime overhead
 
-### Edge Runtime Considerations
+### Container Runtime Considerations
 
 Design assuming:
 
-- cold starts matter
-- bundle size matters
-- Node APIs may not exist
-- latency should remain globally low
+- Node.js APIs are available
+- persistent connections are possible
+- resource limits are defined by container
+- latency is single-region (VPS-hosted)
 
 ## Dependency Evaluation Standards
 
 Before adding a dependency, evaluate:
 
-- edge-runtime compatibility
+- container-runtime compatibility
 - maintenance quality
 - TypeScript support
 - bundle/runtime cost
@@ -188,7 +188,6 @@ AI agents should:
 - introduce unnecessary dependencies
 - add client hydration unnecessarily
 - replace lightweight solutions with heavyweight frameworks
-- introduce Node-only assumptions into edge runtimes
 
 ## Related Documentation
 
