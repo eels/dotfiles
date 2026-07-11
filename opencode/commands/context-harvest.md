@@ -10,7 +10,7 @@ Before harvesting any files, verify that project context and reference files are
 
 This command operates in two phases: codebase auto-discovery (Phase 1) and markdown harvest (Phase 2).
 
-Use the MVI (Minimal Viable Information) format defined at `~/dotfiles/opencode/references/MVI_FORMAT.md` for all output files.
+Use the MVI (Minimal Viable Information) format defined at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md` for all output files.
 
 Auto-scaffold `.opencode/context/<category>/` directories as needed. On the first-ever creation of `.opencode/context/`, also create an `_INDEX_.md` explaining the category structure and MVI format.
 
@@ -37,14 +37,14 @@ Phase 2 - Markdown Harvest:
 2. Present a pre-flight summary: "Found {N} markdown files. Harvest all? (Y/n)" - if declined, skip Phase 2.
 3. For each file, check whether existing context under `.opencode/context/` already covers the same topic - ask before overwriting; disambiguate with a distinct filename otherwise.
 4. Classify each file into a category: `concepts/`, `guides/`, `examples/`, `lookup/`, `errors/`. When ambiguous, default to `concepts/`.
-5. Write MVI-formatted file to `.opencode/context/<category>/<descriptive-name>.md` with `source` and `harvested` in frontmatter. Follow the MVI spec at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
+5. Write MVI-formatted file to `.opencode/context/<category>/<descriptive-name>.md` with `source` and `harvested` in frontmatter. Follow the MVI spec at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md`.
 6. Leave original source files in place.
 
 Rules:
 
 - Never delete, move, or archive original source files.
 - Never overwrite existing context without asking the user.
-- Always follow the MVI format defined at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
+- Always follow the MVI format defined at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md`.
 - Always include `source` and `harvested` frontmatter fields in every output file.
 - Always auto-scaffold `.opencode/context/<category>/` if it does not exist.
 - For auto-discovery: include the sources probed as `source` in frontmatter (e.g., "package.json, tsconfig.json").

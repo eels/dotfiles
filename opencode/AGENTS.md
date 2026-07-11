@@ -47,9 +47,9 @@ On every invocation in plan or build mode:
 
 ## Development References
 
-- Architecture: `~/dotfiles/opencode/references/ARCHITECTURE.md`
-- Technical design: `~/dotfiles/opencode/references/TECH_DESIGN.md`
-- Tech stack and tooling: `~/dotfiles/opencode/references/TECH_STACK.md`
+- Architecture: `~/dotfiles/opencode/references/standards/ARCHITECTURE.md`
+- Technical design: `~/dotfiles/opencode/references/standards/TECH_DESIGN.md`
+- Tech stack and tooling: `~/dotfiles/opencode/references/standards/TECH_STACK.md`
 
 ## Anti-Patterns
 

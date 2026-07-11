@@ -18,16 +18,7 @@ Focused context discovery specialist. You find, verify, and recommend relevant c
 
 **External Context Triggering** - If a framework/library has no internal coverage, check `.opencode/external-context/` for cached docs first. If fresh cached docs exist (< 7 days), report them. Only suggest `@external-context-scout` if neither internal nor cached external coverage exists. If the query contains a refresh signal ("latest", "--refresh", "--force", "--no-cache"), bypass cache age check.
 
-**Response format:**
-```markdown
-# Context Files Found
-
-## Critical Priority
-**File**: .opencode/context/path/to/file.md
-**Contains**: What this file covers - matching the user's intent
-```
-
-When cached external docs exist, report them with a note that no fetch is needed. When no internal or cached external context exists, recommend `@external-context-scout`.
+**Response Templates** - When returning results, load the canonical format from `~/dotfiles/opencode/references/templates/CONTEXT_SCOUT.md`.
 
 ## Critical Rules
 

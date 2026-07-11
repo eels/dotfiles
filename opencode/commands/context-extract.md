@@ -8,7 +8,7 @@ Your job is to accept a source - local file, local directory, or web URL - and d
 
 Before extracting any content, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before processing the source. Extracting without project context produces context files that drift from project standards - verify context is loaded first.
 
-Auto-scaffold `.opencode/context/<category>/` directories as needed. On the first-ever creation of `.opencode/context/`, also create an `_INDEX_.md` explaining the category structure and linking to the MVI format specification at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
+Auto-scaffold `.opencode/context/<category>/` directories as needed. On the first-ever creation of `.opencode/context/`, also create an `_INDEX_.md` explaining the category structure and linking to the MVI format specification at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md`.
 
 Workflow:
 
@@ -19,7 +19,7 @@ Workflow:
 5. If the source is a single file or URL and exceeds 200 lines, prompt the user: "This source is large. Distil key sections or process the whole file?"
 6. If the source is a directory, present a batch prompt: "Process all N files? (y/N)" before proceeding. Each file gets its own output file - never merge multiple files into one.
 7. If the target `.opencode/context/<category>/` directory does not exist, create it.
-8. For each output file, write an MVI document following the format defined at `~/dotfiles/opencode/references/MVI_FORMAT.md`. For URLs, frontmatter includes `source_url` and `fetched` fields. For local files, frontmatter includes `source` with the relative project path.
+8. For each output file, write an MVI document following the format defined at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md`. For URLs, frontmatter includes `source_url` and `fetched` fields. For local files, frontmatter includes `source` with the relative project path.
 9. Keep category directories flat - no nesting inside categories.
 10. If the user declines domain confirmation for a URL, exit without fetching.
 
@@ -29,7 +29,7 @@ Rules:
 - Never merge multiple source files into a single output file - each file gets its own.
 - Never overwrite an existing context file without asking the user.
 - Always create the target `.opencode/context/<category>/` directory if it does not exist.
-- Always follow the MVI format defined at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
+- Always follow the MVI format defined at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md`.
 - Always include `source_url` and `fetched` in frontmatter for URL sources.
 - Always include `source` with the relative project path for local file sources.
 - Always check `.opencode/external-context/` cache before fetching external URLs.
@@ -50,7 +50,7 @@ Validation:
 - Ensure the source exists and is readable before processing.
 - Ensure domain was shown and confirmed for all URL sources.
 - Ensure each MVI document has valid frontmatter with appropriate source fields.
-- Ensure each MVI document follows the canonical MVI format defined at `~/dotfiles/opencode/references/MVI_FORMAT.md`.
+- Ensure each MVI document follows the canonical MVI format defined at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md`.
 - Ensure `.opencode/external-context/` was checked before fetching URLs.
 - Ensure no existing context files were overwritten without approval.
 - Ensure category directories remain flat with no nesting.
