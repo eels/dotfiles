@@ -20,9 +20,12 @@ $PWD/opencode/agents/analytical/* $HOME/.config/opencode/agents/*
 $PWD/opencode/agents/core/* $HOME/.config/opencode/agents/*
 $PWD/opencode/agents/creative/* $HOME/.config/opencode/agents/*
 $PWD/opencode/agents/orchestration/* $HOME/.config/opencode/agents/*
+$PWD/opencode/agents/scouting/* $HOME/.config/opencode/agents/*
 $PWD/opencode/commands/* $HOME/.config/opencode/commands/*
 $PWD/opencode/opencode.json $HOME/.config/opencode/opencode.json
-$PWD/opencode/references/* $HOME/.config/opencode/references/*
+$PWD/opencode/references/specifications/* $HOME/.config/opencode/references/specifications/*
+$PWD/opencode/references/standards/* $HOME/.config/opencode/references/standards/*
+$PWD/opencode/references/templates/* $HOME/.config/opencode/references/templates/*
 
 ## Sheldon
 $PWD/sheldon/plugins.toml $HOME/.config/sheldon/plugins.toml
