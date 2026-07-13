@@ -45,6 +45,8 @@ On every invocation in plan or build mode:
 
 7. **Never commit automatically** - Only the user commits (manually or via `/commit`). No agent may invoke `git commit` during any workflow. Persist state by creating files on disk; do not stage or commit. The user will review and commit when ready.
 
+8. **Never access `.env` files** - Agents must not read, load, or request access to live `.env` files under any circumstances. These files contain secrets and credentials that must not enter agent context. Use `.env.example` or `.env.template` files to understand expected configuration. If a project has no `.env.example`, flag this as a gap rather than reading the live file.
+
 ## Development References
 
 - Architecture: `~/dotfiles/opencode/references/standards/ARCHITECTURE.md`
@@ -62,6 +64,7 @@ On every invocation in plan or build mode:
 - "It works, that is good enough"
 - "Loading context takes too long"
 - "I'll just commit this for you" - committing is the user's decision, not the agent's
+- "I just need to check the .env to understand the config" - use `.env.example` instead; live secrets must never enter agent context
 
 ## Quality Gates
 
