@@ -39,7 +39,7 @@ function parse_line() {
   SRC="${line%% *}"
 }
 
-## Check if both source and destination paths end with /* (glob pattern)
+## Check if source ends with /* (glob pattern)
 function has_glob_pattern() {
   [[ "$SRC" == *'/*' ]]
 }
@@ -52,7 +52,7 @@ function process_glob_pattern() {
 
   [[ -d "$src_dir" ]] || return 0
 
-  for entry in "$src_dir"/*(ND); do
+  for entry in "$src_dir"/**/*(N.); do
     local basename="${entry##*/}"
 
     SRC="$entry"
