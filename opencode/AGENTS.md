@@ -47,6 +47,8 @@ On every invocation in plan or build mode:
 
 8. **Never access `.env` files** - Agents must not read, load, or request access to live `.env` files under any circumstances. These files contain secrets and credentials that must not enter agent context. Use `.env.example` or `.env.template` files to understand expected configuration. If a project has no `.env.example`, flag this as a gap rather than reading the live file.
 
+9. **Script repeatable actions** - When performing file or filesystem actions that are repeatable, objective, and non-trivial, create a bash script in `.opencode/scripts/` with a descriptive kebab-case name and `.sh` extension. Include a concise comment explaining purpose and arguments. If the AI uses the script, execute and iterate until working. Do not script trivial one-liners, subjective actions, or one-off operations.
+
 ## Development References
 
 - Architecture: `~/dotfiles/opencode/references/standards/ARCHITECTURE.md`
@@ -65,6 +67,8 @@ On every invocation in plan or build mode:
 - "Loading context takes too long"
 - "I'll just commit this for you" - committing is the user's decision, not the agent's
 - "I just need to check the .env to understand the config" - use `.env.example` instead; live secrets must never enter agent context
+- "I'll just run this command again next time" - script it if repeatable and non-trivial
+- "This is too simple to script" - if repeatable and not a trivial one-liner, script it
 
 ## Quality Gates
 
