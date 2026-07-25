@@ -116,8 +116,8 @@ autoload -Uz compinit && compinit
 #   4. SOURCES
 # -----------------------------------------------
 
-export PATH="$PATH:$HOME/.asdf/shims"
-export PATH="$PATH:$HOME/.yarn/bin"
+export PATH="$HOME/.asdf/shims:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
 
 # -----------------------------------------------
 #   5. HOOKS
