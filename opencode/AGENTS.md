@@ -43,7 +43,7 @@ On every invocation in plan or build mode:
 
 6. **External file loading** - Load references via Read tool on a need-to-know basis. Treat loaded content as mandatory instructions. Follow references recursively when needed.
 
-7. **Never commit automatically** - Only the user commits (manually or via `/commit`). No agent may invoke `git commit` during any workflow. Persist state by creating files on disk; do not stage or commit. The user will review and commit when ready.
+7. **Never commit automatically** - Committing is never an automatic task final step, no matter what: not when the task is complete, not when it seems like the obvious final step, not for small fixes. No agent may invoke `git commit` automatically during any workflow. Exactly two authorised paths exist for committing: the user's explicit request to commit in the current prompt, or the `/commit` command when the user explicitly invokes it. Git read commands (`status`, `diff`, `log`, `show`, `branch`) remain freely available - agents may still do git work when asked. Persist state by creating files on disk; do not stage or commit. The user will review and commit when ready.
 
 8. **Never access `.env` files** - Agents must not read, load, or request access to live `.env` files under any circumstances. These files contain secrets and credentials that must not enter agent context. Use `.env.example` or `.env.template` files to understand expected configuration. If a project has no `.env.example`, flag this as a gap rather than reading the live file.
 
@@ -65,7 +65,7 @@ On every invocation in plan or build mode:
 - "This new pattern is better, I will use it instead"
 - "It works, that is good enough"
 - "Loading context takes too long"
-- "I'll just commit this for you" - committing is the user's decision, not the agent's
+- "I'll just commit this for you" - committing is the user's decision, never the agent's - forbidden even when the task looks finished, even when it feels helpful, even for a small fix
 - "I just need to check the .env to understand the config" - use `.env.example` instead; live secrets must never enter agent context
 - "I'll just run this command again next time" - script it if repeatable and non-trivial
 - "This is too simple to script" - if repeatable and not a trivial one-liner, script it
