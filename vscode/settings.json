@@ -32,7 +32,7 @@
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": "off",
   "editor.linkedEditing": true,
-  "editor.matchBrackets": "never",
+  "editor.matchBrackets": "always",
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.occurrencesHighlight": "off",
@@ -104,6 +104,9 @@
   "js/ts.suggest.paths": false,
   "js/ts.suggestionActions.enabled": false,
   "js/ts.updateImportsOnFileMove.enabled": "always",
+  "json.schemaDownload.trustedDomains": {
+    "*": true
+  },
   "keyboard.touchbar.enabled": false,
   "problems.autoReveal": false,
   "scss.lint.unknownAtRules": "ignore",
@@ -148,7 +151,6 @@
   "window.commandCenter": false,
   "window.confirmSaveUntitledWorkspace": false,
   "window.dialogStyle": "custom",
-  "window.menuBarVisibility": "toggle",
   "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "none",
   "window.title": " ",
