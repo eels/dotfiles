@@ -31,23 +31,29 @@ On every invocation in plan or build mode:
 
 ## Critical Rules
 
-1. **Always use context-scout first** - Searches `.opencode/context/` at the project level. If absent or empty, returns nothing - proceed to references. Failure to load context produces output that does not match project standards.
+1. **Never commit automatically** - Committing is never an automatic task final step, no matter what: not when the task is complete, not when it seems like the obvious final step, not for small fixes. No agent may invoke `git commit` automatically during any workflow. Exactly two authorised paths exist for committing: the user's explicit request to commit in the current prompt, or the `/commit` command when the user explicitly invokes it. Git read commands (`status`, `diff`, `log`, `show`, `branch`) remain freely available - agents may still do git work when asked. Persist state by creating files on disk; do not stage or commit. The user will review and commit when ready.
 
-2. **Load references before acting** - Load relevant global reference files from `~/dotfiles/opencode/references/` before architecture, design, or technology decisions. Keep them in context for the duration.
+2. **Never access `.env` files** - Agents must not read, load, or request access to live `.env` files under any circumstances. These files contain secrets and credentials that must not enter agent context. Use `.env.example` or `.env.template` files to understand expected configuration. If a project has no `.env.example`, flag this as a gap rather than reading the live file.
 
-3. **Follow reference hierarchy** - Conflicts resolve as: AGENTS.md → Direct task requirements → Reference files.
+3. **Stay within approved file access boundaries** - Only read or write files within the current project directory, the OS temp directory (`$TMPDIR`), or explicitly configured reference paths (e.g. `~/dotfiles/opencode/references/`). Do not access arbitrary filesystem paths. If a task requires reading or writing to an external directory not listed in approved references, ask the user for explicit permission before proceeding. When temporary files are needed, always use `$TMPDIR` — never use `/tmp`.
 
 4. **Preserve consistency** - Align with existing patterns before introducing new approaches. When uncertain, prefer the simpler established pattern. Never bypass standards without justification. Consistency is a force multiplier; every novel pattern increases cognitive overhead.
 
-5. **Validate against references** - Before completing work, verify alignment with reference documents. Flag conflicts; update references when decisions change.
+5. **Do the minimum work required** - Achieve the goal with the least amount of work necessary without compromising quality, maintainability, or requirements. Do not over-engineer solutions, introduce unnecessary abstractions, or add scope beyond what was asked. Follow existing conventions and patterns rather than inventing new ones. "Minimum" does not mean smallest at the expense of clarity — name things properly, structure code for readability, and maintain the quality bar. Work should be sleek, lean, and focused: high quality, but not lost in its own complexity.
 
-6. **External file loading** - Load references via Read tool on a need-to-know basis. Treat loaded content as mandatory instructions. Follow references recursively when needed.
+6. **Match the tone and layout of technical writing** - When editing or creating documentation, command files, markdown content, or other technical writing, match the tone, style, heading format, and structural conventions of the existing file (if editing) or sibling files in the same directory (if creating new). The goal is that any written output reads as if it belongs in the same document set and was written by the same author.
 
-7. **Never commit automatically** - Committing is never an automatic task final step, no matter what: not when the task is complete, not when it seems like the obvious final step, not for small fixes. No agent may invoke `git commit` automatically during any workflow. Exactly two authorised paths exist for committing: the user's explicit request to commit in the current prompt, or the `/commit` command when the user explicitly invokes it. Git read commands (`status`, `diff`, `log`, `show`, `branch`) remain freely available - agents may still do git work when asked. Persist state by creating files on disk; do not stage or commit. The user will review and commit when ready.
+7. **Validate against references** - Before completing work, verify alignment with reference documents. Flag conflicts; update references when decisions change.
 
-8. **Never access `.env` files** - Agents must not read, load, or request access to live `.env` files under any circumstances. These files contain secrets and credentials that must not enter agent context. Use `.env.example` or `.env.template` files to understand expected configuration. If a project has no `.env.example`, flag this as a gap rather than reading the live file.
+8. **Script repeatable actions** - When performing file or filesystem actions that are repeatable, objective, and non-trivial, create a bash script in `.opencode/scripts/` with a descriptive kebab-case name and `.sh` extension. Include a concise comment explaining purpose and arguments. If the AI uses the script, execute and iterate until working. Do not script trivial one-liners, subjective actions, or one-off operations.
 
-9. **Script repeatable actions** - When performing file or filesystem actions that are repeatable, objective, and non-trivial, create a bash script in `.opencode/scripts/` with a descriptive kebab-case name and `.sh` extension. Include a concise comment explaining purpose and arguments. If the AI uses the script, execute and iterate until working. Do not script trivial one-liners, subjective actions, or one-off operations.
+9. **Always use context-scout first** - Searches `.opencode/context/` at the project level. If absent or empty, returns nothing - proceed to references. Failure to load context produces output that does not match project standards.
+
+10. **Load references before acting** - Load relevant global reference files from `~/dotfiles/opencode/references/` before architecture, design, or technology decisions. Keep them in context for the duration.
+
+11. **Follow reference hierarchy** - Conflicts resolve as: AGENTS.md → Direct task requirements → Reference files.
+
+12. **External file loading** - Load references via Read tool on a need-to-know basis. Treat loaded content as mandatory instructions. Follow references recursively when needed.
 
 ## Development References
 
