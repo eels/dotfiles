@@ -4,9 +4,9 @@ agent: implement
 subtask: false
 ---
 
-Analyse all uncommitted changes in this repository by running `git status --short`, `git diff`, `git diff --cached`, and `git log --oneline -20`.
-
 Your job is to group the changes into logical, independent commits and execute them one by one using `git add` then `git commit`.
+
+Analyse all uncommitted changes in this repository by running `git status --short`, `git diff`, `git diff --cached`, and `git log --oneline -20`.
 
 Principles:
 
