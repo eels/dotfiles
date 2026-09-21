@@ -82,6 +82,9 @@ export SAVEHIST="32768"
 ## Set Brew location
 export BREW_DIR="/opt/homebrew/"
 
+## Disable Homebrew hints
+export HOMEBREW_NO_ENV_HINTS="1"
+
 ## Manage Path
 export PATH="$BREW_DIR/bin:$PATH"
 export PATH="$BREW_DIR/sbin:$PATH"
@@ -101,6 +104,9 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT="0"
 
 ## Set default location for various user folders
 export APPLICATION_SUPPORT="$HOME/Library/Application Support"
+
+## Disable Azure telemetry
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT="1"
 
 # -----------------------------------------------
 #   3. PLUGINS
