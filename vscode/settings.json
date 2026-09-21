@@ -129,6 +129,8 @@
     "typescript": "javascript",
     "typescriptreact": "javascript"
   },
+  "tailwindCSS.lint.cssConflict": "ignore",
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
   "telemetry.editStats.enabled": false,
   "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",
@@ -143,6 +145,7 @@
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.suggest.enabled": false,
   "terminal.integrated.tabs.enabled": false,
+  "typescript.validate.enable": false,
   "update.showReleaseNotes": false,
   "vscode_custom_css.imports": [
     "file:/Users/liam/dotfiles/vscode/workbench.css"
