@@ -3,35 +3,40 @@
 #   Description: Brew & Cask dependency definitions
 # -----------------------------------------------
 
-tap 'buo/cask-upgrade'
+tap 'abue-ammar/tinycast', trusted: true
+tap 'azure/functions', trusted: true
+tap 'buo/cask-upgrade', trusted: true
+tap 'caezium/tap', trusted: true
+tap 'nikitabobko/tap', trusted: true
 
+brew 'ansible'
 brew 'asdf'
+brew 'azure-cli'
+brew 'azure-functions-core-tools@4'
+brew 'coreutils'
+brew 'curl'
 brew 'git'
-brew 'gnupg'
 brew 'imagemagick'
 brew 'mas'
+brew 'mole'
+brew 'opencode'
 brew 'p7zip'
 brew 'sheldon'
 brew 'starship'
 brew 'zsh'
 
-cask 'beekeeper-studio'
+cask 'aerospace'
 cask 'brave-browser'
-cask 'cyberduck'
+cask 'burrow'
 cask 'figma'
-cask 'firefox'
 cask 'ghostty'
 cask 'hammerspoon'
-cask 'imageoptim'
-cask 'latest'
-cask 'mockoon'
+cask 'httpie-desktop'
+cask 'keka'
 cask 'notion'
 cask 'orbstack'
-cask 'postman'
 cask 'private-internet-access'
-cask 'raycast'
-cask 'shottr'
-cask 'the-unarchiver'
-cask 'transmission'
+cask 'snapzy'
+cask 'tablepro'
+cask 'tinycast'
 cask 'visual-studio-code'
-cask 'vlc'
