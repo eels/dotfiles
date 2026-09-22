@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# ------------------------------------------------------
+# ------------------------------------------------
 #   Author: Liam Howell
 #   Description: Configure some macOS default settings
 #
@@ -11,11 +11,11 @@
 #   5. DOCK AND DASHBOARD
 #   6. ACTIVITY MONITOR
 #   7. CLEANUP
-# ------------------------------------------------------
+# ------------------------------------------------
 
-# ------------------------------------------------------
+# ------------------------------------------------
 #   1. GENERAL UI/UX
-# ------------------------------------------------------
+# ------------------------------------------------
 
 ## Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -26,9 +26,9 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool true
 ## Enable automatic period substitution
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   2. ACCESSORIES AND INPUT
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Trackpad: enable tap to click for this user and for the login screen
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -44,9 +44,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightC
 ## Disable "natural" scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   3. ENERGY SAVING
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Enable lid wakeup
 sudo pmset -a lidwake 1
@@ -63,9 +63,9 @@ sudo pmset -a displaysleep 10
 ## Set machine sleep to X minutes on battery
 sudo pmset -a sleep 15
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   4. FINDER
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Set Home as the default location for new Finder windows
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
@@ -95,9 +95,9 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 ## Use list view in all Finder windows by default
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   5. DOCK AND DASHBOARD
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Set the icon size of Dock items to 59 pixels
 defaults write com.apple.dock tilesize -int 59
@@ -114,9 +114,9 @@ defaults write com.apple.dock show-recents -bool false
 ## Disable the Launchpad gesture (pinch with thumb and three fingers)
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   6. ACTIVITY MONITOR
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
@@ -131,9 +131,9 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 102
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   7. CLEANUP
-# -----------------------------------------------
+# ------------------------------------------------
 
 killall ActivityMonitor &> /dev/null
 killall cfprefsd &> /dev/null

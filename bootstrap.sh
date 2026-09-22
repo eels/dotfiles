@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   Author: Liam Howell
 #   Description: Handles symlinks and dependency installation
 #
@@ -9,11 +9,11 @@
 #   2. SYMLINKS
 #   3. DIRECTORIES
 #   4. CLEANUP
-# -----------------------------------------------
+# ------------------------------------------------
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   0. BOOT
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Invalidate the current `sudo` timestamp file
 sudo --reset-timestamp
@@ -26,9 +26,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 _KEEPALIVE_PID=$!
 trap 'kill "$_KEEPALIVE_PID" 2>/dev/null || true' EXIT
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   1. HOMEBREW
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Install Homebrew
 if ! command -v brew &>/dev/null; then
@@ -43,9 +43,9 @@ done
 ## Install from Brewfile
 brew bundle --file applications/brewfile
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   2. SYMLINKS
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Symlink dotfiles to the home directory
 [ ! -L "$HOME/dotfiles" ] && ln -sf "$PWD" "$HOME/dotfiles"
@@ -53,18 +53,18 @@ brew bundle --file applications/brewfile
 ## Create symlinks from config file
 source "$PWD/bootstrap_symlinks.sh"
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   3. DIRECTORIES
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Create desired directories if they don't already exist
 for directory in "Projects" "Sites"; do
   mkdir -p "$HOME/$directory"
 done
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   4. CLEANUP
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Reload the shell
 kill "$_KEEPALIVE_PID" 2>/dev/null || true

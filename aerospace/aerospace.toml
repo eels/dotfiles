@@ -1,4 +1,4 @@
-# -----------------------------------------------
+# ------------------------------------------------
 #   Author: Liam Howell
 #   Description: Configuration options for Aerospace
 #
@@ -10,11 +10,11 @@
 #   5. BINDINGS: MAIN
 #   6. BINDINGS: SERVICE
 #   7. WINDOW RULES
-# -----------------------------------------------
+# ------------------------------------------------
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   0. GENERAL
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Config version for compatibility and deprecations
 config-version = 2
@@ -28,9 +28,9 @@ start-at-login = false
 ## Callback when binding mode changes
 on-mode-changed = []
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   1. LAYOUT
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Normalize container layout on window changes
 enable-normalization-flatten-containers = true
@@ -55,9 +55,9 @@ gaps.outer.left = 8
 gaps.outer.right = 8
 gaps.outer.top = 8
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   2. UI
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Move mouse to focused monitor when focus changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -65,23 +65,23 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 ## Automatically unhide macOS hidden apps when switching workspaces
 automatically-unhide-macos-hidden-apps = true
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   3. WORKSPACES
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Workspaces that persist even when empty
 persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   4. KEY MAPPING
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Key mapping preset to use (qwerty, dvorak, colemak)
 key-mapping.preset = 'qwerty'
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   5. BINDINGS: MAIN
-# -----------------------------------------------
+# ------------------------------------------------
 
 [mode.main.binding]
 
@@ -135,9 +135,9 @@ alt-tab = 'workspace-back-and-forth'
 ## Enter service mode
 alt-shift-semicolon = 'mode service'
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   6. BINDINGS: SERVICE
-# -----------------------------------------------
+# ------------------------------------------------
 
 [mode.service.binding]
 
@@ -156,9 +156,9 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-# -----------------------------------------------
+# ------------------------------------------------
 #   7. WINDOW RULES
-# -----------------------------------------------
+# ------------------------------------------------
 
 ## Float Finder windows by default
 [[on-window-detected]]
