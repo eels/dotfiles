@@ -1,7 +1,15 @@
-# -----------------------------------------------
+# ------------------------------------------------
 #   Author: Liam Howell
 #   Description: Brew & Cask dependency definitions
-# -----------------------------------------------
+#
+#   1. TAPS
+#   2. FORMULAS
+#   3. CASKS
+# ------------------------------------------------
+
+# ------------------------------------------------
+#   1. TAPS
+# ------------------------------------------------
 
 tap 'abue-ammar/tinycast', trusted: true
 tap 'azure/functions', trusted: true
@@ -9,12 +17,17 @@ tap 'buo/cask-upgrade', trusted: true
 tap 'caezium/tap', trusted: true
 tap 'nikitabobko/tap', trusted: true
 
+# ------------------------------------------------
+#   2. FORMULAS
+# ------------------------------------------------
+
 brew 'ansible'
 brew 'asdf'
 brew 'azure-cli'
 brew 'azure-functions-core-tools@4'
 brew 'coreutils'
 brew 'curl'
+brew 'gh'
 brew 'git'
 brew 'imagemagick'
 brew 'mas'
@@ -24,6 +37,10 @@ brew 'p7zip'
 brew 'sheldon'
 brew 'starship'
 brew 'zsh'
+
+# ------------------------------------------------
+#   3. CASKS
+# ------------------------------------------------
 
 cask 'aerospace'
 cask 'brave-browser'

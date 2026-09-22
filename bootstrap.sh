@@ -41,7 +41,7 @@ for directory in "$(brew --prefix)" "$(brew --repository)"; do
 done
 
 ## Install from Brewfile
-brew bundle --file homebrew/brewfile
+brew bundle --file applications/brewfile
 
 # -----------------------------------------------
 #   2. SYMLINKS
