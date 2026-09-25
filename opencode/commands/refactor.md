@@ -87,5 +87,3 @@ When complete:
 - Include, where relevant: summary of changes and rationale behind major refactors, notable complexity reductions, and risks or follow-up considerations.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-Refactor: $ARGUMENTS

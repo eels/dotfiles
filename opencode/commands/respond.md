@@ -44,5 +44,3 @@ When complete:
 - Include, where relevant: questions resolved, answers incorporated, any scope adjustments made, and the orchestration path taken.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-Respond: $ARGUMENTS

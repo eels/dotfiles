@@ -53,5 +53,3 @@ When complete:
 - Include, where relevant: work completed, agents involved, validation status (passes, revisions, escalations), and scope changes encountered (including lightweight-to-full escalations).
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-Orchestrate: $ARGUMENTS

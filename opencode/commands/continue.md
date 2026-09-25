@@ -46,5 +46,3 @@ When complete:
 - Include, where relevant: what was identified as the interrupted task, which steps were already complete, and what was resumed.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-continue: $ARGUMENTS

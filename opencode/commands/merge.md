@@ -1,6 +1,6 @@
 ---
 description: Squash-merge the current feature branch into main
-agent: implement
+agent: general
 subtask: false
 ---
 
@@ -63,5 +63,3 @@ When complete:
 - Include, where relevant: the squash-merge commit message, the branch you switched back to, and whether the merge succeeded.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-Merge: $ARGUMENTS

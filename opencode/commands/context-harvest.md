@@ -1,6 +1,6 @@
 ---
 description: Harvest workspace knowledge into permanent context files
-agent: implement
+agent: general
 subtask: false
 ---
 
@@ -71,5 +71,3 @@ When complete:
 - Include, where relevant: number of markdown files harvested and their categories, auto-discovered context files created (or note if none), and whether any overwrites were approved or rejected.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-context-harvest: $ARGUMENTS

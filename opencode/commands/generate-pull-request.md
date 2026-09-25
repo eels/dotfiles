@@ -59,5 +59,3 @@ When complete:
 - Report outcome briefly (1-3 lines) unless issues occurred.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-generate-pull-request: $ARGUMENTS

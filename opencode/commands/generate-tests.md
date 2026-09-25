@@ -91,5 +91,3 @@ When complete:
 - Include, where relevant: generated coverage and important behaviours tested, notable edge cases covered, and assumptions or testing limitations.
 - If blockers, revisions, or risks existed, explain them.
 - Only generate a full summary if the user explicitly asks.
-
-Generate tests: $ARGUMENTS
