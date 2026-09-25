@@ -29,16 +29,5 @@
       "description": "Default project development specifications and standards",
       "path": "~/dotfiles/opencode/references/**"
     }
-  },
-  "mcp": {
-    "headroom": {
-      "type": "local",
-      "command": [
-        "/Users/liam/.local/bin/headroom",
-        "mcp",
-        "serve"
-      ],
-      "enabled": true
-    }
   }
 }

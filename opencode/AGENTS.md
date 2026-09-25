@@ -45,15 +45,13 @@ On every invocation in plan or build mode:
 
 7. **Validate against references** - Before completing work, verify alignment with reference documents. Flag conflicts; update references when decisions change.
 
-8. **Script repeatable actions** - When performing file or filesystem actions that are repeatable, objective, and non-trivial, create a bash script in `.opencode/scripts/` with a descriptive kebab-case name and `.sh` extension. Include a concise comment explaining purpose and arguments. If the AI uses the script, execute and iterate until working. Do not script trivial one-liners, subjective actions, or one-off operations.
+8. **Always use context-scout first** - Searches `.opencode/context/` at the project level. If absent or empty, returns nothing - proceed to references. Failure to load context produces output that does not match project standards.
 
-9. **Always use context-scout first** - Searches `.opencode/context/` at the project level. If absent or empty, returns nothing - proceed to references. Failure to load context produces output that does not match project standards.
+9. **Load references before acting** - Load relevant global reference files from `~/dotfiles/opencode/references/` before architecture, design, or technology decisions. Keep them in context for the duration.
 
-10. **Load references before acting** - Load relevant global reference files from `~/dotfiles/opencode/references/` before architecture, design, or technology decisions. Keep them in context for the duration.
+10. **Follow reference hierarchy** - Conflicts resolve as: AGENTS.md → Direct task requirements → Reference files.
 
-11. **Follow reference hierarchy** - Conflicts resolve as: AGENTS.md → Direct task requirements → Reference files.
-
-12. **External file loading** - Load references via Read tool on a need-to-know basis. Treat loaded content as mandatory instructions. Follow references recursively when needed.
+11. **External file loading** - Load references via Read tool on a need-to-know basis. Treat loaded content as mandatory instructions. Follow references recursively when needed.
 
 ## Development References
 
