@@ -85,10 +85,6 @@ export BREW_DIR="/opt/homebrew/"
 ## Disable Homebrew hints
 export HOMEBREW_NO_ENV_HINTS="1"
 
-## Manage Path
-export PATH="$BREW_DIR/bin:$PATH"
-export PATH="$BREW_DIR/sbin:$PATH"
-
 ## Set Starship config location
 export STARSHIP_CONFIG="$HOME/dotfiles/starship/starship.toml"
 
@@ -122,7 +118,10 @@ autoload -Uz compinit && compinit
 #   4. SOURCES
 # ------------------------------------------------
 
+export PATH="$BREW_DIR/bin:$PATH"
+export PATH="$BREW_DIR/sbin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 
 # ------------------------------------------------
