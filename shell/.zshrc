@@ -7,8 +7,8 @@
 #   0. BOOT
 #   1. OPTIONS
 #   2. EXPORTS
-#   3. PLUGINS
-#   4. SOURCES
+#   3. SOURCES
+#   4. PLUGINS
 #   5. HOOKS
 #   6. KEY BINDINGS
 #   7. FUNCTIONS
@@ -105,17 +105,7 @@ export APPLICATION_SUPPORT="$HOME/Library/Application Support"
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT="1"
 
 # ------------------------------------------------
-#   3. PLUGINS
-# ------------------------------------------------
-
-## Load Sheldon Plugins
-eval "$(sheldon source)"
-
-## Load Completions
-autoload -Uz compinit && compinit
-
-# ------------------------------------------------
-#   4. SOURCES
+#   3. SOURCES
 # ------------------------------------------------
 
 export PATH="$BREW_DIR/bin:$PATH"
@@ -123,6 +113,16 @@ export PATH="$BREW_DIR/sbin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# ------------------------------------------------
+#   4. PLUGINS
+# ------------------------------------------------
+
+## Load Sheldon Plugins
+eval "$(sheldon source)"
+
+## Load Completions
+autoload -Uz compinit && compinit
 
 # ------------------------------------------------
 #   5. HOOKS
