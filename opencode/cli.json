@@ -1,0 +1,24 @@
+{
+  "diffs": {
+    "single": false,
+    "source": "branch",
+    "tree": true,
+    "view": "unified",
+    "wrap": "none"
+  },
+  "session": {
+    "grouping": "auto",
+    "markdown": "source",
+    "permissions": "autoaccept",
+    "sidebar": "hide",
+    "thinking": "hide",
+    "tps": false
+  },
+  "tabs": {
+    "mode": "off"
+  },
+  "theme": {
+    "mode": "system",
+    "name": "system"
+  }
+}

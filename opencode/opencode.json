@@ -2,14 +2,43 @@
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "plan",
   "formatter": false,
-  "permission": {
-    "edit": {
-      "~/.config/opencode/**": "deny",
-      "~/dotfiles/opencode/**": "deny"
+  "permissions": [
+    {
+      "action": "external_directory",
+      "effect": "allow",
+      "resource": "{env:TMPDIR}/**"
     },
-    "external_directory": {
-      "~/.config/opencode/**": "allow",
-      "~/dotfiles/opencode/**": "allow"
+    {
+      "action": "external_directory",
+      "effect": "allow",
+      "resource": "/tmp/**"
+    },
+    {
+      "action": "external_directory",
+      "effect": "allow",
+      "resource": "~/.config/opencode/**"
+    },
+    {
+      "action": "external_directory",
+      "effect": "allow",
+      "resource": "~/dotfiles/opencode/**"
+    }
+  ],
+  "references": {
+    "design-system": {
+      "description": "Default project development specifications and standards",
+      "path": "~/dotfiles/opencode/references/**"
+    }
+  },
+  "mcp": {
+    "headroom": {
+      "type": "local",
+      "command": [
+        "/Users/liam/.local/bin/headroom",
+        "mcp",
+        "serve"
+      ],
+      "enabled": true
     }
   }
 }
