@@ -1,6 +1,6 @@
 ---
 description: Harvest workspace knowledge into permanent context files
-agent: general
+agent: build
 subtask: false
 ---
 

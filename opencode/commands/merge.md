@@ -1,6 +1,6 @@
 ---
 description: Squash-merge the current feature branch into main
-agent: general
+agent: build
 subtask: false
 ---
 

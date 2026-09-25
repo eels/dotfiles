@@ -1,6 +1,6 @@
 ---
 description: Extract content from files, directories, or URLs into context
-agent: general
+agent: build
 subtask: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 description: Commit changed files
-agent: general
+agent: build
 subtask: false
 ---
 
