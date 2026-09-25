@@ -182,6 +182,7 @@
   "workbench.editor.editorActionsLocation": "titleBar",
   "workbench.editor.restoreViewState": false,
   "workbench.editor.showIcons": false,
+  "workbench.experimental.modernUI": false,
   "workbench.iconTheme": "atom-icons",
   "workbench.layoutControl.enabled": false,
   "workbench.preferredDarkColorTheme": "Comfort",
