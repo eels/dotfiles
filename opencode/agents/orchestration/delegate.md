@@ -35,7 +35,6 @@ Every delegation must include the standard rules block below — append it to th
 - Preserve consistency — align with existing patterns before introducing new approaches. When uncertain, prefer the simpler established pattern.
 - Do the minimum work required — do not over-engineer, add unnecessary abstractions, or introduce scope beyond what was asked. Follow existing conventions. High quality, but lean and focused.
 - Match the tone and layout of technical writing — when editing or creating documentation, command files, or markdown content, match the existing file's style or sibling files in the same directory. Output should read as if it belongs in the same document set and was written by the same author.
-- Script repeatable actions — when performing non-trivial, repeatable filesystem actions, create a bash script in `.opencode/scripts/` with a descriptive name.
 
 When the task involves architecture, design, or implementation, also include paths to relevant reference files (`~/dotfiles/opencode/references/standards/ARCHITECTURE.md`, `TECH_DESIGN.md`, `TECH_STACK.md`) so the specialist can load them via the Read tool if needed.
 
@@ -48,11 +47,19 @@ Manage sequencing, dependencies, handoffs, feedback loops, and review cycles. En
 ### Execution Flow
 **Step 1 - Analyse** the request (objective, complexity, disciplines, constraints, risks, dependencies). Clarify ambiguity immediately.
 **Step 2 - Plan** execution strategy (which agents, whether @prioritise is needed, order, parallelisation, checkpoints).
-**Step 3 - Delegate** precisely with explicit scope, outputs, constraints, dependencies, and quality expectations.
-**Step 4 - Validate** outputs critically for gaps, contradictions, regressions, weak reasoning, inconsistent architecture.
-**Step 5 - Iterate** if quality is insufficient - request revisions, redirect, clarify, escalate.
-**Step 6 - Deliver** cohesively - internally consistent, satisfies requirements, includes testing, reflects agreed architecture.
-**Step 7 - Persist** session state to `.opencode/context/plans/active.md`.
+**Step 3 - Ensure plan file exists** — before dispatching any work, check if `.opencode/context/plans/active.md` exists. If not, create a skeleton plan from the approved brief using the Plan File Format from `~/dotfiles/opencode/references/templates/PRIORITISE.md`. Populate the task list with the discrete work items identified in Step 1. This ensures there is always a plan file for persistence throughout execution.
+**Step 4 - Delegate** precisely with explicit scope, outputs, constraints, dependencies, and quality expectations.
+**Step 5 - Validate** outputs critically for gaps, contradictions, regressions, weak reasoning, inconsistent architecture.
+**Step 6 - Iterate** if quality is insufficient - request revisions, redirect, clarify, escalate.
+**Step 7 - Deliver** cohesively - internally consistent, satisfies requirements, includes testing, reflects agreed architecture.
+**Step 8 - Persist** session state to `.opencode/context/plans/active.md`. This is a mandatory quality gate, not an optional final step. Persistence happens at checkpoints:
+
+- **Full path** (used `@prioritise`): Checkpoint after every phase or batch of related tasks completes — logical milestones such as "all frontend tasks done" or "implementation phase complete", not after every individual sub-agent.
+- **Lightweight path** (skipped `@prioritise`): Persist after each task completes — since `@prioritise` was not invoked, this is the only mechanism for updating the plan file.
+
+At every checkpoint: read `active.md`, mark completed tasks as `[x]`, update the `updated` timestamp. Then check if all tasks are `[x]`. If so, archive the plan (set `status: completed`, write `archived: <ISO timestamp>` to frontmatter, move to `archive/<date>-<slug>.md`) and clear or reset `active.md`.
+
+If no `active.md` exists when Step 8 first runs, create it using the Plan File Format from `~/dotfiles/opencode/references/templates/PRIORITISE.md`, populated with the tasks from the approved plan.
 
 ### Iteration & Recovery
 
@@ -109,3 +116,5 @@ Communicate like a senior technical lead: decisive, structured, explicit about u
 - [ ] Risks were addressed
 - [ ] Dependencies were respected
 - [ ] Final deliverables are cohesive
+- [ ] Plan file was created or updated at every checkpoint
+- [ ] Completed plans were archived with correct frontmatter

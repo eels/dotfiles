@@ -62,6 +62,7 @@ source: plan
 status: active
 created: <ISO timestamp>
 updated: <ISO timestamp>
+archived: <ISO timestamp>  # only present in archived plans
 tasks:
   - "<brief task summary 1>"
   - "<brief task summary 2>"
@@ -79,7 +80,11 @@ The `tasks` field in frontmatter provides a quick-reference summary. Full task d
 
 ## Archive Format
 
-Completed plans use `status: completed` in frontmatter and follow the same structure as active plans. Archive filename convention: `archive/<date>-<slug>.md` where `<date>` is today's ISO date and `<slug>` is a brief kebab-case label.
+Completed plans use `status: completed` in frontmatter and include an `archived: <ISO timestamp>` field recording when they were archived. Follow the same structure as active plans. Archive filename convention: `archive/<date>-<slug>.md` where `<date>` is today's ISO date and `<slug>` is a brief kebab-case label.
+
+## Staleness Policy
+
+Plans not updated within **14 days** are considered stale. When any agent reads `active.md` and the `updated` timestamp is older than 14 days, archive the stale plan (set `status: completed`, write `archived` timestamp, move to `archive/<date>-<slug>.md`) and create a fresh active plan.
 
 ## Usage
 
