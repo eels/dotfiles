@@ -17,6 +17,7 @@ tap 'azure/functions', trusted: true
 tap 'buo/cask-upgrade', trusted: true
 tap 'caezium/tap', trusted: true
 tap 'gmac-pl/gmacftp', trusted: true
+tap 'jeffcaldwellca/tap', trusted: true
 tap 'nikitabobko/tap', trusted: true
 
 # ------------------------------------------------
@@ -51,7 +52,6 @@ cask 'brave-browser'
 cask 'burrow'
 cask 'figma'
 cask 'ghostty'
-cask 'gmacftp'
 cask 'hammerspoon'
 cask 'httpie-desktop'
 cask 'keka'
@@ -60,5 +60,6 @@ cask 'orbstack'
 cask 'private-internet-access'
 cask 'snapzy'
 cask 'tablepro'
+cask 'teleport-ftp'
 cask 'tinycast'
 cask 'visual-studio-code'
