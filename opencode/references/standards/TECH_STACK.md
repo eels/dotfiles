@@ -130,7 +130,7 @@ Avoid:
 
 ### Package Management
 
-- use yarn classic
+- use npm unless otherwise setup
 - commit lockfiles
 - prefer workspaces over relative imports
 

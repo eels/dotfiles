@@ -112,7 +112,6 @@ export PATH="$BREW_DIR/bin:$PATH"
 export PATH="$BREW_DIR/sbin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
 
 # ------------------------------------------------
 #   4. PLUGINS
@@ -314,7 +313,6 @@ alias brewup="brew update && brew upgrade && brew cleanup"
 alias caskup="brew update && brew cu --cleanup --yes"
 alias hypeup="cd $HOME/.hyper_plugins && rm -rf node_modules && rm -f package-lock.json && npm install && cd -"
 alias softup="softwareupdate --all --install"
-alias yarnup="cd $HOME/.config/yarn/global && rm -rf yarn.lock && yarn install && cd -"
 
 ## Open the dotfiles directory in vscode
 alias code="code --reuse-window"
