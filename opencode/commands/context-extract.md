@@ -6,7 +6,7 @@ subtask: false
 
 Your job is to accept a source - local file, local directory, or web URL - and distil its content into a structured, permanent context file under `.opencode/context/`.
 
-Before extracting any content, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before processing the source. Extracting without project context produces context files that drift from project standards - verify context is loaded first.
+Extracting content should be grounded in project context. Primary sessions run discovery at startup; a dispatched subagent's rich task prompt may already carry what is needed. Ensure project context and reference files are loaded before processing the source - if not already present, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/`. Extracting without project context produces context files that drift from project standards - verify context is loaded first.
 
 Auto-scaffold `.opencode/context/<category>/` directories as needed. On the first-ever creation of `.opencode/context/`, also create an `_INDEX_.md` explaining the category structure and linking to the MVI format specification at `~/dotfiles/opencode/references/specifications/MVI_FORMAT.md`.
 

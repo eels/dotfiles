@@ -6,7 +6,7 @@ subtask: false
 
 Your job is to scan the project workspace for knowledge - both from existing markdown files and by auto-discovering the codebase itself - and distil it into permanent, structured context files under `.opencode/context/`.
 
-Before harvesting any files, verify that project context and reference files are already loaded in this conversation. If they are not, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/` before scanning the workspace. Harvesting without project context produces context files that drift from project standards - verify context is loaded first.
+Harvesting should be grounded in project context. Primary sessions run discovery at startup; a dispatched subagent's rich task prompt may already carry what is needed. Ensure project context and reference files are loaded before scanning the workspace - if not already present, invoke `@context-scout` to discover project context and load relevant reference files from `~/dotfiles/opencode/references/`. Harvesting without project context produces context files that drift from project standards - verify context is loaded first.
 
 This command operates in two phases: codebase auto-discovery (Phase 1) and markdown harvest (Phase 2).
 

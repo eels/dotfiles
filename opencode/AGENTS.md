@@ -8,7 +8,7 @@ This document defines how OpenCode AI agents operate within this repository.
 
 ## Identity
 
-Defines how OpenCode AI agents operate within this repository. All agents must follow these instructions alongside their specific agent definitions. You do not skip instructions in this file. Context files prevent hallucinations, specialists deliver better outcomes, references establish standards, and consistency prevents architecture rot. Optimise for context completeness, specialist delegation, pattern consistency, and reference verification - never skip context, assume understanding, introduce unjustified patterns, or trust unloaded references.
+Defines how OpenCode AI agents operate within this repository. All agents must follow these instructions alongside their specific agent definitions. You do not skip instructions in this file. Context files prevent hallucinations, specialists deliver better outcomes, references establish standards, and consistency prevents architecture rot. Load context matched to your role and task: primary and coordinating agents load broadly at startup; dispatched subagents load on-demand when their task genuinely touches that domain. Optimise for context completeness within your role's scope, specialist delegation, pattern consistency, and reference verification - never skip context the task actually needed, assume understanding, introduce unjustified patterns, or trust unloaded references.
 
 ## Context Architecture
 
@@ -18,16 +18,16 @@ OpenCode uses two separate context systems with different locations and purposes
 
 **Global References (`~/dotfiles/opencode/references/`)** - Always available. Loaded directly by Step 3 of the startup sequence, not by `context-scout`. Contains architecture, design, and tech stack standards.
 
-Both steps are required; neither replaces the other.
+Both systems matter; neither replaces the other. Primary and coordinating agents load both at startup. Dispatched subagents load them on-demand when their task genuinely touches project standards or reference domains.
 
 ## Startup Sequence
 
-On every invocation in plan or build mode:
+Discovery is role-scoped. Primary agents and coordinating agents (the planner, the orchestrator/`@delegate`, session leads) run the full sequence on every invocation in plan or build mode. The orchestrator (`@delegate`) coordinates work despite its `mode: subagent` frontmatter - it is a coordinating agent for this purpose. Dispatched subagents receive context via the orchestrator's task prompt: Steps 1 and 4 apply to them universally, and they load Steps 2-3 context on-demand when their task genuinely touches that domain - a rich prompt may already carry what is needed.
 
-1. **Load AGENTS.md** - This file, highest-priority guidance. Always succeeds.
-2. **Discover Project Context** - `@context-scout` searches `.opencode/context/`. If absent or empty, proceed - that is correct behaviour, not an error.
-3. **Load Global References** - Load relevant files from `~/dotfiles/opencode/references/`. Keep in context for the duration.
-4. **Report Failure Upward** - Missing files, broken references, unresponsive agents must be reported, not silently skipped. Silent failures violate the guarantees established by this sequence.
+1. **Load AGENTS.md** - This file, highest-priority guidance. Universal - every agent, every invocation, always succeeds.
+2. **Discover Project Context** - Primary and coordinating agents run `@context-scout`, which searches `.opencode/context/`. If absent or empty, proceed - that is correct behaviour, not an error. Subagents run it on-demand when the task touches project conventions.
+3. **Load Global References** - Primary and coordinating agents load relevant files from `~/dotfiles/opencode/references/` at startup. Subagents load on-demand when the task genuinely touches those domains. Keep in context for the duration.
+4. **Report Failure Upward** - Missing files, broken references, unresponsive agents must be reported, not silently skipped. Silent failures violate the guarantees established by this sequence. Universal.
 
 ## Critical Rules
 
@@ -45,9 +45,9 @@ On every invocation in plan or build mode:
 
 7. **Validate against references** - Before completing work, verify alignment with reference documents. Flag conflicts; update references when decisions change.
 
-8. **Always use context-scout first** - Searches `.opencode/context/` at the project level. If absent or empty, returns nothing - proceed to references. Failure to load context produces output that does not match project standards.
+8. **Use context-scout first when discovery applies** - Primary and coordinating agents run context-scout first; it searches `.opencode/context/` at the project level. If absent or empty, returns nothing - proceed to references. Subagents run it on-demand when their task touches project conventions or standards. Failure to load context the task needed produces output that does not match project standards.
 
-9. **Load references before acting** - Load relevant global reference files from `~/dotfiles/opencode/references/` before architecture, design, or technology decisions. Keep them in context for the duration.
+9. **Load references before acting** - Primary agents load relevant global reference files from `~/dotfiles/opencode/references/` at startup. Subagents load them before acting on architecture, design, or technology decisions that depend on them. Keep loaded files in context for the duration.
 
 10. **Follow reference hierarchy** - Conflicts resolve as: AGENTS.md → Direct task requirements → Reference files.
 
@@ -68,7 +68,7 @@ On every invocation in plan or build mode:
 - "The reference is probably the same as last time"
 - "This new pattern is better, I will use it instead"
 - "It works, that is good enough"
-- "Loading context takes too long"
+- "Loading context takes too long" - on-demand means when the task needs it, not never; skipping context the task genuinely needed is the failure
 - "I'll just commit this for you" - committing is the user's decision, never the agent's - forbidden even when the task looks finished, even when it feels helpful, even for a small fix
 - "I just need to check the .env to understand the config" - use `.env.example` instead; live secrets must never enter agent context
 - "I'll just run this command again next time" - script it if repeatable and non-trivial
@@ -78,8 +78,8 @@ On every invocation in plan or build mode:
 
 Before considering work complete, verify:
 
-- [ ] `context-scout` was used at the start of the task or session
-- [ ] Required context and reference files were loaded before implementation
+- [ ] Context discovery matched the agent's role - eager for primary and coordinating agents at startup, on-demand for subagents when the task touched that domain
+- [ ] Required context and reference files were loaded before the work that depended on them
 - [ ] Work was delegated to specialist agents when appropriate
 - [ ] Implementation aligns with existing project patterns and conventions
 - [ ] Conflicts between references and implementation decisions were flagged

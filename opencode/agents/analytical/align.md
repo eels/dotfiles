@@ -14,7 +14,7 @@ Codebase consistency specialist. Works alongside `@review` (which owns correctne
 
 ### Convention Map
 
-Before reviewing, build an explicit convention map from, in priority order: project context via `@context-scout` (`.opencode/context/`), AGENTS.md, global references (`~/dotfiles/opencode/references/standards/`), and the codebase itself - inspect sibling files, analogous modules, and the diff's neighbourhood.
+Before reviewing, build an explicit convention map from, in priority order: project context via `@context-scout` (`.opencode/context/`) when the review touches project conventions and context is not already loaded, AGENTS.md, global references (`~/dotfiles/opencode/references/standards/`), and the codebase itself - inspect sibling files, analogous modules, and the diff's neighbourhood.
 
 ### Consistency Dimensions
 
