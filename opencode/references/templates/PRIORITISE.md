@@ -1,10 +1,10 @@
 ---
-description: Canonical templates for task list output and plan file structure used by the @prioritise agent.
+description: Canonical templates for task list output and decision log persistence used by the @prioritise agent.
 ---
 
 # Prioritise Templates
 
-This document provides canonical structure templates for development task lists and plan file persistence. The `@prioritise` agent loads these on demand when producing task decomposition output.
+This document provides canonical structure templates for development task lists and decision log persistence. The `@prioritise` agent loads these on demand when producing task decomposition output.
 
 ## Task List Format
 
@@ -54,7 +54,7 @@ Use this template when generating a development task list from a specification. 
 
 ## Plan File Format
 
-Use this structure when persisting a task list to `.opencode/context/plans/active.md`. The frontmatter provides machine-readable metadata; the markdown body contains full task detail.
+Use this structure when persisting a decision log to `.opencode/context/plans/active.md`. The frontmatter provides machine-readable metadata; the markdown body records what was decided, assumed, and verified in a single short artifact.
 
 ```markdown
 ---
@@ -62,30 +62,32 @@ source: plan
 status: active
 created: <ISO timestamp>
 updated: <ISO timestamp>
-archived: <ISO timestamp>  # only present in archived plans
-tasks:
-  - "<brief task summary 1>"
-  - "<brief task summary 2>"
 ---
-# [Project Name] Development Tasks
+# [Project Name] Decision Log
 
-## Specification Summary
-...
+## Decided
+- [Decision 1 and why]
+- [Decision 2 and why]
 
-## Development Tasks
-...
+## Assumed
+- [Assumption 1 and its basis]
+- [Assumption 2 and its basis]
+
+## Verified
+- [What was checked and how]
+- [What was checked and how]
 ```
 
-The `tasks` field in frontmatter provides a quick-reference summary. Full task detail lives in the markdown body.
+Keep the body short. Record only what future sessions need: the decisions made, the assumptions they rest on, and what was verified. Do not expand it into a task list or a strategic brief.
 
 ## Archive Format
 
-Completed plans use `status: completed` in frontmatter and include an `archived: <ISO timestamp>` field recording when they were archived. Follow the same structure as active plans. Archive filename convention: `archive/<date>-<slug>.md` where `<date>` is today's ISO date and `<slug>` is a brief kebab-case label.
+Rotation is a file move. When a decision log is complete or superseded, move `active.md` to `archive/<date>-<slug>.md`, where `<date>` is today's ISO date and `<slug>` is a brief kebab-case label. Do not create a separate archive document, duplicate content, or edit frontmatter during rotation — the log moves as written.
 
-## Staleness Policy
+## Rotation Timing
 
-Plans not updated within **14 days** are considered stale. When any agent reads `active.md` and the `updated` timestamp is older than 14 days, archive the stale plan (set `status: completed`, write `archived` timestamp, move to `archive/<date>-<slug>.md`) and create a fresh active plan.
+When a session begins persistence and `active.md` exists, rotate it to `archive/<date>-<slug>.md` before writing the new decision log.
 
 ## Usage
 
-When generating a task list, load this file and follow the Task List Format template. When persisting a plan, follow the Plan File Format structure. Fill in each field with content specific to the specification being planned.
+When generating a task list, load this file and follow the Task List Format template. When persisting a decision log, follow the Plan File Format structure. Fill in each field with content specific to the specification being planned.
