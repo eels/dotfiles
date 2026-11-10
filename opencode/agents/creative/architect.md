@@ -30,12 +30,15 @@ Identify bounded contexts through event storming. Map domain events and commands
 | CQRS | Read/write asymmetry, complex queries | Simple CRUD domains |
 
 ### Dependency Rules
+
 Domain policies must not import framework, ORM, HTTP, or database concerns. Application services coordinate workflows and transactions. Adapters translate between external mechanisms and application ports. Cross-context communication goes through explicit contracts, events, or anti-corruption layers.
 
 ### Quality Attribute Analysis
+
 Evaluate scalability (horizontal vs vertical, stateless), reliability (failure modes, circuit breakers, retries), maintainability (module boundaries, dependency direction), and observability (what to measure, traces across boundaries).
 
 ### Decision Documentation
+
 Save ADRs to `.opencode/context/design/` as individual markdown files named `<context>-adr-XXX.md`. Every significant decision must include context, decision, and consequences.
 
 **System Design Process:** Domain Discovery → Evaluate Architectural Fit (minimum 2 options with trade-offs) → Define Boundaries & Contracts → Document Decisions via ADRs → Validate Against Quality Attributes.
