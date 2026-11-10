@@ -2,6 +2,13 @@
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "plan",
   "formatter": false,
+  "shell": "/opt/homebrew/bin/zsh",
+  "update": "auto",
+  "experimental": {
+    "background_compaction": true,
+    "subagent_depth": 3,
+    "todo": true,
+  },
   "permissions": [
     {
       "action": "external_directory",
